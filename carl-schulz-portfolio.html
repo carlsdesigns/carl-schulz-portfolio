@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carl Schulz — Product Design Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0F1117;
+    --ink-light: #4B5262;
+    --ink-faint: #8B93A5;
+    --rule: #E4E7EE;
+    --page: #FAFBFD;
+    --white: #FFFFFF;
+    --accent-violet: #7C3AED;
+    --accent-cyan: #06B6D4;
+    --accent-pink: #EC4899;
+    --accent-amber: #F59E0B;
+    --accent-emerald: #10B981;
+    --accent-blue: #3B82F6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 15px; scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ─────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem; color: rgba(255,255,255,0.85);
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: rgba(255,255,255,0.9); }
+
+  /* ── HERO ─────────────────────────────── */
+  .hero {
+    position: relative; min-height: 100vh;
+    background: linear-gradient(135deg, #0F1117 0%, #1a1035 40%, #2d1a5e 70%, #1a1035 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px; overflow: hidden; color: #fff; text-align: center;
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
+    animation: orbFloat 12s ease-in-out infinite; pointer-events: none;
+  }
+  .hero-orb.o1 { width: 450px; height: 450px; background: #7C3AED; top: -120px; left: -80px; animation-duration: 14s; }
+  .hero-orb.o2 { width: 350px; height: 350px; background: #06B6D4; top: -60px; right: -50px; animation-duration: 10s; animation-delay: -3s; }
+  .hero-orb.o3 { width: 280px; height: 280px; background: #EC4899; bottom: -100px; left: 40%; animation-duration: 16s; animation-delay: -7s; }
+  .hero-orb.o4 { width: 200px; height: 200px; background: #F59E0B; bottom: 20%; right: 15%; opacity: 0.2; animation-duration: 18s; animation-delay: -5s; }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-20px) scale(1.08); }
+    66% { transform: translate(-20px,15px) scale(0.95); }
+  }
+
+  .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 760px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px;
+    animation: fadeUp 0.6s ease forwards; opacity: 0;
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', serif; font-size: 4.8rem; letter-spacing: -0.03em;
+    line-height: 1.05; margin-bottom: 32px;
+    animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0;
+  }
+  .hero-title .accent {
+    background: linear-gradient(135deg, #A78BFA, #06B6D4);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-tagline {
+    font-size: 1.25rem; font-weight: 300; color: rgba(255,255,255,0.55);
+    line-height: 1.7; max-width: 540px; margin: 0 auto 40px;
+    animation: fadeUp 0.6s ease 0.2s forwards; opacity: 0;
+  }
+  .hero-tagline strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #fff; text-decoration: none;
+    padding: 14px 32px; border-radius: 10px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    transition: all 0.3s; animation: fadeUp 0.6s ease 0.35s forwards; opacity: 0;
+  }
+  .hero-cta:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    z-index: 1; animation: fadeUp 0.6s ease 0.5s forwards, bounce 2s ease-in-out 1.5s infinite; opacity: 0;
+  }
+  .hero-scroll svg { width: 20px; height: 20px; stroke: rgba(255,255,255,0.25); }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* ── WHAT I DO ────────────────────────── */
+  .what-i-do {
+    padding: 88px 48px; background: var(--white); border-bottom: 1px solid var(--rule);
+  }
+  .section-inner { max-width: 920px; margin: 0 auto; }
+  .section-title {
+    font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--ink);
+    text-align: center; margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 0.9rem; color: var(--ink-light); max-width: 620px;
+    margin: 0 auto 44px; line-height: 1.7; text-align: center;
+  }
+  .wid-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .wid-card {
+    padding: 32px 28px 32px 60px; background: var(--page); border: 1px solid var(--rule);
+    border-radius: 14px; font-size: 0.92rem; line-height: 1.75; color: var(--ink);
+    position: relative; transition: all 0.25s; min-height: 120px;
+    display: flex; align-items: center;
+    border-left: 4px solid transparent;
+  }
+  .wid-card:nth-child(1) { border-left-color: #7C3AED; }
+  .wid-card:nth-child(2) { border-left-color: #06B6D4; }
+  .wid-card:nth-child(3) { border-left-color: #EC4899; }
+  .wid-card:nth-child(4) { border-left-color: #F59E0B; }
+  .wid-card:hover {
+    border-color: #C7D2FE; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-2px);
+  }
+  .wid-card:nth-child(1):hover { border-left-color: #7C3AED; }
+  .wid-card:nth-child(2):hover { border-left-color: #06B6D4; }
+  .wid-card:nth-child(3):hover { border-left-color: #EC4899; }
+  .wid-card:nth-child(4):hover { border-left-color: #F59E0B; }
+  .wid-num {
+    position: absolute; left: 20px; top: 32px;
+    font-family: 'DM Serif Display', serif; font-size: 1.1rem;
+  }
+  .wid-card:nth-child(1) .wid-num { color: #7C3AED; }
+  .wid-card:nth-child(2) .wid-num { color: #06B6D4; }
+  .wid-card:nth-child(3) .wid-num { color: #EC4899; }
+  .wid-card:nth-child(4) .wid-num { color: #F59E0B; }
+
+  /* ── CORE SKILLS ─────────────────────── */
+  .skills-section {
+    position: relative; padding: 88px 48px; overflow: hidden;
+    background: linear-gradient(160deg, #1e0533 0%, #0c0a2a 30%, #0a1628 60%, #0c1a2e 100%);
+  }
+  .skills-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+  .sblob {
+    position: absolute; border-radius: 50%; filter: blur(100px); mix-blend-mode: screen;
+    animation: blobPulse 8s ease-in-out infinite alternate;
+  }
+  .sblob.sb1 { width: 500px; height: 500px; background: radial-gradient(circle, #7C3AED, transparent 70%); top: -150px; left: -100px; animation-duration: 10s; }
+  .sblob.sb2 { width: 450px; height: 450px; background: radial-gradient(circle, #EC4899, transparent 70%); top: 50%; right: -100px; animation-duration: 12s; animation-delay: -4s; }
+  .sblob.sb3 { width: 350px; height: 350px; background: radial-gradient(circle, #06B6D4, transparent 70%); bottom: -100px; left: 30%; animation-duration: 9s; animation-delay: -2s; }
+  @keyframes blobPulse {
+    0% { transform: translate(0,0) scale(1); opacity: 0.5; }
+    50% { transform: translate(40px,-30px) scale(1.15); opacity: 0.7; }
+    100% { transform: translate(-20px,20px) scale(0.9); opacity: 0.5; }
+  }
+  .skills-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: 1;
+  }
+  .skills-inner { position: relative; z-index: 2; max-width: 920px; margin: 0 auto; }
+  .skills-header { text-align: center; margin-bottom: 52px; }
+  .skills-header .section-title { color: #fff; }
+  .skills-header .section-desc { color: rgba(255,255,255,0.4); }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .skill-orb {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 28px 14px; border-radius: 14px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    color: #fff; font-size: 0.82rem; font-weight: 500; cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1); overflow: hidden;
+    opacity: 0; transform: translateY(16px);
+  }
+  .skill-orb.visible { animation: skillIn 0.5s ease forwards; }
+  .skill-orb::before {
+    content: ''; position: absolute; inset: 0; border-radius: 14px;
+    background: linear-gradient(135deg, var(--og, rgba(124,58,237,0.18)), transparent 60%);
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .skill-orb:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 50px var(--og, rgba(124,58,237,0.12));
+  }
+  .skill-orb:hover::before { opacity: 1; }
+  .skill-orb .sl { position: relative; z-index: 1; }
+
+  .skill-orb:nth-child(1)  { --og: rgba(124,58,237,0.2); }
+  .skill-orb:nth-child(2)  { --og: rgba(6,182,212,0.2); }
+  .skill-orb:nth-child(3)  { --og: rgba(236,72,153,0.2); }
+  .skill-orb:nth-child(4)  { --og: rgba(245,158,11,0.2); }
+  .skill-orb:nth-child(5)  { --og: rgba(16,185,129,0.2); }
+  .skill-orb:nth-child(6)  { --og: rgba(124,58,237,0.2); }
+  .skill-orb:nth-child(7)  { --og: rgba(59,130,246,0.2); }
+  .skill-orb:nth-child(8)  { --og: rgba(236,72,153,0.2); }
+  .skill-orb:nth-child(9)  { --og: rgba(6,182,212,0.2); }
+  .skill-orb:nth-child(10) { --og: rgba(245,158,11,0.2); }
+  .skill-orb:nth-child(11) { --og: rgba(16,185,129,0.2); }
+  .skill-orb:nth-child(12) { --og: rgba(59,130,246,0.2); }
+
+  @keyframes skillIn { to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SKILL DETAIL PANEL ────────────── */
+  .skills-grid.dimmed .skill-orb {
+    opacity: 0.15; transform: scale(0.97); pointer-events: none; filter: blur(2px);
+  }
+  .skills-grid.dimmed .skill-orb.active-orb {
+    opacity: 0; pointer-events: none;
+  }
+  .skill-detail-overlay {
+    position: absolute; inset: 0; z-index: 8;
+    background: rgba(10, 8, 26, 0.4);
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none; transition: opacity 0.35s ease;
+  }
+  .skill-detail-overlay.open { opacity: 1; pointer-events: auto; }
+  .skill-detail {
+    position: absolute; bottom: 48px; left: 50%;
+    transform: translateX(-50%) translateY(40px);
+    z-index: 12; width: 100%; max-width: 640px;
+    pointer-events: none; opacity: 0;
+    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .skill-detail.open {
+    opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto;
+  }
+  .skill-detail-inner {
+    background: rgba(18, 16, 36, 0.92);
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 36px 40px 32px; position: relative;
+    box-shadow: 0 -12px 80px rgba(0,0,0,0.5), 0 0 120px rgba(124,58,237,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .skill-detail-close {
+    position: absolute; top: 18px; right: 18px;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; color: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.2s;
+    font-size: 1.1rem;
+  }
+  .skill-detail-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .skill-detail-badge {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 12px;
+  }
+  .skill-detail-title {
+    font-family: 'DM Serif Display', serif; font-size: 1.85rem; color: #fff;
+    margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.15;
+  }
+  .skill-detail-body {
+    font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 24px;
+  }
+  .skill-detail-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .skill-detail-tag {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em;
+    padding: 5px 12px; border-radius: 20px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── JOURNEY ─────────────────────────── */
+  .journey-section { padding: 88px 48px; background: var(--white); border-bottom: 1px solid var(--rule); }
+  .journey-inner { max-width: 720px; margin: 0 auto; }
+  .journey-item { position: relative; padding: 0 0 48px 40px; border-left: 2px solid var(--rule); }
+  .journey-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .journey-dot {
+    position: absolute; left: -7px; top: 4px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent-violet); border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--accent-violet);
+  }
+  .journey-item:nth-child(2) .journey-dot { background: var(--accent-cyan); box-shadow: 0 0 0 2px var(--accent-cyan); }
+  .journey-item:nth-child(3) .journey-dot { background: var(--accent-pink); box-shadow: 0 0 0 2px var(--accent-pink); }
+  .journey-item:nth-child(4) .journey-dot { background: var(--accent-amber); box-shadow: 0 0 0 2px var(--accent-amber); }
+  .journey-item:nth-child(5) .journey-dot { background: var(--accent-emerald); box-shadow: 0 0 0 2px var(--accent-emerald); }
+  .journey-item:nth-child(6) .journey-dot { background: var(--accent-blue); box-shadow: 0 0 0 2px var(--accent-blue); }
+
+  .journey-role { font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 2px; }
+  .journey-meta {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.05em;
+    color: var(--ink-faint); margin-bottom: 10px;
+  }
+  .journey-desc { font-size: 0.88rem; color: var(--ink-light); line-height: 1.7; }
+  .journey-stat {
+    display: inline-block; margin-top: 8px; padding: 4px 12px;
+    background: var(--page); border: 1px solid var(--rule); border-radius: 6px;
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--ink-light);
+  }
+
+  /* ── BELIEFS ─────────────────────────── */
+  .beliefs-section {
+    padding: 88px 48px;
+    background: var(--ink); color: #fff;
+  }
+  .beliefs-inner { max-width: 800px; margin: 0 auto; }
+  .beliefs-header { text-align: center; margin-bottom: 56px; }
+  .beliefs-header .section-title { color: #fff; }
+  .beliefs-header .section-desc { color: rgba(255,255,255,0.4); }
+  .beliefs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .belief {
+    padding: 28px; border-radius: 14px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s;
+  }
+  .belief:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-2px);
+  }
+  .belief-title {
+    font-family: 'DM Serif Display', serif; font-size: 1.15rem;
+    margin-bottom: 8px; color: rgba(255,255,255,0.9);
+  }
+  .belief-text { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+  /* ── CONTACT ─────────────────────────── */
+  .contact-section {
+    padding: 72px 48px;
+    background: var(--page); border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .contact-inner { max-width: 500px; margin: 0 auto; }
+  .contact-title {
+    font-family: 'DM Serif Display', serif; font-size: 2rem;
+    margin-bottom: 12px; color: var(--ink);
+  }
+  .contact-desc { font-size: 0.9rem; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .contact-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.04em;
+    padding: 12px 24px; border-radius: 10px;
+    background: var(--white); border: 1px solid var(--rule);
+    color: var(--ink-light); text-decoration: none;
+    transition: all 0.25s;
+  }
+  .contact-pill:hover {
+    border-color: var(--accent-violet); color: var(--accent-violet);
+    box-shadow: 0 4px 16px rgba(124,58,237,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ──────────────────────────── */
+  footer {
+    padding: 24px 48px; background: var(--ink);
+    text-align: center;
+    font-family: 'DM Mono', monospace; font-size: 0.65rem;
+    color: rgba(255,255,255,0.2); letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ──────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ──────────────────────── */
+  @media (max-width: 768px) {
+    .hero { padding: 100px 24px 60px; }
+    .hero-title { font-size: 2.8rem; }
+    .hero-tagline { font-size: 1.05rem; }
+    .wid-grid, .beliefs-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .what-i-do, .skills-section, .journey-section, .beliefs-section, .contact-section { padding: 56px 24px; }
+  }
+  @media (max-width: 480px) {
+    .hero-title { font-size: 2.2rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links a { font-size: 0.62rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">carl schulz</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+  <div class="hero-orb o4"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Product Design Leader &middot; Nashville, TN</div>
+    <h1 class="hero-title">Turning human insight into <span class="accent">experiences people trust.</span></h1>
+    <p class="hero-tagline">18+ years of setting vision, building teams, and shaping products that impact <strong>billions in revenue</strong> for <strong>350M+ people</strong> worldwide. I believe less is more, users have the answers, and listening is my most valuable asset.</p>
+    <a href="#journey" class="hero-cta">See the journey &darr;</a>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- WHAT I DO -->
+<section class="what-i-do" id="what-i-do">
+  <div class="section-inner">
+    <h2 class="section-title fade-in">What I Do</h2>
+    <p class="section-desc fade-in">I lead design organizations that solve complex problems through human-centered thinking&mdash;from first sketch to system-wide strategy.</p>
+    <div class="wid-grid">
+      <div class="wid-card fade-in">
+        <span class="wid-num">01</span>
+        Set multi-year experience vision and align design strategy across business domains to drive measurable growth.
+      </div>
+      <div class="wid-card fade-in">
+        <span class="wid-num">02</span>
+        Turn ambiguous, high-impact problem spaces into clear design direction through research, prototyping, and experimentation.
+      </div>
+      <div class="wid-card fade-in">
+        <span class="wid-num">03</span>
+        Build and coach world-class design teams&mdash;recruiting talent, developing leaders, and raising the craft bar at every level.
+      </div>
+      <div class="wid-card fade-in">
+        <span class="wid-num">04</span>
+        Shape end-to-end service experiences that integrate people, processes, and systems across channels and touchpoints.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="skills-bg">
+    <div class="sblob sb1"></div>
+    <div class="sblob sb2"></div>
+    <div class="sblob sb3"></div>
+  </div>
+  <div class="skills-inner">
+    <div class="skills-header">
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-desc">The craft I practice daily&mdash;from hands-on design to organizational leadership.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-orb" onclick="openSkill(0)"><span class="sl">Design Thinking</span></div>
+      <div class="skill-orb" onclick="openSkill(1)"><span class="sl">Prototyping</span></div>
+      <div class="skill-orb" onclick="openSkill(2)"><span class="sl">UX Design</span></div>
+      <div class="skill-orb" onclick="openSkill(3)"><span class="sl">UI Design</span></div>
+      <div class="skill-orb" onclick="openSkill(4)"><span class="sl">User Research</span></div>
+      <div class="skill-orb" onclick="openSkill(5)"><span class="sl">Design Strategy</span></div>
+      <div class="skill-orb" onclick="openSkill(6)"><span class="sl">Systems Design</span></div>
+      <div class="skill-orb" onclick="openSkill(7)"><span class="sl">Service Design</span></div>
+      <div class="skill-orb" onclick="openSkill(8)"><span class="sl">Growth Design</span></div>
+      <div class="skill-orb" onclick="openSkill(9)"><span class="sl">Content Design</span></div>
+      <div class="skill-orb" onclick="openSkill(10)"><span class="sl">Brand Design</span></div>
+      <div class="skill-orb" onclick="openSkill(11)"><span class="sl">AI Prototyping</span></div>
+    </div>
+
+    <div class="skill-detail-overlay" id="skillOverlay" onclick="closeSkill()"></div>
+    <div class="skill-detail" id="skillDetail">
+      <div class="skill-detail-inner">
+        <button class="skill-detail-close" onclick="closeSkill()">&times;</button>
+        <div class="skill-detail-badge" id="skillBadge"></div>
+        <h3 class="skill-detail-title" id="skillTitle"></h3>
+        <p class="skill-detail-body" id="skillBody"></p>
+        <div class="skill-detail-meta">
+          <div class="skill-detail-tag" id="skillTag1"></div>
+          <div class="skill-detail-tag" id="skillTag2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-section" id="journey">
+  <div class="section-inner">
+    <h2 class="section-title fade-in" style="text-align:center; margin-bottom: 8px;">The Journey</h2>
+    <p class="section-desc fade-in">From building websites to leading design organizations.</p>
+    <div class="journey-inner">
+
+      <div class="journey-item fade-in">
+        <div class="journey-dot"></div>
+        <div class="journey-role">Senior Director, Product Design</div>
+        <div class="journey-meta">Asurion &middot; Oct 2024 &ndash; Present</div>
+        <div class="journey-desc">Leading three teams&mdash;Partner Growth, Product Discovery, and Service Design. Setting multi-year vision and advancing strategic partnerships with Amazon, Microsoft, and Google. Built a zero-to-one research function from the ground up.</div>
+      </div>
+
+      <div class="journey-item fade-in">
+        <div class="journey-dot"></div>
+        <div class="journey-role">Director, Product Design</div>
+        <div class="journey-meta">Asurion &middot; June 2020 &ndash; Oct 2024</div>
+        <div class="journey-desc">Owned experience strategy across multiple domains, shaping products critical to 70% of profitability within a $10B business. Built leadership bench strength and drove outcomes through research and experimentation.</div>
+        <span class="journey-stat">350M+ customers served globally</span>
+      </div>
+
+      <div class="journey-item fade-in">
+        <div class="journey-dot"></div>
+        <div class="journey-role">Sr. Manager, Product Design</div>
+        <div class="journey-meta">Asurion &middot; Sept 2018 &ndash; June 2020</div>
+        <div class="journey-desc">Launched Field App MVP and scaled to 1.2M in-home service jobs. Managed design across three domains with 7 designers and 2 researchers.</div>
+        <span class="journey-stat">4.9-star customer rating</span>
+      </div>
+
+      <div class="journey-item fade-in">
+        <div class="journey-dot"></div>
+        <div class="journey-role">Sr. UX Designer / Strategist</div>
+        <div class="journey-meta">Deloitte &middot; 2014 &ndash; 2017</div>
+        <div class="journey-desc">Shaped UX strategy across 30+ engagements. Designed E2E financial tools for all major business functions. Facilitated workshops with CFO and C-suite executives.</div>
+      </div>
+
+      <div class="journey-item fade-in">
+        <div class="journey-dot"></div>
+        <div class="journey-role">Sr. UX Designer / Strategist</div>
+        <div class="journey-meta">redpepper &middot; 2009 &ndash; 2017</div>
+        <div class="journey-desc">Full-stack designer, strategist, and developer. Created Facedeals&mdash;featured on 60 Minutes, CNN, and Fox News. Mentored 18 emerging creatives. Built the agency's video and photography studio.</div>
+        <span class="journey-stat">1B+ media impressions</span>
+      </div>
+
+      <div class="journey-item fade-in">
+        <div class="journey-dot"></div>
+        <div class="journey-role">Web Designer / Developer</div>
+        <div class="journey-meta">Journal Communications &middot; 2007 &ndash; 2009</div>
+        <div class="journey-desc">Designed and developed a CMS for 150 websites, leading the transition from print to digital.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BELIEFS -->
+<section class="beliefs-section">
+  <div class="beliefs-inner">
+    <div class="beliefs-header">
+      <h2 class="section-title">What I Believe</h2>
+      <p class="section-desc">The principles that guide how I lead, design, and build.</p>
+    </div>
+    <div class="beliefs-grid">
+      <div class="belief fade-in">
+        <div class="belief-title">Less is more</div>
+        <div class="belief-text">The most elegant solutions emerge when you strip away everything that doesn't serve the user.</div>
+      </div>
+      <div class="belief fade-in">
+        <div class="belief-title">Users have the answers</div>
+        <div class="belief-text">Great design starts with listening. Research isn't a phase&mdash;it's a practice woven into every decision.</div>
+      </div>
+      <div class="belief fade-in">
+        <div class="belief-title">Light a fire in others</div>
+        <div class="belief-text">The best teams aren't managed&mdash;they're inspired. I lead by example and invest deeply in growing people.</div>
+      </div>
+      <div class="belief fade-in">
+        <div class="belief-title">Complexity deserves elegance</div>
+        <div class="belief-text">The hardest problems don't need complex solutions. Human-centered design reveals the simplest path forward.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-title">Let's connect</h2>
+    <p class="contact-desc">I'm always open to conversations about design leadership, product strategy, or what's next.</p>
+    <div class="contact-links">
+      <a href="mailto:carlsdesigns@gmail.com" class="contact-pill">carlsdesigns@gmail.com</a>
+      <a href="tel:7313131641" class="contact-pill">731-313-1641</a>
+      <a href="#" class="contact-pill">LinkedIn</a>
+      <a href="#" class="contact-pill">Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Carl Schulz &middot; Nashville, TN
+</footer>
+
+<script>
+// Skill detail data — personalized to Carl's experience
+const skillData = [
+  {
+    name: 'Design Thinking',
+    badge: 'Core Skill \u00b7 Problem Space',
+    body: 'A human-centered approach to framing and solving complex problems. I apply structured discovery\u2014from understanding user pain points through ideation and rapid validation\u2014to ensure solutions are grounded in real needs before committing to execution. At the leadership level, this means aligning entire organizations around the right problems before jumping to solutions.',
+    tags: ['Discovery & Framing', 'Leadership']
+  },
+  {
+    name: 'Prototyping',
+    badge: 'Core Skill \u00b7 Validation',
+    body: 'Building tangible representations of ideas to test assumptions, communicate concepts, and reduce risk. I select the right fidelity\u2014from sketches to interactive simulations\u2014based on what needs to be learned. Effective prototyping accelerates decision-making and creates shared understanding across product, engineering, and business stakeholders.',
+    tags: ['Build to Learn', 'Rapid Validation']
+  },
+  {
+    name: 'UX Design',
+    badge: 'Core Skill \u00b7 Experience',
+    body: 'Shaping the overall experience a person has when interacting with a product or service. I orchestrate user flows, information architecture, and interaction patterns to ensure usability, accessibility, and emotional resonance. The goal is making complex systems feel effortless\u2014reducing friction and guiding users toward successful outcomes at every touchpoint.',
+    tags: ['Flows & Journeys', 'End-to-End']
+  },
+  {
+    name: 'UI Design',
+    badge: 'Core Skill \u00b7 Visual Systems',
+    body: 'The craft of designing the visual and interactive layer of digital products\u2014typography, color, spacing, iconography, motion, and component design. Strong UI creates clarity, establishes hierarchy, and reinforces brand identity while maintaining accessibility. It bridges the gap between how something works and how it feels.',
+    tags: ['Visual Craft', 'Accessibility']
+  },
+  {
+    name: 'User Research',
+    badge: 'Core Skill \u00b7 Evidence',
+    body: 'The systematic study of users to understand their behaviors, needs, and motivations. Research transforms assumptions into evidence\u2014informing what to build, how to prioritize, and where experiences fall short. I\u2019ve built dedicated research functions that connect generative insights directly to product strategy and investment decisions.',
+    tags: ['Insights & Evidence', 'Strategic Impact']
+  },
+  {
+    name: 'Design Strategy',
+    badge: 'Core Skill \u00b7 Direction',
+    body: 'Connecting design decisions to business objectives, product vision, and user outcomes. Strategy goes beyond craft\u2014it\u2019s about framing the right problems, defining success, aligning stakeholders, and ensuring design creates measurable value. I use strategy to shape multi-year roadmaps and influence priorities across the organization.',
+    tags: ['Vision & Alignment', 'Business Impact']
+  },
+  {
+    name: 'Systems Design',
+    badge: 'Core Skill \u00b7 Scalability',
+    body: 'Creating and governing shared design systems\u2014reusable components, patterns, tokens, and guidelines that ensure consistency and efficiency across products. I balance flexibility with governance, enabling teams to move fast while maintaining coherence. Strong systems make quality the default, not the exception.',
+    tags: ['Components & Patterns', 'Governance']
+  },
+  {
+    name: 'Service Design',
+    badge: 'Core Skill \u00b7 End-to-End',
+    body: 'Designing the complete service experience across channels, touchpoints, people, processes, and systems. I map journeys holistically, identifying pain points and opportunities that span organizational boundaries\u2014connecting front-stage interactions with back-stage operations to ensure what users experience is supported by the systems behind it.',
+    tags: ['Journeys & Operations', 'Cross-Channel']
+  },
+  {
+    name: 'Growth Design',
+    badge: 'Core Skill \u00b7 Experimentation',
+    body: 'A data-informed approach to improving acquisition, engagement, and retention through rapid experimentation. I run A/B tests, analyze behavioral data, and iterate on experiences to drive measurable business outcomes\u2014balancing short-term optimization with long-term experience quality.',
+    tags: ['Metrics & Experiments', 'A/B Testing']
+  },
+  {
+    name: 'Content Design',
+    badge: 'Core Skill \u00b7 Language',
+    body: 'Using language as a design material\u2014crafting microcopy, error messages, onboarding flows, and interface text that guides behavior. Great content design is invisible: it removes confusion and builds confidence without the user ever noticing the craft behind it.',
+    tags: ['Microcopy & Voice', 'Clarity']
+  },
+  {
+    name: 'Brand Design',
+    badge: 'Core Skill \u00b7 Identity',
+    body: 'Translating brand strategy into visual and experiential expression across digital products. I ensure typography, color, imagery, and motion reinforce a cohesive identity at every touchpoint\u2014balancing consistency with contextual adaptation so the brand feels recognizable across any surface.',
+    tags: ['Expression & Identity', 'Consistency']
+  },
+  {
+    name: 'AI Prototyping',
+    badge: 'Core Skill \u00b7 Emerging',
+    body: 'Leveraging AI-assisted code generation and rapid prototyping tools to accelerate the design-to-validation cycle. I use AI to quickly build functional prototypes, test concepts at higher fidelity faster, and bridge the gap between design intent and working software\u2014bringing vibe coding into the creative process.',
+    tags: ['AI Code Generation', 'Rapid Iteration']
+  }
+];
+
+let activeSkillIndex = -1;
+
+function openSkill(index) {
+  const grid = document.querySelector('.skills-grid');
+  const orbs = grid.querySelectorAll('.skill-orb');
+  const panel = document.getElementById('skillDetail');
+  const overlay = document.getElementById('skillOverlay');
+
+  if (activeSkillIndex === index) { closeSkill(); return; }
+
+  activeSkillIndex = index;
+  const skill = skillData[index];
+
+  document.getElementById('skillBadge').textContent = skill.badge;
+  document.getElementById('skillTitle').textContent = skill.name;
+  document.getElementById('skillBody').textContent = skill.body;
+  document.getElementById('skillTag1').textContent = skill.tags[0];
+  document.getElementById('skillTag2').textContent = skill.tags[1];
+
+  grid.classList.add('dimmed');
+  orbs.forEach((o, i) => o.classList.toggle('active-orb', i === index));
+  overlay.classList.add('open');
+  panel.classList.add('open');
+}
+
+function closeSkill() {
+  const grid = document.querySelector('.skills-grid');
+  const panel = document.getElementById('skillDetail');
+  const overlay = document.getElementById('skillOverlay');
+
+  grid.classList.remove('dimmed');
+  grid.querySelectorAll('.skill-orb').forEach(o => o.classList.remove('active-orb'));
+  panel.classList.remove('open');
+  overlay.classList.remove('open');
+  activeSkillIndex = -1;
+}
+
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSkill(); });
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger animations for siblings
+      const siblings = entry.target.parentElement.querySelectorAll('.fade-in, .skill-orb');
+      const idx = Array.from(siblings).indexOf(entry.target);
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in, .skill-orb').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
