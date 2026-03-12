@@ -366,20 +366,27 @@
     text-align: center; padding: 0 48px; margin-bottom: 48px;
   }
   .portfolio-carousel-wrapper {
-    position: relative; width: 100%; overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    position: relative; width: 100%;
+    overflow-x: auto; overflow-y: hidden;
+    mask-image: linear-gradient(to right, rgba(0,0,0,0.5), black 2.5%, black 97.5%, rgba(0,0,0,0.5));
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.5), black 2.5%, black 97.5%, rgba(0,0,0,0.5));
+    scrollbar-width: none; -ms-overflow-style: none;
+    cursor: grab;
   }
+  .portfolio-carousel-wrapper::-webkit-scrollbar { display: none; }
+  .portfolio-carousel-wrapper:active { cursor: grabbing; }
+  .portfolio-carousel-wrapper.scrolling { cursor: grabbing; }
   .portfolio-carousel {
-    display: flex; gap: 20px; width: max-content;
-    animation: portfolioScroll 60s linear infinite;
+    display: flex; gap: 20px; width: max-content; padding: 10px 0;
   }
-  .portfolio-carousel:hover { animation-play-state: paused; }
+  .portfolio-carousel.paused { animation-play-state: paused; }
+  .portfolio-carousel.manual-scroll { animation: none; }
   .portfolio-item {
     flex-shrink: 0; width: 320px; height: 220px;
     border-radius: 12px; overflow: hidden;
     background: var(--page); border: 1px solid var(--rule);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s, opacity 0.3s;
+    cursor: pointer;
   }
   .portfolio-item:hover {
     transform: scale(1.03);
@@ -387,11 +394,61 @@
   }
   .portfolio-item img {
     width: 100%; height: 100%; object-fit: cover;
+    pointer-events: none;
+  }
+  .portfolio-carousel.has-expanded .portfolio-item {
+    opacity: 0.3; transform: scale(0.95);
+  }
+  .portfolio-carousel.has-expanded .portfolio-item.expanded {
+    opacity: 1; transform: scale(1);
   }
   @keyframes portfolioScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+
+  /* Expanded image lightbox */
+  .portfolio-lightbox {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    padding: 48px;
+  }
+  .portfolio-lightbox.open { opacity: 1; pointer-events: auto; }
+  .portfolio-lightbox img {
+    max-width: 100%; max-height: 100%; border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .portfolio-lightbox.open img { transform: scale(1); }
+  .portfolio-lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    color: #fff; font-size: 1.5rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .portfolio-lightbox-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+  }
+  .portfolio-lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    color: #fff; font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .portfolio-lightbox-nav:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-50%) scale(1.1);
+  }
+  .portfolio-lightbox-nav.prev { left: 24px; }
+  .portfolio-lightbox-nav.next { right: 24px; }
   .portfolio-cta {
     text-align: center; margin-top: 48px; padding: 0 48px;
   }
@@ -736,7 +793,7 @@
         <div class="journey-dot"></div>
         <div class="journey-role">Senior Director, Product Design</div>
         <div class="journey-meta">Asurion &middot; Oct 2024 &ndash; Present</div>
-        <div class="journey-desc">Leading three teams&mdash;Partner Growth, Product Discovery, and Service Design. Setting multi-year vision and advancing strategic partnerships with Amazon, Microsoft, and Google. Built a zero-to-one research function from the ground up.</div>
+        <div class="journey-desc">Leading the teams that grow our biggest partnerships, discover what customers need next, and design how it all comes together&mdash;driving zero-to-one innovation across partner and direct-to-consumer products, from research to implementation.</div>
       </div>
 
       <div class="journey-item fade-in">
@@ -794,32 +851,60 @@
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Dash - Desktop - Monitor Tab.png" alt="Dashboard Design" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Appliance Select.png" alt="Appliance Selection" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 5065881.png" alt="Product Design" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7377.png" alt="UI Design" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7378.png" alt="Mobile Experience" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7379.png" alt="Service Design" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7380.png" alt="Product Strategy" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7384.png" alt="UX Research" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7387.png" alt="Design Systems" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001193.png" alt="Design Work" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001194.png" alt="Product Experience" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001195.png" alt="Enterprise Design" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001196.png" alt="Consumer Products" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001199.png" alt="Growth Design" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001200.png" alt="Brand Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7373.png" alt="Interface Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7374.png" alt="App Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7375.png" alt="Product UI" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7376.png" alt="Digital Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7377.png" alt="UI Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7378.png" alt="Mobile Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7379.png" alt="Service Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7380.png" alt="Product Strategy" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7381.png" alt="UX Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7382.png" alt="Visual Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7383.png" alt="Interaction Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7384.png" alt="UX Research" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7385.png" alt="Design Strategy" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7386.png" alt="Product Vision" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7387.png" alt="Design Systems" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7391.png" alt="Experience Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7392.png" alt="Platform Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7393.png" alt="User Experience" loading="lazy"></div>
       <!-- Duplicate set for seamless loop -->
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/xbox.png" alt="Xbox Game Pass" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/ExWo - Game Pass - Intro.png" alt="Game Pass Experience" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Dash - Desktop - Monitor Tab.png" alt="Dashboard Design" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Appliance Select.png" alt="Appliance Selection" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 5065881.png" alt="Product Design" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7377.png" alt="UI Design" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7378.png" alt="Mobile Experience" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7379.png" alt="Service Design" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7380.png" alt="Product Strategy" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7384.png" alt="UX Research" loading="lazy"></div>
-      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7387.png" alt="Design Systems" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001193.png" alt="Design Work" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001194.png" alt="Product Experience" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001195.png" alt="Enterprise Design" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001196.png" alt="Consumer Products" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001199.png" alt="Growth Design" loading="lazy"></div>
       <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001200.png" alt="Brand Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7373.png" alt="Interface Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7374.png" alt="App Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7375.png" alt="Product UI" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7376.png" alt="Digital Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7377.png" alt="UI Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7378.png" alt="Mobile Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7379.png" alt="Service Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7380.png" alt="Product Strategy" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7381.png" alt="UX Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7382.png" alt="Visual Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7383.png" alt="Interaction Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7384.png" alt="UX Research" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7385.png" alt="Design Strategy" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7386.png" alt="Product Vision" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7387.png" alt="Design Systems" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7391.png" alt="Experience Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7392.png" alt="Platform Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7393.png" alt="User Experience" loading="lazy"></div>
     </div>
   </div>
   <div class="portfolio-cta">
@@ -829,6 +914,14 @@
     </button>
   </div>
 </section>
+
+<!-- PORTFOLIO LIGHTBOX -->
+<div class="portfolio-lightbox" id="portfolioLightbox">
+  <button class="portfolio-lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="portfolio-lightbox-nav prev" onclick="navigateLightbox(-1)">&#8249;</button>
+  <img id="lightboxImage" src="" alt="Portfolio work">
+  <button class="portfolio-lightbox-nav next" onclick="navigateLightbox(1)">&#8250;</button>
+</div>
 
 <!-- PASSWORD MODAL -->
 <div class="modal-overlay" id="passwordModal">
@@ -1041,6 +1134,155 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+});
+
+// Portfolio Carousel Interactions
+const carousel = document.querySelector('.portfolio-carousel');
+const carouselWrapper = document.querySelector('.portfolio-carousel-wrapper');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+let currentLightboxIndex = 0;
+let isManualScrolling = false;
+let scrollTimeout;
+
+// Smooth continuous scroll animation with hover slow-down
+let scrollPosition = 0;
+let scrollSpeed = 1;
+let targetSpeed = 1;
+let animationId;
+const baseSpeed = 0.8;
+
+function animateCarousel() {
+  scrollSpeed += (targetSpeed - scrollSpeed) * 0.05;
+  scrollPosition += baseSpeed * scrollSpeed;
+  
+  const halfWidth = carousel.scrollWidth / 2;
+  if (scrollPosition >= halfWidth) {
+    scrollPosition = scrollPosition - halfWidth;
+  }
+  
+  carousel.style.transform = `translateX(-${scrollPosition}px)`;
+  animationId = requestAnimationFrame(animateCarousel);
+}
+
+animateCarousel();
+
+carouselWrapper.addEventListener('mouseenter', () => {
+  if (!isManualScrolling) targetSpeed = 0.2;
+});
+
+carouselWrapper.addEventListener('mouseleave', () => {
+  targetSpeed = 1;
+});
+
+// Manual scroll with mouse/trackpad
+let isScrolling = false;
+let startX, scrollLeft;
+
+carouselWrapper.addEventListener('mousedown', (e) => {
+  isScrolling = true;
+  carouselWrapper.classList.add('scrolling');
+  startX = e.pageX;
+  isManualScrolling = true;
+  targetSpeed = 0;
+});
+
+carouselWrapper.addEventListener('mousemove', (e) => {
+  if (!isScrolling) return;
+  e.preventDefault();
+  const x = e.pageX;
+  const walk = (startX - x) * 0.8;
+  startX = x;
+  scrollPosition += walk;
+  const halfWidth = carousel.scrollWidth / 2;
+  if (scrollPosition < 0) scrollPosition += halfWidth;
+  if (scrollPosition >= halfWidth) scrollPosition -= halfWidth;
+});
+
+carouselWrapper.addEventListener('mouseup', () => {
+  isScrolling = false;
+  carouselWrapper.classList.remove('scrolling');
+  setTimeout(() => {
+    isManualScrolling = false;
+    targetSpeed = 1;
+  }, 500);
+});
+
+carouselWrapper.addEventListener('mouseleave', () => {
+  if (isScrolling) {
+    isScrolling = false;
+    carouselWrapper.classList.remove('scrolling');
+    setTimeout(() => {
+      isManualScrolling = false;
+      targetSpeed = 1;
+    }, 500);
+  }
+});
+
+// Trackpad/wheel horizontal scroll
+carouselWrapper.addEventListener('wheel', (e) => {
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+    isManualScrolling = true;
+    targetSpeed = 0;
+    scrollPosition += e.deltaX * 0.5;
+    const halfWidth = carousel.scrollWidth / 2;
+    if (scrollPosition < 0) scrollPosition += halfWidth;
+    if (scrollPosition >= halfWidth) scrollPosition -= halfWidth;
+    
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isManualScrolling = false;
+      targetSpeed = 1;
+    }, 1500);
+  }
+}, { passive: true });
+
+// Click to expand image
+const uniqueImages = [];
+portfolioItems.forEach((item, index) => {
+  if (index < portfolioItems.length / 2) {
+    uniqueImages.push(item.querySelector('img').src);
+  }
+  item.addEventListener('click', (e) => {
+    if (isScrolling) return;
+    const imgIndex = index % (portfolioItems.length / 2);
+    openLightbox(imgIndex);
+  });
+});
+
+function openLightbox(index) {
+  currentLightboxIndex = index;
+  const lightbox = document.getElementById('portfolioLightbox');
+  const lightboxImg = document.getElementById('lightboxImage');
+  lightboxImg.src = uniqueImages[index];
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  targetSpeed = 0;
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('portfolioLightbox');
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  targetSpeed = 1;
+}
+
+function navigateLightbox(direction) {
+  currentLightboxIndex += direction;
+  if (currentLightboxIndex < 0) currentLightboxIndex = uniqueImages.length - 1;
+  if (currentLightboxIndex >= uniqueImages.length) currentLightboxIndex = 0;
+  document.getElementById('lightboxImage').src = uniqueImages[currentLightboxIndex];
+}
+
+document.getElementById('portfolioLightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('portfolioLightbox')) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (document.getElementById('portfolioLightbox').classList.contains('open')) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  }
 });
 
 // Password Modal Functions
