@@ -134,7 +134,7 @@
   .brands-section {
     padding: 48px 48px; background: var(--white); border-bottom: 1px solid var(--rule);
   }
-  .brands-inner { max-width: 494px; margin: 0 auto; text-align: center; }
+  .brands-inner { max-width: 600px; margin: 0 auto; text-align: center; }
   .brands-label {
     font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px;
@@ -357,6 +357,139 @@
     font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--ink-light);
   }
 
+  /* ── PORTFOLIO ─────────────────────────── */
+  .portfolio-section {
+    padding: 88px 0; background: var(--white); border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .portfolio-header {
+    text-align: center; padding: 0 48px; margin-bottom: 48px;
+  }
+  .portfolio-carousel-wrapper {
+    position: relative; width: 100%; overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+  .portfolio-carousel {
+    display: flex; gap: 20px; width: max-content;
+    animation: portfolioScroll 60s linear infinite;
+  }
+  .portfolio-carousel:hover { animation-play-state: paused; }
+  .portfolio-item {
+    flex-shrink: 0; width: 320px; height: 220px;
+    border-radius: 12px; overflow: hidden;
+    background: var(--page); border: 1px solid var(--rule);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .portfolio-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+  .portfolio-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  @keyframes portfolioScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .portfolio-cta {
+    text-align: center; margin-top: 48px; padding: 0 48px;
+  }
+  .portfolio-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #fff; text-decoration: none;
+    padding: 16px 36px; border-radius: 10px;
+    background: var(--ink); border: none; cursor: pointer;
+    transition: all 0.3s;
+  }
+  .portfolio-btn:hover {
+    background: var(--accent-violet);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124,58,237,0.25);
+  }
+  .portfolio-btn svg { width: 16px; height: 16px; }
+
+  /* ── PASSWORD MODAL ────────────────────── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(15,17,23,0.85);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal-content {
+    background: var(--white); border-radius: 20px; padding: 48px;
+    max-width: 420px; width: 90%; text-align: center;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  }
+  .modal-overlay.open .modal-content {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--page); border: 1px solid var(--rule);
+    color: var(--ink-light); font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .modal-close:hover { background: var(--rule); color: var(--ink); }
+  .modal-icon {
+    width: 56px; height: 56px; margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  }
+  .modal-icon svg { width: 28px; height: 28px; stroke: #fff; }
+  .modal-title {
+    font-family: 'DM Serif Display', serif; font-size: 1.6rem;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 0.9rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 24px;
+  }
+  .modal-input-group { position: relative; margin-bottom: 16px; }
+  .modal-input {
+    width: 100%; padding: 14px 18px; border-radius: 10px;
+    border: 1px solid var(--rule); background: var(--page);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    color: var(--ink); outline: none; transition: border-color 0.2s;
+  }
+  .modal-input:focus { border-color: var(--accent-violet); }
+  .modal-input::placeholder { color: var(--ink-faint); }
+  .modal-submit {
+    width: 100%; padding: 14px; border-radius: 10px;
+    background: var(--ink); border: none; color: #fff;
+    font-family: 'DM Mono', monospace; font-size: 0.8rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .modal-submit:hover { background: var(--accent-violet); }
+  .modal-error {
+    color: #DC2626; font-size: 0.82rem; margin-top: 12px;
+    display: none;
+  }
+  .modal-error.show { display: block; }
+  .modal-footer {
+    margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--rule);
+    font-size: 0.82rem; color: var(--ink-faint);
+  }
+  .modal-footer a {
+    color: var(--accent-violet); text-decoration: none;
+  }
+  .modal-footer a:hover { text-decoration: underline; }
+  .modal-content { position: relative; }
+  @media (max-width: 768px) {
+    .portfolio-section { padding: 56px 0; }
+    .portfolio-header { padding: 0 24px; margin-bottom: 32px; }
+    .portfolio-item { width: 260px; height: 180px; }
+    .portfolio-cta { padding: 0 24px; margin-top: 32px; }
+    .modal-content { padding: 32px 24px; }
+  }
+
   /* ── BELIEFS ─────────────────────────── */
   .beliefs-section {
     padding: 88px 48px;
@@ -389,7 +522,7 @@
     background: var(--page); border-top: 1px solid var(--rule);
     text-align: center;
   }
-  .contact-inner { max-width: 500px; margin: 0 auto; }
+  .contact-inner { max-width: 700px; margin: 0 auto; }
   .contact-title {
     font-family: 'DM Serif Display', serif; font-size: 2rem;
     margin-bottom: 12px; color: var(--ink);
@@ -461,6 +594,7 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
     <a href="#journey">Journey</a>
     <a href="#contact">Contact</a>
   </div>
@@ -498,6 +632,9 @@
       <span class="brand-logo">Cracker Barrel</span>
       <span class="brand-logo">Verizon</span>
       <span class="brand-logo">AT&T</span>
+      <span class="brand-logo">HP</span>
+      <span class="brand-logo">ADT</span>
+      <span class="brand-logo">Chubb</span>
       <span class="brand-logo">Emma</span>
     </div>
   </div>
@@ -507,7 +644,7 @@
 <section class="what-i-do" id="what-i-do">
   <div class="section-inner">
     <h2 class="section-title fade-in">What I Do</h2>
-    <p class="section-desc fade-in">I lead design organizations that solve complex problems through human-centered thinking&mdash;from first sketch to system-wide strategy.</p>
+    <p class="section-desc fade-in">I lead design that solves complex problems&mdash;from first insights to system-wide strategy.</p>
     <div class="wid-grid">
       <div class="wid-card fade-in">
         <span class="wid-num">
@@ -531,7 +668,7 @@
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </span>
-        Build and coach world-class design teams&mdash;recruiting talent, developing leaders, and raising the craft bar at every level.
+        Build and coach world-class design teams&mdash;recruiting talent, developing leaders, and raising the bar on craft.
       </div>
       <div class="wid-card fade-in">
         <span class="wid-num">
@@ -539,7 +676,7 @@
             <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
           </svg>
         </span>
-        Shape end-to-end service experiences that integrate people, processes, and systems across channels and touchpoints.
+        Shape five-star service experiences that integrate people, processes, and systems across channels and touchpoints.
       </div>
     </div>
   </div>
@@ -558,18 +695,18 @@
       <p class="section-desc">The craft I practice daily&mdash;from hands-on design to organizational leadership.</p>
     </div>
     <div class="skills-grid">
-      <div class="skill-orb" onclick="openSkill(0)"><span class="sl">Design Thinking</span></div>
-      <div class="skill-orb" onclick="openSkill(1)"><span class="sl">Prototyping</span></div>
-      <div class="skill-orb" onclick="openSkill(2)"><span class="sl">UX Design</span></div>
-      <div class="skill-orb" onclick="openSkill(3)"><span class="sl">UI Design</span></div>
-      <div class="skill-orb" onclick="openSkill(4)"><span class="sl">User Research</span></div>
-      <div class="skill-orb" onclick="openSkill(5)"><span class="sl">Design Strategy</span></div>
-      <div class="skill-orb" onclick="openSkill(6)"><span class="sl">Systems Design</span></div>
-      <div class="skill-orb" onclick="openSkill(7)"><span class="sl">Service Design</span></div>
-      <div class="skill-orb" onclick="openSkill(8)"><span class="sl">Growth Design</span></div>
-      <div class="skill-orb" onclick="openSkill(9)"><span class="sl">Content Design</span></div>
+      <div class="skill-orb" onclick="openSkill(0)"><span class="sl">User Research</span></div>
+      <div class="skill-orb" onclick="openSkill(1)"><span class="sl">Service Design</span></div>
+      <div class="skill-orb" onclick="openSkill(2)"><span class="sl">Design Strategy</span></div>
+      <div class="skill-orb" onclick="openSkill(3)"><span class="sl">Design Thinking</span></div>
+      <div class="skill-orb" onclick="openSkill(4)"><span class="sl">UX Design</span></div>
+      <div class="skill-orb" onclick="openSkill(5)"><span class="sl">Content Design</span></div>
+      <div class="skill-orb" onclick="openSkill(6)"><span class="sl">Prototyping</span></div>
+      <div class="skill-orb" onclick="openSkill(7)"><span class="sl">AI Prototyping</span></div>
+      <div class="skill-orb" onclick="openSkill(8)"><span class="sl">UI Design</span></div>
+      <div class="skill-orb" onclick="openSkill(9)"><span class="sl">Systems Design</span></div>
       <div class="skill-orb" onclick="openSkill(10)"><span class="sl">Brand Design</span></div>
-      <div class="skill-orb" onclick="openSkill(11)"><span class="sl">AI Prototyping</span></div>
+      <div class="skill-orb" onclick="openSkill(11)"><span class="sl">Growth Design</span></div>
     </div>
 
     <div class="skill-detail-overlay" id="skillOverlay" onclick="closeSkill()"></div>
@@ -644,6 +781,80 @@
   </div>
 </section>
 
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="work">
+  <div class="portfolio-header">
+    <h2 class="section-title fade-in">Selected Work</h2>
+    <p class="section-desc fade-in">A glimpse into the products and experiences I've shaped.</p>
+  </div>
+  <div class="portfolio-carousel-wrapper">
+    <div class="portfolio-carousel">
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/xbox.png" alt="Xbox Game Pass" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/ExWo - Game Pass - Intro.png" alt="Game Pass Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Dash - Desktop - Monitor Tab.png" alt="Dashboard Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Appliance Select.png" alt="Appliance Selection" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 5065881.png" alt="Product Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7377.png" alt="UI Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7378.png" alt="Mobile Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7379.png" alt="Service Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7380.png" alt="Product Strategy" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7384.png" alt="UX Research" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7387.png" alt="Design Systems" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001195.png" alt="Enterprise Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001196.png" alt="Consumer Products" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001199.png" alt="Growth Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001200.png" alt="Brand Experience" loading="lazy"></div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/xbox.png" alt="Xbox Game Pass" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/ExWo - Game Pass - Intro.png" alt="Game Pass Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Dash - Desktop - Monitor Tab.png" alt="Dashboard Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Appliance Select.png" alt="Appliance Selection" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 5065881.png" alt="Product Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7377.png" alt="UI Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7378.png" alt="Mobile Experience" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7379.png" alt="Service Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7380.png" alt="Product Strategy" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7384.png" alt="UX Research" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/image 7387.png" alt="Design Systems" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001195.png" alt="Enterprise Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001196.png" alt="Consumer Products" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001199.png" alt="Growth Design" loading="lazy"></div>
+      <div class="portfolio-item"><img src="assets/images/portfolio-teasers/Frame 1000001200.png" alt="Brand Experience" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="portfolio-cta">
+    <button class="portfolio-btn" onclick="openPasswordModal()">
+      View Work
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- PASSWORD MODAL -->
+<div class="modal-overlay" id="passwordModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+    </div>
+    <h3 class="modal-title">Portfolio Access</h3>
+    <p class="modal-desc">Enter the password to view detailed case studies and project work.</p>
+    <form onsubmit="submitPassword(event)">
+      <div class="modal-input-group">
+        <input type="password" class="modal-input" id="portfolioPassword" placeholder="Enter password" autocomplete="off">
+      </div>
+      <button type="submit" class="modal-submit">Access Portfolio</button>
+      <p class="modal-error" id="passwordError">Incorrect password. Please try again.</p>
+    </form>
+    <div class="modal-footer">
+      Don't have a password? <a href="mailto:carleschulz@gmail.com">Contact Carl for access.</a>
+    </div>
+  </div>
+</div>
+
 <!-- BELIEFS -->
 <section class="beliefs-section">
   <div class="beliefs-inner">
@@ -676,12 +887,12 @@
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <h2 class="contact-title">Let's connect</h2>
-    <p class="contact-desc">I'm always open to conversations about design leadership, product strategy, or what's next.</p>
+    <p class="contact-desc">Let's nerd out about AI, strategy, or what's next.</p>
     <div class="contact-links">
-      <a href="mailto:carlsdesigns@gmail.com" class="contact-pill">carlsdesigns@gmail.com</a>
+      <a href="mailto:carleschulz@gmail.com" class="contact-pill">carleschulz@gmail.com</a>
       <a href="tel:7313131641" class="contact-pill">731-313-1641</a>
-      <a href="#" class="contact-pill">LinkedIn</a>
-      <a href="#" class="contact-pill">Portfolio</a>
+      <a href="https://www.linkedin.com/in/carlsdesigns/" class="contact-pill" target="_blank">LinkedIn</a>
+      <a href="#work" class="contact-pill" onclick="event.preventDefault(); openPasswordModal();">Portfolio</a>
     </div>
   </div>
 </section>
@@ -694,76 +905,76 @@
 // Skill detail data — personalized to Carl's experience
 const skillData = [
   {
-    name: 'Design Thinking',
-    badge: 'Core Skill \u00b7 Problem Space',
-    body: 'A human-centered approach to framing and solving complex problems. I apply structured discovery\u2014from understanding user pain points through ideation and rapid validation\u2014to ensure solutions are grounded in real needs before committing to execution. At the leadership level, this means aligning entire organizations around the right problems before jumping to solutions.',
-    tags: ['Discovery & Framing', 'Leadership']
-  },
-  {
-    name: 'Prototyping',
-    badge: 'Core Skill \u00b7 Validation',
-    body: 'Building tangible representations of ideas to test assumptions, communicate concepts, and reduce risk. I select the right fidelity\u2014from sketches to interactive simulations\u2014based on what needs to be learned. Effective prototyping accelerates decision-making and creates shared understanding across product, engineering, and business stakeholders.',
-    tags: ['Build to Learn', 'Rapid Validation']
-  },
-  {
-    name: 'UX Design',
-    badge: 'Core Skill \u00b7 Experience',
-    body: 'Shaping the overall experience a person has when interacting with a product or service. I orchestrate user flows, information architecture, and interaction patterns to ensure usability, accessibility, and emotional resonance. The goal is making complex systems feel effortless\u2014reducing friction and guiding users toward successful outcomes at every touchpoint.',
-    tags: ['Flows & Journeys', 'End-to-End']
-  },
-  {
-    name: 'UI Design',
-    badge: 'Core Skill \u00b7 Visual Systems',
-    body: 'The craft of designing the visual and interactive layer of digital products\u2014typography, color, spacing, iconography, motion, and component design. Strong UI creates clarity, establishes hierarchy, and reinforces brand identity while maintaining accessibility. It bridges the gap between how something works and how it feels.',
-    tags: ['Visual Craft', 'Accessibility']
-  },
-  {
     name: 'User Research',
-    badge: 'Core Skill \u00b7 Evidence',
+    badge: 'Core Skill \u00b7 Empathize',
     body: 'The systematic study of users to understand their behaviors, needs, and motivations. Research transforms assumptions into evidence\u2014informing what to build, how to prioritize, and where experiences fall short. I\u2019ve built dedicated research functions that connect generative insights directly to product strategy and investment decisions.',
     tags: ['Insights & Evidence', 'Strategic Impact']
   },
   {
-    name: 'Design Strategy',
-    badge: 'Core Skill \u00b7 Direction',
-    body: 'Connecting design decisions to business objectives, product vision, and user outcomes. Strategy goes beyond craft\u2014it\u2019s about framing the right problems, defining success, aligning stakeholders, and ensuring design creates measurable value. I use strategy to shape multi-year roadmaps and influence priorities across the organization.',
-    tags: ['Vision & Alignment', 'Business Impact']
-  },
-  {
-    name: 'Systems Design',
-    badge: 'Core Skill \u00b7 Scalability',
-    body: 'Creating and governing shared design systems\u2014reusable components, patterns, tokens, and guidelines that ensure consistency and efficiency across products. I balance flexibility with governance, enabling teams to move fast while maintaining coherence. Strong systems make quality the default, not the exception.',
-    tags: ['Components & Patterns', 'Governance']
-  },
-  {
     name: 'Service Design',
-    badge: 'Core Skill \u00b7 End-to-End',
+    badge: 'Core Skill \u00b7 Empathize',
     body: 'Designing the complete service experience across channels, touchpoints, people, processes, and systems. I map journeys holistically, identifying pain points and opportunities that span organizational boundaries\u2014connecting front-stage interactions with back-stage operations to ensure what users experience is supported by the systems behind it.',
     tags: ['Journeys & Operations', 'Cross-Channel']
   },
   {
-    name: 'Growth Design',
-    badge: 'Core Skill \u00b7 Experimentation',
-    body: 'A data-informed approach to improving acquisition, engagement, and retention through rapid experimentation. I run A/B tests, analyze behavioral data, and iterate on experiences to drive measurable business outcomes\u2014balancing short-term optimization with long-term experience quality.',
-    tags: ['Metrics & Experiments', 'A/B Testing']
+    name: 'Design Strategy',
+    badge: 'Core Skill \u00b7 Define',
+    body: 'Connecting design decisions to business objectives, product vision, and user outcomes. Strategy goes beyond craft\u2014it\u2019s about framing the right problems, defining success, aligning stakeholders, and ensuring design creates measurable value. I use strategy to shape multi-year roadmaps and influence priorities across the organization.',
+    tags: ['Vision & Alignment', 'Business Impact']
+  },
+  {
+    name: 'Design Thinking',
+    badge: 'Core Skill \u00b7 Define',
+    body: 'A human-centered approach to framing and solving complex problems. I apply structured discovery\u2014from understanding user pain points through ideation and rapid validation\u2014to ensure solutions are grounded in real needs before committing to execution. At the leadership level, this means aligning entire organizations around the right problems before jumping to solutions.',
+    tags: ['Discovery & Framing', 'Leadership']
+  },
+  {
+    name: 'UX Design',
+    badge: 'Core Skill \u00b7 Ideate',
+    body: 'Shaping the overall experience a person has when interacting with a product or service. I orchestrate user flows, information architecture, and interaction patterns to ensure usability, accessibility, and emotional resonance. The goal is making complex systems feel effortless\u2014reducing friction and guiding users toward successful outcomes at every touchpoint.',
+    tags: ['Flows & Journeys', 'End-to-End']
   },
   {
     name: 'Content Design',
-    badge: 'Core Skill \u00b7 Language',
+    badge: 'Core Skill \u00b7 Ideate',
     body: 'Using language as a design material\u2014crafting microcopy, error messages, onboarding flows, and interface text that guides behavior. Great content design is invisible: it removes confusion and builds confidence without the user ever noticing the craft behind it.',
     tags: ['Microcopy & Voice', 'Clarity']
   },
   {
+    name: 'Prototyping',
+    badge: 'Core Skill \u00b7 Prototype',
+    body: 'Building tangible representations of ideas to test assumptions, communicate concepts, and reduce risk. I select the right fidelity\u2014from sketches to interactive simulations\u2014based on what needs to be learned. Effective prototyping accelerates decision-making and creates shared understanding across product, engineering, and business stakeholders.',
+    tags: ['Build to Learn', 'Rapid Validation']
+  },
+  {
+    name: 'AI Prototyping',
+    badge: 'Core Skill \u00b7 Prototype',
+    body: 'Leveraging AI-assisted code generation and rapid prototyping tools to accelerate the design-to-validation cycle. I use AI to quickly build functional prototypes, test concepts at higher fidelity faster, and bridge the gap between design intent and working software\u2014bringing vibe coding into the creative process.',
+    tags: ['AI Code Generation', 'Rapid Iteration']
+  },
+  {
+    name: 'UI Design',
+    badge: 'Core Skill \u00b7 Build',
+    body: 'The craft of designing the visual and interactive layer of digital products\u2014typography, color, spacing, iconography, motion, and component design. Strong UI creates clarity, establishes hierarchy, and reinforces brand identity while maintaining accessibility. It bridges the gap between how something works and how it feels.',
+    tags: ['Visual Craft', 'Accessibility']
+  },
+  {
+    name: 'Systems Design',
+    badge: 'Core Skill \u00b7 Build',
+    body: 'Creating and governing shared design systems\u2014reusable components, patterns, tokens, and guidelines that ensure consistency and efficiency across products. I balance flexibility with governance, enabling teams to move fast while maintaining coherence. Strong systems make quality the default, not the exception.',
+    tags: ['Components & Patterns', 'Governance']
+  },
+  {
     name: 'Brand Design',
-    badge: 'Core Skill \u00b7 Identity',
+    badge: 'Core Skill \u00b7 Build',
     body: 'Translating brand strategy into visual and experiential expression across digital products. I ensure typography, color, imagery, and motion reinforce a cohesive identity at every touchpoint\u2014balancing consistency with contextual adaptation so the brand feels recognizable across any surface.',
     tags: ['Expression & Identity', 'Consistency']
   },
   {
-    name: 'AI Prototyping',
-    badge: 'Core Skill \u00b7 Emerging',
-    body: 'Leveraging AI-assisted code generation and rapid prototyping tools to accelerate the design-to-validation cycle. I use AI to quickly build functional prototypes, test concepts at higher fidelity faster, and bridge the gap between design intent and working software\u2014bringing vibe coding into the creative process.',
-    tags: ['AI Code Generation', 'Rapid Iteration']
+    name: 'Growth Design',
+    badge: 'Core Skill \u00b7 Scale',
+    body: 'A data-informed approach to improving acquisition, engagement, and retention through rapid experimentation. I run A/B tests, analyze behavioral data, and iterate on experiences to drive measurable business outcomes\u2014balancing short-term optimization with long-term experience quality.',
+    tags: ['Metrics & Experiments', 'A/B Testing']
   }
 ];
 
@@ -830,6 +1041,45 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+});
+
+// Password Modal Functions
+function openPasswordModal() {
+  document.getElementById('passwordModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('portfolioPassword').focus(), 300);
+}
+
+function closePasswordModal() {
+  document.getElementById('passwordModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('portfolioPassword').value = '';
+  document.getElementById('passwordError').classList.remove('show');
+}
+
+function submitPassword(e) {
+  e.preventDefault();
+  const password = document.getElementById('portfolioPassword').value;
+  const correctPassword = 'carl2025';
+  
+  if (password === correctPassword) {
+    closePasswordModal();
+    window.location.href = '/work.html';
+  } else {
+    document.getElementById('passwordError').classList.add('show');
+    document.getElementById('portfolioPassword').value = '';
+    document.getElementById('portfolioPassword').focus();
+  }
+}
+
+document.getElementById('passwordModal').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('passwordModal')) closePasswordModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.getElementById('passwordModal').classList.contains('open')) {
+    closePasswordModal();
+  }
 });
 </script>
 
