@@ -49,7 +49,7 @@
     if (pw === cfg.PASSWORD) {
       unlock();
       showMain();
-      window.dispatchEvent(new CustomEvent('portfoliounlocked'));
+      document.dispatchEvent(new CustomEvent('portfoliounlocked', { bubbles: true }));
       return true;
     }
     return false;
