@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ExpertClaw — Case Study | Carl Schulz</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/portfolio-work.css">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --ink-mid: #13131c;
+    --ink-card: #181825;
+    --ink-light: #8b8ba3;
+    --white: #f0f0ec;
+    --rule: rgba(255,255,255,0.06);
+    --accent-magenta: #e040a0;
+    --accent-violet: #7c3aed;
+    --accent-teal: #2dd4bf;
+    --accent-amber: #fbbf24;
+    --accent-cyan: #22d3ee;
+    --glass: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.07);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', 'SF Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans); background: var(--ink); color: var(--white);
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ──────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 56px;
+    background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-name { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; font-weight: 500; }
+  .nav-name a { color: var(--white); text-decoration: none; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.05em; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent-magenta); }
+
+  /* ── HERO ──────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden; min-height: 90vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+    background: linear-gradient(160deg, #0a0a0f 0%, #1a0a20 40%, #120a1a 100%);
+  }
+  .hero-glow {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    filter: blur(140px); opacity: 0.2;
+  }
+  .g1 { background: var(--accent-magenta); top: -20%; left: -10%; }
+  .g2 { background: var(--accent-violet); bottom: -15%; right: -8%; }
+  .g3 { background: var(--accent-cyan); top: 50%; left: 40%; width: 300px; height: 300px; opacity: 0.1; }
+
+  .hero-content { position: relative; z-index: 2; max-width: 880px; text-align: center; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent-magenta); margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: 3.6rem; line-height: 1.1; font-weight: 400;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-title em { font-style: normal; color: var(--accent-magenta); }
+  .hero-subtitle {
+    font-size: 1.15rem; color: rgba(255,255,255,0.5); max-width: 620px;
+    margin: 0 auto 36px; opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-meta {
+    display: flex; gap: 36px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; align-items: center; }
+  .hero-meta-value { font-family: var(--serif); font-size: 1.8rem; color: var(--accent-magenta); }
+  .hero-meta-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 4px; }
+
+  /* ── SECTIONS ────────────────────── */
+  section { padding: 96px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-magenta); margin-bottom: 12px; }
+  .section-title { font-family: var(--serif); font-size: 2.4rem; line-height: 1.2; margin-bottom: 20px; }
+  .section-desc { font-size: 1.05rem; color: var(--ink-light); max-width: 640px; line-height: 1.7; margin-bottom: 48px; }
+
+  /* ── PROBLEM STATS ───────────────── */
+  .problem-section { background: var(--ink); border-top: 1px solid var(--rule); }
+  .problem-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .problem-block {
+    background: var(--ink-card); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 36px; text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .problem-block:hover { transform: translateY(-4px); border-color: rgba(224,64,160,0.3); }
+  .problem-block-value { font-family: var(--serif); font-size: 2.8rem; line-height: 1; margin-bottom: 8px; }
+  .problem-block-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 14px; }
+  .problem-block p { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+  /* ── SUMMARY ─────────────────────── */
+  .summary-section { background: var(--ink-mid); }
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .summary-text { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+  .summary-text p + p { margin-top: 16px; }
+
+  .role-card {
+    background: var(--ink-card); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 36px; position: relative; overflow: hidden;
+  }
+  .role-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-magenta), var(--accent-violet)); }
+  .role-card-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-magenta); margin-bottom: 16px; }
+  .role-card h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 8px; font-weight: 400; }
+  .role-card p { font-size: 0.88rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  .role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .role-tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 100px; background: var(--glass); border: 1px solid var(--glass-border); color: rgba(255,255,255,0.4); }
+  .team-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--glass-border); }
+  .team-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
+  .team-list { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+  /* ── DEMO VIDEO ──────────────────── */
+  .demo-section { background: var(--ink); border-top: 1px solid var(--rule); }
+  .video-wrapper {
+    max-width: 960px; margin: 0 auto; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4); position: relative; cursor: pointer;
+    border: 1px solid var(--glass-border); background: #000;
+  }
+  .video-wrapper video { width: 100%; display: block; }
+  .video-play-overlay {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10,10,15,0.4); transition: opacity 0.3s; border-radius: 16px;
+  }
+  .video-play-overlay.hidden { opacity: 0; pointer-events: none; }
+  .play-btn {
+    width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: transform 0.2s, background 0.2s;
+  }
+  .play-btn:hover { transform: scale(1.08); background: rgba(224,64,160,0.2); border-color: var(--accent-magenta); }
+  .play-btn svg { margin-left: 4px; }
+  .video-caption { text-align: center; margin-top: 16px; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-light); }
+
+  /* ── HOW IT WORKS ────────────────── */
+  .how-section { background: var(--ink-mid); }
+  .pipeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pipeline-card {
+    background: var(--ink-card); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 28px; transition: transform 0.3s, border-color 0.3s;
+  }
+  .pipeline-card:hover { transform: translateY(-4px); border-color: rgba(224,64,160,0.25); }
+  .pipeline-icon { font-size: 1.4rem; margin-bottom: 12px; }
+  .pipeline-card h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; margin-bottom: 4px; }
+  .pipeline-card .tech-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 10px; }
+  .pipeline-card p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+  /* Architecture image */
+  .arch-img {
+    margin-top: 48px; width: 100%; border-radius: 16px; border: 1px solid var(--glass-border);
+    cursor: pointer; transition: transform 0.3s;
+  }
+  .arch-img:hover { transform: scale(1.02); }
+  .arch-caption { text-align: center; margin-top: 12px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.04em; color: var(--ink-light); }
+
+  /* ── CAPABILITIES GRID ───────────── */
+  .capabilities-section { background: var(--ink); border-top: 1px solid var(--rule); }
+  .cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .cap-card {
+    background: var(--ink-card); border: 1px solid var(--glass-border);
+    border-radius: 14px; padding: 24px; text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .cap-card:hover { transform: translateY(-4px); border-color: rgba(224,64,160,0.25); }
+  .cap-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .cap-card h5 { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; margin-bottom: 6px; }
+  .cap-card p { font-size: 0.75rem; color: rgba(255,255,255,0.35); line-height: 1.4; }
+  .cap-metric { font-family: var(--mono); font-size: 0.68rem; color: var(--accent-magenta); margin-top: 8px; }
+
+  /* ── TRANSFORMATION TABLE ────────── */
+  .transform-section { background: var(--ink-mid); }
+  .transform-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+  .transform-table th {
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
+    text-transform: uppercase; text-align: left; padding: 0 20px 8px;
+  }
+  .th-dim { color: rgba(255,255,255,0.2); width: 16%; }
+  .th-before { color: rgba(255,255,255,0.25); }
+  .th-after { color: var(--accent-magenta); }
+  .transform-table td { padding: 18px 20px; font-size: 0.85rem; line-height: 1.5; vertical-align: top; }
+  .td-dim { color: rgba(255,255,255,0.35); font-family: var(--mono); font-size: 0.72rem; background: var(--ink-card); border-radius: 10px 0 0 10px; border: 1px solid var(--glass-border); border-right: none; }
+  .td-before { color: rgba(255,255,255,0.35); background: var(--ink-card); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
+  .td-before .time-lost { color: #ef4444; font-family: var(--mono); font-size: 0.7rem; }
+  .td-after { color: rgba(255,255,255,0.7); background: var(--ink-card); border-radius: 0 10px 10px 0; border: 1px solid var(--glass-border); border-left: none; }
+  .td-after strong { color: var(--accent-magenta); }
+
+  /* ── RESULTS ─────────────────────── */
+  .results-section { background: var(--ink); border-top: 1px solid var(--rule); }
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .result-card {
+    background: var(--ink-card); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 32px; text-align: center;
+    position: relative; overflow: hidden; transition: transform 0.3s;
+  }
+  .result-card:hover { transform: translateY(-4px); }
+  .result-card::after {
+    content: ''; position: absolute; width: 160px; height: 160px; border-radius: 50%;
+    filter: blur(60px); opacity: 0.1; bottom: -40px; right: -40px;
+  }
+  .result-card:nth-child(1)::after { background: var(--accent-magenta); }
+  .result-card:nth-child(2)::after { background: var(--accent-violet); }
+  .result-card:nth-child(3)::after { background: var(--accent-teal); }
+  .result-card:nth-child(4)::after { background: var(--accent-amber); }
+  .result-value { font-family: var(--serif); font-size: 2.4rem; line-height: 1; margin-bottom: 6px; color: var(--accent-magenta); position: relative; z-index: 1; }
+  .result-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; position: relative; z-index: 1; }
+  .result-desc { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.5; position: relative; z-index: 1; }
+
+  /* ── PRINCIPLES ──────────────────── */
+  .principles-section { background: var(--ink-mid); }
+  .principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .principle-card {
+    background: var(--ink-card); border: 1px solid var(--glass-border);
+    border-radius: 14px; padding: 28px; transition: transform 0.3s;
+  }
+  .principle-card:hover { transform: translateY(-4px); }
+  .principle-card h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; margin-bottom: 8px; color: var(--accent-magenta); }
+  .principle-card p { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+  /* ── NEXT ─────────────────────────── */
+  .next-section { background: var(--ink); border-top: 1px solid var(--rule); }
+  .next-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .next-card {
+    padding: 32px; border-radius: 16px; background: var(--ink-card);
+    border: 1px solid var(--glass-border); transition: transform 0.3s, border-color 0.3s;
+  }
+  .next-card:hover { transform: translateY(-4px); border-color: rgba(224,64,160,0.25); }
+  .next-card-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--accent-magenta); margin-bottom: 12px; }
+  .next-card h4 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 10px; font-weight: 400; }
+  .next-card p { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+  /* ── BACK ─────────────────────────── */
+  .back-section { padding: 48px; text-align: center; border-top: 1px solid var(--rule); }
+  .back-link { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--accent-magenta); text-decoration: none; transition: opacity 0.2s; }
+  .back-link:hover { opacity: 0.7; }
+
+  /* ── LIGHTBOX ────────────────────── */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 200; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); align-items: center; justify-content: center; cursor: pointer; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; box-shadow: 0 24px 80px rgba(0,0,0,0.6); animation: lbIn 0.3s ease; }
+  .lightbox-close { position: absolute; top: 24px; right: 32px; font-size: 2rem; color: rgba(255,255,255,0.4); cursor: pointer; z-index: 10; transition: color 0.2s; }
+  .lightbox-close:hover { color: #fff; }
+  @keyframes lbIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .summary-grid, .pipeline-grid, .principles-grid { grid-template-columns: 1fr; }
+    .problem-blocks, .results-grid, .cap-grid { grid-template-columns: repeat(2, 1fr); }
+    .next-cards { grid-template-columns: 1fr; }
+    .transform-table { display: block; overflow-x: auto; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; } section { padding: 64px 24px; }
+    .hero { padding: 100px 24px 64px; min-height: 75vh; }
+    .hero-title { font-size: 2.2rem; } .section-title { font-size: 1.8rem; }
+    .problem-blocks, .cap-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="portfolioGate" class="portfolio-gate">
+  <div class="portfolio-gate-card">
+    <h1>Protected work</h1>
+    <p>Enter your password to read this case study.</p>
+    <form id="gateForm" novalidate onsubmit="return false;">
+      <input type="password" id="gatePassword" name="password" autocomplete="current-password" placeholder="Password" aria-label="Password">
+      <button type="button" id="gateUnlockBtn">Continue</button>
+      <p class="portfolio-gate-error" id="gateError" role="alert">Incorrect password.</p>
+    </form>
+    <a class="back" href="../index.html">← Back to site</a>
+  </div>
+</div>
+
+<div id="portfolioMain" hidden>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name"><a href="../index.html">carl schulz</a></div>
+  <div class="nav-links">
+    <a href="../work.html">Work</a>
+    <a href="#problem">Problem</a>
+    <a href="#demo">Demo</a>
+    <a href="#how">How It Works</a>
+    <a href="#results">Results</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-glow g3"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Hackathon Project &middot; Asurion</div>
+    <h1 class="hero-title">Customers deserve a human, <em>not a search bar</em></h1>
+    <p class="hero-subtitle">ExpertClaw is an AI-orchestrated expert cockpit that cuts every support call from 24 minutes to under 10, while keeping the human expert in command.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">24→10</div>
+        <div class="hero-meta-label">Min avg handle time</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">99%</div>
+        <div class="hero-meta-label">FCR target</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">7M</div>
+        <div class="hero-meta-label">Annual calls</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">$1B+</div>
+        <div class="hero-meta-label">Opportunity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">The Problem</div>
+    <h2 class="section-title fade-in">A million people hang up without getting help</h2>
+    <p class="section-desc fade-in">Every year, 7 million people call Asurion for help. 1 million of them hang up before getting it. Experts are juggling windows while customers are giving up.</p>
+
+    <div class="problem-blocks">
+      <div class="problem-block fade-in">
+        <div class="problem-block-value" style="color: var(--accent-magenta);">7M</div>
+        <div class="problem-block-label">Annual support calls</div>
+        <p>Customers calling for help with broken phones, slow laptops, printer issues, and connected home problems.</p>
+      </div>
+      <div class="problem-block fade-in">
+        <div class="problem-block-value" style="color: #ef4444;">1M</div>
+        <div class="problem-block-label">Hang up without help</div>
+        <p>~14% of demand walks away. Long holds, repeated questions, and jargon-heavy fixes push customers to give up.</p>
+      </div>
+      <div class="problem-block fade-in">
+        <div class="problem-block-value" style="color: var(--accent-amber);">24 min</div>
+        <div class="problem-block-label">Avg handle time</div>
+        <p>Experts toggle between Alpha, ACSS, knowledge bases, troubleshooting guides, remote sessions, and compliance scripts on every call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="summary-section" id="summary">
+  <div class="section-inner">
+    <div class="summary-grid">
+      <div>
+        <div class="section-eyebrow fade-in">Summary</div>
+        <h2 class="section-title fade-in">An AI cockpit that keeps the human expert in command</h2>
+        <div class="summary-text fade-in">
+          <p>ExpertClaw is an AI-orchestrated expert cockpit built during Asurion's annual hackathon. While the customer hears a normal conversation, multiple automation layers work in parallel: real-time speech-to-intent, background CRM lookups, live screen observation, sentiment tracking, and intelligent next-best-action coaching all feed a single decision surface.</p>
+          <p>The expert stays in command. AI eliminates the cognitive overload of juggling tools so the expert can focus on empathy and speed. The system suggests, the expert delivers. Resolution comes first; recommendations are timed after trust is established.</p>
+        </div>
+      </div>
+      <div class="role-card fade-in">
+        <div class="role-card-label">My Role</div>
+        <h3>Product Designer</h3>
+        <p>Designed the Expert Cockpit UI concept, co-authored the PRD and strategic framework, built the prototype narrative and demo walkthrough, and presented the vision to Asurion's product organization.</p>
+        <div class="role-tags">
+          <span class="role-tag">Product Vision</span>
+          <span class="role-tag">AI UX Design</span>
+          <span class="role-tag">PRD Authorship</span>
+          <span class="role-tag">Prototyping</span>
+          <span class="role-tag">Demo Storytelling</span>
+        </div>
+        <div class="team-section">
+          <div class="team-label">ExpertClaw Team</div>
+          <div class="team-list">Kailey, Ashok, Mohit (Engineering) &middot; Carl (Design) &middot; Kristian (Product)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Demo Walkthrough</div>
+    <h2 class="section-title fade-in">See ExpertClaw in action</h2>
+    <p class="section-desc fade-in">A live call scenario: Cynthia needs her printer reconnected to her MacBook Pro. Watch how ExpertClaw guides expert Paul from intent detection through resolution and earned upsell, all in a single screen.</p>
+
+    <div class="video-wrapper fade-in" id="demoVideoWrapper">
+      <video id="demoVideo" preload="metadata" playsinline>
+        <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/expert-claw-experience.mp4" type="video/mp4">
+      </video>
+      <div class="video-play-overlay" id="demoOverlay" onclick="toggleVideo('demoVideo','demoOverlay')">
+        <div class="play-btn">
+          <svg width="28" height="32" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#ffffff"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="video-caption fade-in">ExpertClaw demo: Cynthia's printer call from intent detection to earned upsell</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">How It Works</div>
+    <h2 class="section-title fade-in">Six parallel layers, one decision surface</h2>
+    <p class="section-desc fade-in">While the customer hears a normal conversation, multiple automation layers work in parallel and feed the same expert cockpit. Each agent has a narrow contract, improving reliability and governance versus one omnibus model.</p>
+
+    <div class="pipeline-grid">
+      <div class="pipeline-card fade-in">
+        <div class="pipeline-icon">🎧</div>
+        <h4>Listen + Understand</h4>
+        <div class="tech-label">Real-time speech-to-intent graph</div>
+        <p>Conversation is transcribed, classified, and scored for confidence and sentiment in seconds.</p>
+      </div>
+      <div class="pipeline-card fade-in">
+        <div class="pipeline-icon">⚡</div>
+        <h4>Act in Background</h4>
+        <div class="tech-label">MCP + Playwright tool execution</div>
+        <p>Identity checks, CRM lookups, plan verification, and case history enrichment run while the expert keeps talking.</p>
+      </div>
+      <div class="pipeline-card fade-in">
+        <div class="pipeline-icon">🖥</div>
+        <h4>Observe the Live Screen</h4>
+        <div class="tech-label">State-aware technical diagnosis</div>
+        <p>Remote session context is interpreted into concrete next steps, not generic troubleshooting scripts.</p>
+      </div>
+      <div class="pipeline-card fade-in">
+        <div class="pipeline-icon">🎯</div>
+        <h4>Coach the Expert</h4>
+        <div class="tech-label">One next best action at a time</div>
+        <p>Expert gets what to do and what to say, with less cognitive load and tighter consistency.</p>
+      </div>
+      <div class="pipeline-card fade-in">
+        <div class="pipeline-icon">📈</div>
+        <h4>Monetize Respectfully</h4>
+        <div class="tech-label">Deferred recommendation logic</div>
+        <p>Buying intent is captured early but surfaced after resolution, when trust is highest.</p>
+      </div>
+      <div class="pipeline-card fade-in">
+        <div class="pipeline-icon">📋</div>
+        <h4>Close Automatically</h4>
+        <div class="tech-label">Case summary + CRM writeback</div>
+        <p>Resolution steps and call notes are auto-generated and posted, removing post-call admin drag.</p>
+      </div>
+    </div>
+
+    <img class="arch-img fade-in" src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/expert-claw-agent-orchestration.png" alt="ExpertClaw agent orchestration architecture" onclick="openLightbox(this)" loading="lazy">
+    <div class="arch-caption fade-in">Agent orchestration: Frontend → Agent Fleet (8 specialized agents) → Tools layer</div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">AI Capabilities</div>
+    <h2 class="section-title fade-in">Specialized agents, not a generic chatbot</h2>
+
+    <div class="cap-grid">
+      <div class="cap-card fade-in">
+        <div class="cap-icon">🎯</div>
+        <h5>Intent Detection</h5>
+        <p>Identifies the issue within the first sentence</p>
+        <div class="cap-metric">5 seconds</div>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">💬</div>
+        <h5>Next Best Action</h5>
+        <p>One step at a time, reduces cognitive load vs. KB search</p>
+        <div class="cap-metric">70% less load</div>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">📊</div>
+        <h5>Sentiment Tracking</h5>
+        <p>Detects frustration shifts in real-time to adjust coaching tone</p>
+        <div class="cap-metric">Real-time</div>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">🛍</div>
+        <h5>Smart Recommendations</h5>
+        <p>Upsell only after resolution for higher conversion</p>
+        <div class="cap-metric">3x vs. mid-call</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transform-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">The Journey From → To</div>
+    <h2 class="section-title fade-in">Eliminating 9-17 minutes of avoidable drag per call</h2>
+
+    <table class="transform-table fade-in">
+      <thead><tr><th class="th-dim">Dimension</th><th class="th-before">Current</th><th class="th-after">ExpertClaw</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-dim">Expert ramp-up</td>
+          <td class="td-before">6 weeks of training</td>
+          <td class="td-after"><strong>Confident on day one</strong> with guided flows and AI-backed next steps</td>
+        </tr>
+        <tr>
+          <td class="td-dim">Call opening</td>
+          <td class="td-before">Auth focused (ACSS/Alpha) <span class="time-lost">2-3min lost</span></td>
+          <td class="td-after"><strong>Resolution focused</strong>: expert answers with full context, customer never re-introduces the problem</td>
+        </tr>
+        <tr>
+          <td class="td-dim">Diagnosis</td>
+          <td class="td-before">Please hold <span class="time-lost">2-4min lost</span></td>
+          <td class="td-after"><strong>Zero holds</strong>: system engaged 100% of the time, avg 15 touchpoints per session</td>
+        </tr>
+        <tr>
+          <td class="td-dim">Troubleshooting</td>
+          <td class="td-before">Deterministic / expert instinct <span class="time-lost">5-10min lost</span></td>
+          <td class="td-after"><strong>AI-led, data-backed first step</strong>: highest-probability fix surfaces before the expert speaks, with success rate shown</td>
+        </tr>
+        <tr>
+          <td class="td-dim">Sales opportunity</td>
+          <td class="td-before">Depends on the expert remembering; upsell is ad hoc</td>
+          <td class="td-after"><strong>AI surfaces the right offer at the right moment</strong>, personalized to the customer's devices</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="results">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Target Impact</div>
+    <h2 class="section-title fade-in">What ExpertClaw unlocks at scale</h2>
+
+    <div class="results-grid">
+      <div class="result-card fade-in">
+        <div class="result-value">&lt;10</div>
+        <div class="result-label">Min handle time</div>
+        <div class="result-desc">Down from 24 min average, cutting 9-17 min of avoidable drag per call</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-violet);">99%</div>
+        <div class="result-label">First-call resolution</div>
+        <div class="result-desc">Aspirational program goal with AI-backed diagnosis and guided resolution</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-teal);">3x</div>
+        <div class="result-label">Conversion vs. mid-call</div>
+        <div class="result-desc">Upsell after resolution earns trust and drives higher attach rates</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-amber);">Day 1</div>
+        <div class="result-label">Expert confidence</div>
+        <div class="result-desc">Guided flows replace 6 weeks of training ramp with AI-backed coaching</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PRINCIPLES -->
+<section class="principles-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Why This Matters</div>
+    <h2 class="section-title fade-in">Five principles that shaped the design</h2>
+
+    <div class="principles-grid">
+      <div class="principle-card fade-in">
+        <h4>Execution, Not Suggestions</h4>
+        <p>ExpertClaw completes real support work in the background, reducing manual effort and accelerating resolution.</p>
+      </div>
+      <div class="principle-card fade-in">
+        <h4>Real-Time Orchestration at Scale</h4>
+        <p>Conversation AI, tool execution, screen reading, and decisioning run in parallel to keep interactions fast and consistent.</p>
+      </div>
+      <div class="principle-card fade-in">
+        <h4>Context-Aware Technical Resolution</h4>
+        <p>Guidance is generated from live customer device context, enabling precise and higher-confidence troubleshooting.</p>
+      </div>
+      <div class="principle-card fade-in">
+        <h4>Agent Simplicity, Enterprise Consistency</h4>
+        <p>One Next Best Action experience lowers cognitive load and standardizes quality across teams.</p>
+      </div>
+      <div class="principle-card fade-in" style="grid-column: 1 / -1; max-width: 540px;">
+        <h4>Trust-First Growth</h4>
+        <p>Resolution comes first; recommendations are timed after issue resolution to improve CSAT and conversion together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="next-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">What's Next</div>
+    <h2 class="section-title fade-in">From hackathon to production</h2>
+
+    <div class="next-cards">
+      <div class="next-card fade-in">
+        <div class="next-card-num">01</div>
+        <h4>Agentic Knowledge Base</h4>
+        <p>Richer, agent-queryable knowledge with clearer citations for Expert Assist+ and the Checker agent, replacing static KB search.</p>
+      </div>
+      <div class="next-card fade-in">
+        <div class="next-card-num">02</div>
+        <h4>Sales Engine</h4>
+        <p>Policy-safe bundling and personalization for revenue workflows, integrated with upsell signals, CRM context, and compliance guardrails.</p>
+      </div>
+      <div class="next-card fade-in">
+        <div class="next-card-num">03</div>
+        <h4>Production Validation</h4>
+        <p>Pilot with live call volume to validate handle time compression, FCR improvements, and conversion lift against baseline metrics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK -->
+<div class="back-section">
+  <a href="../work.html" class="back-link">&larr; Back to work</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">&times;</div>
+  <img id="lightbox-img" src="" alt="Detail view">
+</div>
+
+</div><!-- /portfolioMain -->
+
+<script src="../js/portfolio-config.js"></script>
+<script src="../js/portfolio-auth.js"></script>
+<script>
+  (function () {
+    function attemptUnlock() {
+      if (!window.__portfolioAuth || typeof window.__portfolioAuth.tryPassword !== 'function') {
+        var ge = document.getElementById('gateError');
+        if (ge) {
+          ge.textContent = 'Could not load login scripts.';
+          ge.classList.add('show');
+        }
+        return;
+      }
+      var input = document.getElementById('gatePassword');
+      var err   = document.getElementById('gateError');
+      if (!input || !err) return;
+      if (window.__portfolioAuth.tryPassword(input.value.trim())) {
+        err.classList.remove('show');
+        err.textContent = 'Incorrect password.';
+        input.value = '';
+      } else {
+        err.textContent = 'Incorrect password.';
+        err.classList.add('show');
+        input.value = '';
+        input.focus();
+      }
+    }
+    var form = document.getElementById('gateForm');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+    var btn = document.getElementById('gateUnlockBtn');
+    if (btn) btn.addEventListener('click', attemptUnlock);
+    var pw = document.getElementById('gatePassword');
+    if (pw) pw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); attemptUnlock(); } });
+    try {
+      if (window.__portfolioAuth && typeof window.__portfolioAuth.initPage === 'function') {
+        window.__portfolioAuth.initPage();
+      }
+    } catch (err) { console.error(err); }
+  })();
+</script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+      const idx = Array.from(siblings).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+function toggleVideo(videoId, overlayId) {
+  const video = document.getElementById(videoId);
+  const overlay = document.getElementById(overlayId);
+  if (video.paused) { video.play(); overlay.classList.add('hidden'); }
+  else { video.pause(); overlay.classList.remove('hidden'); }
+}
+document.querySelectorAll('.video-wrapper video').forEach(v => {
+  v.addEventListener('click', () => {
+    const overlay = v.closest('.video-wrapper').querySelector('.video-play-overlay');
+    if (!v.paused) { v.pause(); overlay.classList.remove('hidden'); }
+  });
+});
+
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>

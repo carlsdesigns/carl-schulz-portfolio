@@ -59,6 +59,35 @@
       "contentBlocks": []
     },
     {
+      "slug": "expert-claw",
+      "published": true,
+      "detailUrl": "case-studies/expert-claw.html",
+      "projectType": "Product design",
+      "title": "ExpertClaw",
+      "year": "2025",
+      "company": "Asurion",
+      "teaserImage": "https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/expert-claw-thumb-2.png",
+      "impactLine": "An AI-orchestrated expert cockpit targeting sub-10-minute handle times while keeping the human expert in command.",
+      "headline": "Customers deserve a human, not a search bar",
+      "hook": "ExpertClaw cuts cognitive overload so experts can focus on empathy and speed—suggesting next steps while the expert delivers.",
+      "keyVisual": "https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/expert-claw-thumb-2.png",
+      "heroVideo": null,
+      "summary": "Hackathon concept: an expert cockpit with real-time speech-to-intent, background tool execution, and next-best-action coaching in one surface.",
+      "problemFraming": "7M annual support calls, roughly 1M abandonments, and 24-minute average handle times with experts juggling too many tools.",
+      "roleAndTeam": "Product Designer; engineering and product partners on the ExpertClaw team.",
+      "approach": "Vision framing, cockpit UX, PRD co-authorship, demo narrative, and org readout.",
+      "challenges": "Orchestrating many AI agents with governance versus one brittle omnibus model.",
+      "solution": "Parallel automation layers feeding a single decision surface: intent, CRM, screen context, sentiment, and coached actions.",
+      "resultsAndImpact": "Concept targets under 10 min handle time, trust-first upsell timing, and day-one expert confidence via guided flows.",
+      "impactFallback": {
+        "expectedMetrics": "AHT, FCR, conversion on post-resolution offers, pilot CSAT.",
+        "strategicImpact": "Blueprint for agentic support that keeps humans in charge.",
+        "testResults": "Hackathon demo and stakeholder readout; production pilots TBD."
+      },
+      "nextSteps": "Agentic knowledge base, revenue workflows, and live-volume pilots.",
+      "contentBlocks": []
+    },
+    {
       "slug": "asurion-field-app",
       "published": true,
       "detailUrl": "case-studies/asurion-field-app.html",

@@ -431,23 +431,26 @@
 
 .cs-field-main .timeline-card {
   flex-shrink: 0;
-  width: 520px;
+  width: auto;
   scroll-snap-align: start;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid var(--fa-rule);
+  border: none;
   cursor: zoom-in;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: none;
   background: var(--fa-white);
 }
 
 .cs-field-main .timeline-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: none;
 }
 
 .cs-field-main .timeline-card img {
-  width: 100%;
+  width: auto;
+  height: 320px;
+  max-width: none;
+  object-fit: contain;
   display: block;
   pointer-events: none;
 }
@@ -1109,7 +1112,6 @@
   .cs-field-main .hero-title { font-size: 2.4rem; }
   .cs-field-main .section-title { font-size: 1.8rem; }
   .cs-field-main .service-steps { grid-template-columns: repeat(2, 1fr); }
-  .cs-field-main .timeline-card { width: 320px; }
   .cs-field-main .leadership-principles { grid-template-columns: 1fr; }
   .cs-field-main .research-methods { grid-template-columns: 1fr; }
 }
