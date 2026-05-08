@@ -414,6 +414,41 @@
   line-height: 1.5;
 }
 
+/* Under construction — end of page (replaces CTA + back row + footer) */
+.cs-svc-main section.construction-section {
+  min-height: auto;
+  padding: 80px 48px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cs-svc-main .construction-note {
+  font-size: 18px;
+  color: var(--svc-text-secondary);
+  line-height: 1.65;
+  max-width: 440px;
+  margin: 0 auto 28px;
+}
+
+.cs-svc-main .construction-back {
+  margin: 0;
+}
+
+.cs-svc-main .construction-back a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cs-svc-main .construction-back a:hover {
+  color: #fff;
+}
+
 .cs-svc-main .cta-section {
   display: flex;
   align-items: center;

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deloitte Interview Prep</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #ffffff; --bg2: #f7f7f5; --bg3: #f0efec;
+  --text: #1a1a18; --text2: #5a5a56; --text3: #9a9a94;
+  --border: rgba(0,0,0,0.1);
+  --accent: #185fa5; --accent-text: #0c447c;
+  --j-bg: #faeeda; --j-text: #854f0b;
+  --v-bg: #eaf3de; --v-text: #3b6d11;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1a; --bg2: #252523; --bg3: #2e2e2b;
+    --text: #f0efec; --text2: #b4b2a9; --text3: #6e6e68;
+    --border: rgba(255,255,255,0.1);
+    --accent: #378add; --accent-text: #85b7eb;
+    --j-bg: #3a2a0a; --j-text: #ef9f27;
+    --v-bg: #1a2e0a; --v-text: #97c459;
+  }
+}
+html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg3); color: var(--text); font-size: 15px; line-height: 1.6; }
+.shell { max-width: 420px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; background: var(--bg); border-left: 0.5px solid var(--border); border-right: 0.5px solid var(--border); }
+.topbar { padding: 14px 16px 10px; border-bottom: 0.5px solid var(--border); flex-shrink: 0; }
+.topbar-title { font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+.topbar-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.nav { display: flex; overflow-x: auto; border-bottom: 0.5px solid var(--border); flex-shrink: 0; scrollbar-width: none; padding: 0 4px; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-item { flex-shrink: 0; padding: 10px 13px; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; user-select: none; line-height: 1.2; text-align: center; }
+.nav-item .qn { display: block; font-size: 10px; font-weight: 400; color: var(--text3); margin-bottom: 2px; }
+.nav-item:hover { color: var(--text); }
+.nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-item.active .qn { color: var(--accent); opacity: 0.7; }
+.content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.panel { display: none; padding: 16px; }
+.panel.active { display: block; }
+.q-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+.q-text { font-size: 18px; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 14px; letter-spacing: -0.02em; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tag { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
+.tj { background: var(--j-bg); color: var(--j-text); }
+.tv { background: var(--v-bg); color: var(--v-text); }
+.divider { height: 0.5px; background: var(--border); margin: 0 0 14px; }
+.sec-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; }
+.outline { background: var(--bg2); border-radius: var(--r); border: 0.5px solid var(--border); padding: 10px 14px; margin-bottom: 12px; }
+.bullet { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+.bullet:last-child { border-bottom: none; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
+.btext { font-size: 13.5px; line-height: 1.55; color: var(--text); }
+.btext strong { font-weight: 600; color: var(--accent-text); }
+.answer-full { background: var(--bg2); border-radius: var(--r); border: 0.5px solid var(--border); padding: 14px; margin-bottom: 16px; margin-top: 4px; }
+.answer-full p { font-size: 13.5px; line-height: 1.7; color: var(--text2); margin-bottom: 10px; padding-bottom: 10px; border-bottom: 0.5px solid var(--border); }
+.answer-full p:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.hint { font-size: 11px; color: var(--text3); text-align: center; padding: 10px 12px; border-top: 0.5px solid var(--border); flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="topbar-title">Deloitte Interview &mdash; May 8, 11am CT</div>
+    <div class="topbar-sub">Jennifer Hamblin, MD &nbsp;&middot;&nbsp; Vinnci Lou, Senior Director</div>
+  </div>
+  <nav class="nav" id="nav"></nav>
+  <div class="content" id="content"></div>
+  <div class="hint">tap a question above to navigate</div>
+</div>
+<script>
+var qs=[{nav:"About",qn:"Q1",q:"Tell me about yourself",tags:[{l:"Jennifer: strategic depth",c:"tj"},{l:"Vinnci: realness + craft",c:"tv"}],b:["<strong>Hook:</strong> Services that change lives \u2014 systems, not just interfaces","<strong>Fix-It Bar:</strong> 1M jobs \u00b7 85% coverage \u00b7 4.9\u2605 \u00b7 months to scale","Founded Product Discovery practice at Asurion from zero","Player-coach \u2014 still in the work, vibe coding daily","Deloitte connection via redpepper \u2014 want to return","Job hugger \u2192 ready to be uncomfortable again","<strong>Close to Vinnci:</strong> Brazil \u00b7 Portuguese \u00b7 Spanish with daughter \u00b7 nature"],f:["I\u2019ve spent my career asking one question: how do you build services that actually change people\u2019s lives \u2014 not just interfaces, but systems that move people and decisions in the real world.","A concrete example: at Asurion, I was on the zero-to-one team that launched same-day phone delivery for Verizon customers in crisis. We stood it up in months, scaled to over a million jobs, 85% coverage, and held a 4.9-star rating with thousands of experts. That\u2019s the kind of work I\u2019m wired for.","I lead three practices now \u2014 Partner Growth, Product Discovery, and Service Design \u2014 and I founded the discovery practice from scratch. I\u2019m a player-coach. I stay in the work while developing the people around me.","I worked with Deloitte through a dedicated engagement earlier in my career and it shaped how I think about design at scale. I want to be back in that context \u2014 specifically now, with AI reshaping every practice area.","Honestly, my tenure at Asurion has been long enough that I\u2019m ready to be uncomfortable again. I grew up in Brazil, speak Portuguese fluently, and we\u2019re raising our daughter bilingual in Spanish. Vinnci \u2014 I saw your B Corp background and it resonated. Nature is how I reset completely."]},{nav:"Leadership",qn:"Q2",q:"Leadership philosophy & style",tags:[{l:"Jennifer: team building",c:"tj"},{l:"Vinnci: day-to-day fit",c:"tv"}],b:["<strong>Framework:</strong> Purpose \u2192 Process \u2192 People (in that order)","Player-coach \u2014 I facilitate, sketch, vibe code daily","Empowered teams \u2014 everyone owns the problem, not just the brief","Low ego \u00b7 act like an owner \u00b7 ask why \u00b7 listen deeply","<strong>Close:</strong> 18 emerging creatives mentored \u2014 most proud of"],f:["I lead with three things: purpose, process, and people \u2014 in that order. When teams don\u2019t have a clear why, no amount of process or talent saves them.","In practice, I\u2019m a player-coach. I\u2019m still in the work \u2014 I still facilitate sessions, I\u2019m vibe coding daily using AI-assisted tools to prototype and explore. Not to micromanage, but because I think the best design leaders model craft.","On the people side \u2014 I run empowered teams. Everyone on my team has a voice in both the user problem and the business problem. I don\u2019t want designers who execute briefs. I want people who can hold their ground in a room full of executives.","And I lead with low ego. I\u2019ve been in enough rooms where the loudest voice wins and the work suffers. I try to create the opposite \u2014 where the best idea wins regardless of where it comes from.","I\u2019ve mentored 18 emerging creatives over my career and a few have gone on to lead their own teams. That\u2019s what I\u2019m most proud of."]},{nav:"AI",qn:"Q3",q:"AI product experience",tags:[{l:"Jennifer: philosophy + rigor",c:"tj"},{l:"Vinnci: hands-on practice",c:"tv"}],b:["AI as capability vs AI as system \u2014 two different design problems","Asurion AI-first push: service design across the whole company","Xbox/Microsoft partnership: trust at scale in crisis moments","Vibe coding daily \u2014 inside it, not theorizing","<strong>Philosophy:</strong> invisible hard thing, human in the loop","<strong>Watch for:</strong> removing friction that was doing important work"],f:["I think about AI in two distinct ways \u2014 AI as a capability inside a product, and AI as a system that changes how work gets done. Both require completely different design thinking.","On the product side, I\u2019m embedded in Asurion\u2019s company-wide push to become an AI-first organization. I\u2019m mapping where AI can reduce friction in our customer and expert journeys \u2014 not just automating tasks, but redesigning the handoffs between human judgment and machine decision-making. That boundary is where the most dangerous design decisions live.","I was also part of the team supporting our Xbox partnership, where we thought through how AI-assisted support could scale without degrading the personal feel customers expect in a device crisis. The design challenge wasn\u2019t the AI \u2014 it was trust.","On the practitioner side \u2014 I\u2019m vibe coding daily. I use AI-assisted tools to prototype, explore, and pressure-test ideas faster than any process I\u2019ve had before. I\u2019m inside it, not theorizing.","My philosophy: AI should make the hard thing invisible and keep the human in the loop where it matters. The failure mode I watch for is when teams remove friction that was actually doing important work. Good AI UX is humble. It doesn\u2019t show off."]},{nav:"Innovation",qn:"Q4",q:"Zero to one \u2014 tell me about a time",tags:[{l:"Jennifer: discovery rigor",c:"tj"},{l:"Vinnci: scrappiness + craft",c:"tv"}],b:["Fix-It Bar / Verizon same-day delivery \u2014 no playbook existed","Role spanned full system: customer \u00b7 expert \u00b7 ops \u00b7 supply chain","Field work with delivery experts \u2014 found where experience broke","Minimum viable service that could hold a 4.9\u2605, then learned fast","<strong>Close:</strong> Design WITH people, not FOR them \u2014 even under pressure"],f:["The clearest example is the same-day phone delivery service I helped launch at Asurion with Verizon. There was no playbook. A customer breaks their phone \u2014 a genuine crisis \u2014 and we were designing a service to get a new device to them the same day, delivered by a trained tech expert.","I was on the founding team. My role spanned the full system \u2014 customer journey, expert experience, operational handoffs, supply chain touchpoints. I wasn\u2019t just designing screens. I was in the field with delivery experts understanding where the experience broke down.","What made it work was ruthless prioritization early. We didn\u2019t try to design the perfect service. We designed the minimum version that could hold a 4.9-star rating and learned fast. Within two years: over a million jobs, 85% of the country covered.","What I\u2019m most proud of isn\u2019t the numbers \u2014 it\u2019s that we built it with the people doing the work. Our expert community shaped the experience as much as our design team did. You don\u2019t design for people, you design with them."]},{nav:"Stakeholders",qn:"Q5",q:"Stakeholder & partner management",tags:[{l:"Jennifer: executive presence",c:"tj"},{l:"Vinnci: client navigation",c:"tv"}],b:["Relationship design \u2014 building trust, not just managing comms","People need to put their fingerprint on it \u2014 design space for influence","<strong>Key unlock:</strong> Bring the user into the boardroom","Amazon device protection: 6 sprint cycles \u00b7 real concepts \u00b7 weekly check-ins","Partner POV \u2260 research \u2192 sprint showed customer reality themselves","<strong>Close:</strong> Partners invested in outcome, not just the deliverable"],f:["Stakeholder work at the enterprise level is really relationship design. You\u2019re not just managing communication \u2014 you\u2019re building enough trust that people tell you the real problem, not the one they put in the brief.","The most important thing I\u2019ve learned: people need to put their fingerprint on it. So I design the process to have space for their influence without losing the integrity of the work. Single biggest unlock: if you bring the user into the boardroom, your stakeholders trust you more.","Current example: we\u2019re running a single device protection initiative with Amazon \u2014 one of our top partner opportunities. They came in with strong opinions. Our research pointed somewhere different. We built six rapid sprint cycles testing real concepts with customers and let the data speak.","The partner could see the customer friction themselves. That shifted the conversation from \u2018we disagree\u2019 to \u2018let\u2019s solve this together.\u2019 Weekly touchpoints keep everyone accountable. Result: partners invested in the outcome, not just the deliverable."]},{nav:"Failure",qn:"Q6",q:"Ambiguity or failure",tags:[{l:"Jennifer: self-awareness",c:"tj"},{l:"Vinnci: resilience under mess",c:"tv"}],b:["Claims team: brought innovation mindset into a preservation culture","Mistake: expected them to meet my mindset \u2014 I was misaligned","System built to protect revenue \u2014 not stubbornness, real stakes","<strong>Keep this line:</strong> \u201cEvery leader benefits from a tour in that space\u201d","Shifted to: risk reduction language before opportunity language","<strong>Close:</strong> Earn the right to transform \u2014 show you understand what people protect"],f:["Five or six years ago, I was leading design for our claims teams \u2014 Asurion\u2019s biggest division. I came out of a run of successful zero-to-one projects: consumer-driven, fast-moving, teams eager to ship.","Claims is the opposite. The system there is built to protect revenue \u2014 even small UX changes can affect millions of dollars quickly. My instinct was to push for obvious user-centered improvements. I was met with real pushback.","The failure was mine. I came in with an innovation mindset into a preservation culture and expected people to meet me. They weren\u2019t wrong \u2014 they were protecting something real. I just didn\u2019t understand it yet.","I believe every design leader benefits from a tour of work in that space. It recalibrates your empathy for the people holding the system together.","What I changed: I stopped leading with the improvement and started leading with the risk reduction. \u2018Here\u2019s how this change protects revenue while reducing friction\u2019 opened every conversation that \u2018here\u2019s a better experience\u2019 had closed.","The lesson: you earn the right to transform by demonstrating you understand what people are trying to protect. Ambiguity isn\u2019t the enemy \u2014 premature certainty is."]},{nav:"Qs",qn:"Q7",q:"Questions for them",tags:[],secLabel:"Your questions",b:["<strong>1.</strong> You\u2019ve both joined Deloitte relatively recently and you\u2019re building this practice in real time. What does success look like for this role in the first 90 days \u2014 and what would tell you a year from now that you made the right hire?","<strong>2.</strong> You came from a startup and agency world into Deloitte eight months ago. What\u2019s surprised you most about what it takes to do great design work in this context?","<strong>3.</strong> What\u2019s the hardest part of delivering on the AI experience mission right now \u2014 where are the gaps between what practitioners need and what the current tools or processes can actually give them?"],f:[]}];
+
+var nav=document.getElementById('nav'),content=document.getElementById('content');
+qs.forEach(function(q,i){
+  var ni=document.createElement('div');
+  ni.className='nav-item'+(i===0?' active':'');
+  ni.innerHTML='<span class="qn">'+q.qn+'</span>'+q.nav;
+  ni.onclick=function(){activate(i);};
+  nav.appendChild(ni);
+  var panel=document.createElement('div');
+  panel.className='panel'+(i===0?' active':'');
+  var tags=(q.tags||[]).map(function(t){return'<span class="tag '+t.c+'">'+t.l+'</span>';}).join('');
+  var bullets=q.b.map(function(b){return'<div class="bullet"><div class="dot"></div><div class="btext">'+b+'</div></div>';}).join('');
+  var full=(q.f||[]).map(function(p){return'<p>'+p+'</p>';}).join('');
+  var secLabel=q.secLabel||'key points';
+  var tagsBlock=tags?'<div class="tags">'+tags+'</div><div class="divider"></div>':'';
+  var fullBlock=(q.f&&q.f.length)?'<div class="sec-label">Full answer</div><div class="answer-full">'+full+'</div>':'';
+  panel.innerHTML='<div class="q-label">'+q.qn+' of '+qs.length+'</div><div class="q-text">'+q.q+'</div>'+tagsBlock+'<div class="sec-label">'+secLabel+'</div><div class="outline">'+bullets+'</div>'+fullBlock;
+  content.appendChild(panel);
+});
+function activate(idx){
+  document.querySelectorAll('.nav-item').forEach(function(el,i){el.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.panel').forEach(function(el,i){el.classList.toggle('active',i===idx);});
+  content.scrollTop=0;
+}
+</script>
+</body>
+</html>
