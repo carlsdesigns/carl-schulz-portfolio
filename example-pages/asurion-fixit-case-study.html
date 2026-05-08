@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asurion.com Fix-It Bar — Case Study | Carl Schulz</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f12;
+    --ink-soft: #1a1a22;
+    --ink-light: #6b6b7b;
+    --white: #fafaf9;
+    --rule: #e2e2dd;
+    --accent-violet: #7c3aed;
+    --accent-violet-soft: rgba(124,58,237,0.12);
+    --accent-teal: #2dd4bf;
+    --accent-rose: #f472b6;
+    --accent-amber: #fbbf24;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.08);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', 'SF Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ──────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 56px;
+    background: rgba(250,250,249,0.85);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-name {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.06em; font-weight: 500; color: var(--ink);
+  }
+  .nav-name a { color: inherit; text-decoration: none; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.05em; color: var(--ink-light);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent-violet); }
+
+  /* ── HERO ──────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 85vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+    background: var(--ink);
+    color: var(--white);
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px); opacity: 0.3;
+    animation: orbFloat 18s ease-in-out infinite alternate;
+  }
+  .o1 { width: 500px; height: 500px; background: var(--accent-violet); top: -15%; left: -8%; animation-delay: 0s; }
+  .o2 { width: 400px; height: 400px; background: var(--accent-teal); bottom: -10%; right: -5%; animation-delay: -6s; }
+  .o3 { width: 300px; height: 300px; background: var(--accent-rose); top: 40%; right: 25%; animation-delay: -12s; }
+  @keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+    100% { transform: translate(10px, -10px) scale(1.02); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 820px; text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: 3.6rem;
+    line-height: 1.12; font-weight: 400;
+    margin-bottom: 24px;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-subtitle {
+    font-size: 1.15rem; color: rgba(255,255,255,0.6);
+    max-width: 620px; margin: 0 auto 32px;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-meta {
+    display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .hero-meta-item {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .hero-meta-value {
+    font-family: var(--serif); font-size: 1.8rem;
+    color: var(--accent-violet);
+  }
+  .hero-meta-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-top: 4px;
+  }
+
+  /* ── SECTION SHARED ──────────────── */
+  section { padding: 96px 48px; }
+
+  .section-eyebrow {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: 2.4rem;
+    line-height: 1.2; margin-bottom: 20px;
+  }
+  .section-desc {
+    font-size: 1.05rem; color: var(--ink-light);
+    max-width: 640px; line-height: 1.7;
+    margin-bottom: 48px;
+  }
+  .section-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* ── SUMMARY ─────────────────────── */
+  .summary-section { background: var(--white); }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: start;
+  }
+  .summary-text { font-size: 1.05rem; color: var(--ink); line-height: 1.75; }
+  .summary-text p + p { margin-top: 16px; }
+
+  .role-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .role-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--accent-violet), var(--accent-teal));
+  }
+  .role-card-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 16px;
+  }
+  .role-card h3 {
+    font-family: var(--serif); font-size: 1.2rem;
+    margin-bottom: 8px; font-weight: 400;
+  }
+  .role-card p {
+    font-size: 0.88rem; color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+  .role-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+  }
+  .role-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    padding: 5px 12px; border-radius: 100px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: rgba(255,255,255,0.5);
+  }
+  .team-section { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--glass-border); }
+  .team-label {
+    font-family: var(--mono); font-size: 0.58rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 8px;
+  }
+  .team-list {
+    font-size: 0.82rem; color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  /* ── VISION VIDEO ────────────────── */
+  .vision-section {
+    background: linear-gradient(135deg, #f8f7f4 0%, #f0eee9 100%);
+  }
+  .vision-video-wrapper {
+    max-width: 900px; margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.12);
+    position: relative;
+    cursor: pointer;
+  }
+  .vision-video-wrapper video {
+    width: 100%; display: block;
+    border-radius: 16px;
+  }
+  .video-play-overlay {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(15,15,18,0.35);
+    transition: opacity 0.3s;
+    border-radius: 16px;
+  }
+  .video-play-overlay.hidden { opacity: 0; pointer-events: none; }
+  .play-btn {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .play-btn:hover { transform: scale(1.08); }
+  .play-btn svg { margin-left: 4px; }
+  .video-caption {
+    text-align: center; margin-top: 16px;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.04em; color: var(--ink-light);
+  }
+
+  /* ── PROBLEM ─────────────────────── */
+  .problem-section {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .problem-section .section-desc { color: rgba(255,255,255,0.5); }
+
+  .problem-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .problem-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .problem-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124,58,237,0.3);
+  }
+  .problem-card-icon {
+    font-size: 1.6rem; margin-bottom: 16px;
+  }
+  .problem-card h4 {
+    font-family: var(--serif); font-size: 1.1rem;
+    margin-bottom: 10px; font-weight: 400;
+    color: var(--accent-violet);
+  }
+  .problem-card p {
+    font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* Image row within problem section */
+  .artifact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .artifact-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .artifact-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .artifact-caption {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.3);
+    text-align: center; margin-top: 8px;
+  }
+  .artifact-single {
+    max-width: 700px; margin: 0 auto;
+  }
+
+  /* ── APPROACH / PROCESS ──────────── */
+  .approach-section { background: var(--white); }
+
+  .process-timeline {
+    position: relative;
+    padding-left: 48px;
+  }
+  .process-timeline::before {
+    content: ''; position: absolute;
+    left: 18px; top: 0; bottom: 0;
+    width: 2px; background: var(--rule);
+  }
+  .process-step {
+    position: relative;
+    margin-bottom: 56px;
+  }
+  .process-step:last-child { margin-bottom: 0; }
+  .process-dot {
+    position: absolute; left: -40px; top: 6px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-violet);
+    background: var(--white);
+    z-index: 2;
+  }
+  .process-step.active .process-dot {
+    background: var(--accent-violet);
+    box-shadow: 0 0 0 6px var(--accent-violet-soft);
+  }
+  .process-step-num {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 6px;
+  }
+  .process-step h4 {
+    font-family: var(--serif); font-size: 1.3rem;
+    margin-bottom: 10px; font-weight: 400;
+  }
+  .process-step p {
+    font-size: 0.95rem; color: var(--ink-light);
+    max-width: 580px; line-height: 1.7;
+  }
+  .process-step p + p { margin-top: 12px; }
+
+  /* Inline image within process step */
+  .step-image {
+    margin-top: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    max-width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .step-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  /* ── SOLUTION SHOWCASE ───────────── */
+  .solution-section {
+    background: linear-gradient(135deg, #f8f7f4 0%, #f0eee9 100%);
+  }
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .solution-text h3 {
+    font-family: var(--serif); font-size: 1.5rem;
+    margin-bottom: 16px; font-weight: 400;
+  }
+  .solution-text p {
+    font-size: 0.95rem; color: var(--ink-light);
+    line-height: 1.7;
+  }
+  .solution-text p + p { margin-top: 12px; }
+  .solution-insight {
+    margin-top: 20px; padding: 20px 24px;
+    background: var(--white);
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-violet);
+    font-size: 0.92rem; color: var(--ink);
+    line-height: 1.6;
+  }
+  .solution-insight strong { color: var(--accent-violet); }
+
+  .solution-visual {
+    position: relative;
+  }
+
+  /* ── DEVICE SHOWCASE ─────────────── */
+  .device-showcase {
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .device-block {
+    position: relative;
+  }
+  .device-block-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 12px;
+  }
+  .device-video-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: pointer;
+    background: var(--ink);
+  }
+  .device-video-wrapper video {
+    width: 100%; display: block;
+  }
+  .device-video-wrapper .video-play-overlay {
+    border-radius: 16px;
+  }
+
+  /* ── CHALLENGES / PIVOT ──────────── */
+  .challenges-section {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .challenges-section .section-desc { color: rgba(255,255,255,0.5); }
+
+  .challenge-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .challenge-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .challenge-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124,58,237,0.3);
+  }
+  .challenge-card h4 {
+    font-family: var(--serif); font-size: 1.1rem;
+    margin-bottom: 10px; font-weight: 400;
+    color: var(--accent-teal);
+  }
+  .challenge-card p {
+    font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+  .challenge-card .pivot-tag {
+    display: inline-block; margin-top: 12px;
+    font-family: var(--mono); font-size: 0.58rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px;
+    background: rgba(45,212,191,0.12); color: var(--accent-teal);
+  }
+
+  /* ── RESULTS ─────────────────────── */
+  .results-section { background: var(--white); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .result-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .result-card:hover { transform: translateY(-4px); }
+  .result-card::after {
+    content: ''; position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    filter: blur(80px); opacity: 0.15;
+    bottom: -60px; right: -60px;
+  }
+  .result-card:nth-child(1)::after { background: var(--accent-violet); }
+  .result-card:nth-child(2)::after { background: var(--accent-teal); }
+  .result-card:nth-child(3)::after { background: var(--accent-rose); }
+
+  .result-value {
+    font-family: var(--serif); font-size: 3rem;
+    line-height: 1; margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .result-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .result-desc {
+    font-size: 0.88rem; color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    position: relative; z-index: 1;
+  }
+
+  /* Outcome list */
+  .outcome-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .outcome-item {
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #f8f7f4 0%, #f0eee9 100%);
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-violet);
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .outcome-item strong { color: var(--accent-violet); }
+
+  /* ── NEXT STEPS ──────────────────── */
+  .next-section { background: linear-gradient(135deg, #f8f7f4 0%, #f0eee9 100%); }
+  .next-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .next-card {
+    padding: 32px;
+    border-radius: 16px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .next-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-violet);
+  }
+  .next-card-num {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--accent-violet); margin-bottom: 12px;
+  }
+  .next-card h4 {
+    font-family: var(--serif); font-size: 1.15rem;
+    margin-bottom: 10px; font-weight: 400;
+  }
+  .next-card p {
+    font-size: 0.88rem; color: var(--ink-light); line-height: 1.6;
+  }
+
+  /* ── BACK LINK ───────────────────── */
+  .back-section {
+    padding: 48px; text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  .back-link {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-violet); text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.7; }
+
+  /* ── LIGHTBOX ────────────────────── */
+  .lightbox {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    background: rgba(15,15,18,0.92);
+    backdrop-filter: blur(12px);
+    align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    animation: lbIn 0.3s ease;
+  }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 32px;
+    font-size: 2rem; color: rgba(255,255,255,0.5);
+    cursor: pointer; z-index: 10;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: #fff; }
+  @keyframes lbIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── ANIMATIONS ──────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ──────────────────── */
+  @media (max-width: 900px) {
+    .summary-grid, .solution-grid, .challenge-cards, .artifact-row, .outcome-list { grid-template-columns: 1fr; }
+    .problem-cards { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .next-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    section { padding: 64px 24px; }
+    .hero { padding: 100px 24px 64px; min-height: 70vh; }
+    .hero-title { font-size: 2.4rem; }
+    .section-title { font-size: 1.8rem; }
+  }
+  @media (max-width: 480px) {
+    .hero-title { font-size: 1.9rem; }
+    .hero-meta { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name"><a href="#">carl schulz</a></div>
+  <div class="nav-links">
+    <a href="#summary">Summary</a>
+    <a href="#problem">Problem</a>
+    <a href="#approach">Approach</a>
+    <a href="#solution">Solution</a>
+    <a href="#results">Results</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Case Study &middot; Asurion.com</div>
+    <h1 class="hero-title">Transforming a million monthly visits into a front door for tech help</h1>
+    <p class="hero-subtitle">I led the design of the Fix-It Bar, an intelligent router that shifted asurion.com from a sales-first experience to a customer-problem-first platform, increasing service initiations and out-of-warranty repair bookings.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">1M+</div>
+        <div class="hero-meta-label">Monthly visits</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">50+</div>
+        <div class="hero-meta-label">Partner portals unified</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">A/B</div>
+        <div class="hero-meta-label">Tested &amp; validated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="summary-section" id="summary">
+  <div class="section-inner">
+    <div class="summary-grid">
+      <div>
+        <div class="section-eyebrow fade-in">Summary</div>
+        <h2 class="section-title fade-in">Asurion had evolved. Its website hadn't.</h2>
+        <div class="summary-text fade-in">
+          <p>In January 2021, I joined a cross-functional team with Product Marketing to kick-start transformational change to asurion.com. Asurion had recently evolved from selling a single product through partner channels to offering multiple products, including direct-to-consumer offerings. But the website still prioritized new sales over helping the millions of existing subscribers who visited each month trying to resolve a tech problem.</p>
+          <p>We needed to make it easy to use Asurion's products while also supporting marketing's goals of selling products and telling Asurion's story through the product experience. The vision I pitched at Asurion's yearly product town hall set the direction: be the go-to source for tech problems.</p>
+        </div>
+      </div>
+      <div class="role-card fade-in">
+        <div class="role-card-label">My Role</div>
+        <h3>Product Design Director</h3>
+        <p>I wrote the vision story, prototyped the concept, and recorded the narrative to make the strategy shareable and repeatable. I led the strategic framing, OKR alignment, design execution, and in-market testing of the Fix-It Bar from concept through A/B-tested launch.</p>
+        <div class="role-tags">
+          <span class="role-tag">Product Strategy</span>
+          <span class="role-tag">Vision Storytelling</span>
+          <span class="role-tag">OKR Framework</span>
+          <span class="role-tag">Service Design</span>
+          <span class="role-tag">Prototyping</span>
+          <span class="role-tag">A/B Testing</span>
+        </div>
+        <div class="team-section">
+          <div class="team-label">Primary Team</div>
+          <div class="team-list">Carl Schulz (Design Director), Sr. Product Designer (promoted to Principal through this effort), UX Engineer</div>
+        </div>
+        <div class="team-section" style="border: none; padding-top: 12px;">
+          <div class="team-label">Extended Team</div>
+          <div class="team-list">Product Marketing, Software Engineering, Data Analytics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION VIDEO -->
+<section class="vision-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">The Vision</div>
+    <h2 class="section-title fade-in">A concept pitch that set the strategy</h2>
+    <p class="section-desc fade-in">I wrote the story, prototyped the concept, and recorded this vision video to gain buy-in across Asurion's product organization. It set the strategy for the homepage, SEO approach, and the creation of thousands of job pages.</p>
+
+    <div class="vision-video-wrapper fade-in" id="visionVideoWrapper">
+      <video id="visionVideo" preload="metadata" playsinline>
+        <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/asurion.com___vision_concept.mp4" type="video/mp4">
+      </video>
+      <div class="video-play-overlay" id="visionOverlay" onclick="toggleVideo('visionVideo', 'visionOverlay')">
+        <div class="play-btn">
+          <svg width="28" height="32" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#0f0f12"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="video-caption fade-in">Vision concept presented at Asurion's product organization town hall</div>
+  </div>
+</section>
+
+<!-- STRATEGIC FRAMING -->
+<section class="approach-section" id="framing">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Strategic Framing</div>
+    <h2 class="section-title fade-in">Aligning through ambiguity</h2>
+    <p class="section-desc fade-in">Getting started was not easy. Ownership was unclear and dependencies were everywhere. I led the group to an outcome-focused OKR framework and shifted the team from a delivery-focused culture to one aligned on vision, objectives, and clear ownership.</p>
+
+    <div class="process-timeline">
+      <div class="process-step active fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Objective 01</div>
+        <h4>Make it easy to use Asurion's product</h4>
+        <p>The primary focus. Increase the speed to start a claim, improve the path to find purchased services, and make it intuitive to use Asurion for any tech problem.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Objective 02</div>
+        <h4>Sell Asurion's products</h4>
+        <p>Increase Connected Home, Mobility Protection, Appliance+, and UBIF sales through the product experience on asurion.com.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Objective 03</div>
+        <h4>Tell Asurion's story</h4>
+        <p>Increase brand awareness and improve the conversion funnel by communicating the breadth of what Asurion offers within the first interaction.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Objective 04</div>
+        <h4>Build a foundation for the future</h4>
+        <p>Increase site performance, improve SEO rankings, maintain 100% uptime, and decrease time to publish. This infrastructure work would enable everything else.</p>
+        <img class="step-image" src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/workshop-strategic-framing.png" alt="Workshop strategic framing" onclick="openLightbox(this)" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM FRAMING -->
+<section class="problem-section" id="problem">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Problem Definition</div>
+    <h2 class="section-title fade-in" style="color: #fff;">A million visitors, fragmented across dozens of dead ends</h2>
+    <p class="section-desc fade-in">After extensive mapping and documentation of the existing service design, the scale of the problem became clear. The site was built for sales, not for the people already paying for the product.</p>
+
+    <div class="problem-cards">
+      <div class="problem-card fade-in">
+        <div class="problem-card-icon">🔒</div>
+        <h4>No single point of authentication</h4>
+        <p>Customers had to navigate multiple portals, including separate instances for a single client like Verizon. There was no unified entry point.</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-icon">🚧</div>
+        <h4>Self-routing led to dead ends</h4>
+        <p>The existing experience required customers to know their provider and product before getting help. Wrong turns created dead-end experiences and pushed people to the call center.</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-icon">📞</div>
+        <h4>Digital leakage to call center</h4>
+        <p>Customers who couldn't figure out how to initiate service based on their subscription would abandon digital and call instead, driving up support costs.</p>
+      </div>
+    </div>
+
+    <div class="artifact-row fade-in">
+      <div>
+        <img class="artifact-img" src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/asurion-system-mapping.png" alt="System mapping of partner portals" onclick="openLightbox(this)" loading="lazy">
+        <div class="artifact-caption">System mapping: 50+ partner portals across multiple entry points</div>
+      </div>
+      <div>
+        <img class="artifact-img" src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/solution-sketch%20(1).png" alt="Solution sketching and decision tree design" onclick="openLightbox(this)" loading="lazy">
+        <div class="artifact-caption">Solution sketch: decision tree mapping device type to resolution path</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach-section" id="approach">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Approach</div>
+    <h2 class="section-title fade-in">From provider-first to problem-first</h2>
+    <p class="section-desc fade-in">The core insight was simple: model the experience of describing a tech problem to an expert. Instead of asking "Who is your provider?" we asked "What can we fix for you?"</p>
+
+    <div class="process-timeline">
+      <div class="process-step active fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 01</div>
+        <h4>Conversational design model</h4>
+        <p>We reframed the interaction as a conversation: "I have a mobile device with a cracked screen, and I have device protection. Please help!" The intelligent router changed the paradigm from provider-first to customer-problem-first, while showcasing Asurion's full breadth of services within the first interaction.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 02</div>
+        <h4>Extensive testing and iteration</h4>
+        <p>We ran customer testing, cross-functional collaboration sessions, code prototypes, quantitative testing plans, and A/B testing configurations. Through many iterations and prioritization sessions, the Fix-It Bar earned buy-in to become the primary customer touchpoint on asurion.com.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 03</div>
+        <h4>Guerrilla front-end execution</h4>
+        <p>The product design team worked in guerrilla fashion, producing high-quality front-end React solutions with delightful micro-interactions. Our engineering team was stretched thin with competing priorities, so we collaborated with a designer who had front-end skills to develop a solution that could scale later, keeping the project moving.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 04</div>
+        <h4>The pivot to CMS-powered MVP</h4>
+        <p>We hit engineering roadblocks: hosting issues, security reviews, and code reviews delayed the ideal implementation by several months. Unwilling to wait, we pivoted. The asurion.com platform had a functional CMS and a flexible component library, so we built a simplified multi-page experience instead of the single-page interactive component.</p>
+        <p>The principle was clear: test and learn quickly, let the data inform the ideal experience later.</p>
+        <img class="step-image" src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/acom-desktop-mvp-launch.png" alt="MVP desktop launch" onclick="openLightbox(this)" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION SHOWCASE -->
+<section class="solution-section" id="solution">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Solution</div>
+    <h2 class="section-title fade-in">The Fix-It Bar</h2>
+    <p class="section-desc fade-in">Simple, human, and friendly. Tech help for important personal technology is only a few clicks away, minutes from your front door.</p>
+
+    <div class="solution-grid fade-in">
+      <div class="solution-text">
+        <h3>A new paradigm for Asurion's front door</h3>
+        <p>The Fix-It Bar successfully represented Asurion's product and brand experience principles. It made booking available from the very first moment a customer lands on asurion.com, reducing the steps from problem to resolution.</p>
+        <p>The component was built to be deployed anywhere on asurion.com. It integrates with O360, and its content is configurable, allowing teams to rapidly adapt it for different use cases: device repairs, home installs, appliance service, and beyond.</p>
+        <div class="solution-insight">
+          <strong>Designed for reuse:</strong> The Fix-It Bar UI component can be adapted for installs, oil changes, or anything Asurion does. We're exploring a version that fits into the nav to make booking available on every page.
+        </div>
+      </div>
+      <div class="solution-visual">
+        <div class="device-showcase">
+          <!-- Desktop video -->
+          <div class="device-block">
+            <div class="device-block-label">Desktop Experience</div>
+            <div class="device-video-wrapper">
+              <video id="desktopVideo" preload="metadata" playsinline loop>
+                <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/asurion-fixit-desktop.mp4" type="video/mp4">
+              </video>
+              <div class="video-play-overlay" id="desktopOverlay" onclick="toggleVideo('desktopVideo', 'desktopOverlay')">
+                <div class="play-btn">
+                  <svg width="28" height="32" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#0f0f12"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile video -->
+          <div class="device-block">
+            <div class="device-block-label">Mobile Experience</div>
+            <div class="device-video-wrapper" style="max-width: 360px;">
+              <video id="mobileVideo" preload="metadata" playsinline loop>
+                <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/Asurion-fixit/mobile-fixit.mp4" type="video/mp4">
+              </video>
+              <div class="video-play-overlay" id="mobileOverlay" onclick="toggleVideo('mobileVideo', 'mobileOverlay')">
+                <div class="play-btn">
+                  <svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#0f0f12"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="challenges-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Challenges &amp; Pivots</div>
+    <h2 class="section-title fade-in" style="color: #fff;">Navigating real-world constraints</h2>
+    <p class="section-desc fade-in">This project tested our ability to ship meaningful work through organizational complexity. Every constraint became an opportunity to learn faster.</p>
+
+    <div class="challenge-cards">
+      <div class="challenge-card fade-in">
+        <h4>Engineering capacity blocked ideal implementation</h4>
+        <p>The team that would implement the React-based Fix-It Bar was stretched thin with competing priorities, delaying the ideal version by months.</p>
+        <div class="pivot-tag">Pivot: CMS-powered MVP</div>
+      </div>
+      <div class="challenge-card fade-in">
+        <h4>Hosting, security, and code review delays</h4>
+        <p>Even when we built the front-end solution ourselves, infrastructure requirements created additional delays before deployment.</p>
+        <div class="pivot-tag">Pivot: Simplified multi-page flow</div>
+      </div>
+      <div class="challenge-card fade-in">
+        <h4>Unclear ownership across teams</h4>
+        <p>As the effort kicked off, it quickly became apparent that areas of ownership had many dependencies. Alignment required a new framework.</p>
+        <div class="pivot-tag">Pivot: Outcome-focused OKRs</div>
+      </div>
+      <div class="challenge-card fade-in">
+        <h4>Culture of delivery over outcomes</h4>
+        <p>The existing team culture was focused on shipping features rather than measuring impact. We needed to shift the mindset before we could move effectively.</p>
+        <div class="pivot-tag">Pivot: Vision alignment + shared metrics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="results">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Results &amp; Impact</div>
+    <h2 class="section-title fade-in">Data validated the shift to problem-first</h2>
+    <p class="section-desc fade-in">The MVP test proved the value of making it easier to access and use Asurion's core services. The A/B test of the full Fix-It Bar against the MVP confirmed the direction.</p>
+
+    <div class="results-grid">
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-violet);">&#8593;</div>
+        <div class="result-label">Service Initiations</div>
+        <div class="result-desc">The customer-problem-first approach increased the rate at which visitors initiated service through asurion.com.</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-teal);">&#8593;</div>
+        <div class="result-label">Out-of-Warranty Repairs</div>
+        <div class="result-desc">By showcasing Asurion's breadth of services, we drove more bookings for store services like laptop repairs.</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-rose);">&#8595;</div>
+        <div class="result-label">Digital-to-Call Leakage</div>
+        <div class="result-desc">Clearer routing reduced the number of customers abandoning digital to call the support center.</div>
+      </div>
+    </div>
+
+    <div class="outcome-list">
+      <div class="outcome-item fade-in">
+        <strong>Reusable platform component.</strong> The Fix-It Bar is built to deploy anywhere on asurion.com, with configurable content and O360 integration for different service types.
+      </div>
+      <div class="outcome-item fade-in">
+        <strong>Team growth.</strong> The Sr. Product Designer on the project was promoted to Principal Product Designer through the quality and impact of this work.
+      </div>
+      <div class="outcome-item fade-in">
+        <strong>Strategic alignment.</strong> The vision video and OKR framework became repeatable tools that aligned cross-functional teams beyond this project.
+      </div>
+      <div class="outcome-item fade-in">
+        <strong>SEO and content strategy.</strong> The vision set the direction for the homepage, SEO strategy, and the creation of thousands of job pages on asurion.com.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="next-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">What's Next</div>
+    <h2 class="section-title fade-in">Expanding the front door</h2>
+
+    <div class="next-cards">
+      <div class="next-card fade-in">
+        <div class="next-card-num">01</div>
+        <h4>Nav-embedded booking</h4>
+        <p>Exploring a version of the Fix-It Bar that lives in the navigation, making booking available on every page of asurion.com without requiring a homepage visit.</p>
+      </div>
+      <div class="next-card fade-in">
+        <div class="next-card-num">02</div>
+        <h4>Multi-service expansion</h4>
+        <p>Adapting the configurable component for new service categories beyond device repair: home installs, appliance service, and emerging product lines.</p>
+      </div>
+      <div class="next-card fade-in">
+        <div class="next-card-num">03</div>
+        <h4>Behavioral intelligence</h4>
+        <p>Using the data from Fix-It Bar interactions to build smarter routing that anticipates customer needs based on device type, location, and subscription context.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK -->
+<div class="back-section">
+  <a href="#" class="back-link">&larr; Back to portfolio</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">&times;</div>
+  <img id="lightbox-img" src="" alt="Detail view">
+</div>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+      const idx = Array.from(siblings).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Video toggle
+function toggleVideo(videoId, overlayId) {
+  const video = document.getElementById(videoId);
+  const overlay = document.getElementById(overlayId);
+  if (video.paused) {
+    video.play();
+    overlay.classList.add('hidden');
+  } else {
+    video.pause();
+    overlay.classList.remove('hidden');
+  }
+}
+
+// Pause video when clicking on it directly (after overlay hidden)
+document.querySelectorAll('.device-video-wrapper video, .vision-video-wrapper video').forEach(v => {
+  v.addEventListener('click', () => {
+    const wrapper = v.closest('.device-video-wrapper, .vision-video-wrapper');
+    const overlay = wrapper.querySelector('.video-play-overlay');
+    if (!v.paused) {
+      v.pause();
+      overlay.classList.remove('hidden');
+    }
+  });
+});
+
+// Lightbox
+function openLightbox(img) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = img.src;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>

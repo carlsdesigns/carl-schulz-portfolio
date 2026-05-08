@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/work/:slug",
+      "destination": "/case-study.html?slug=:slug"
+    }
+  ]
+}

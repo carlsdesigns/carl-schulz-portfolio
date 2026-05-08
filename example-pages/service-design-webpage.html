@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Design Workshop — Asurion 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-dark: #0a0a0a;
+    --bg-section: #111111;
+    --bg-card: #1a1a1a;
+    --purple: #9b59f0;
+    --magenta: #e040a0;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --text-primary: #f5f5f5;
+    --text-secondary: #999999;
+    --text-muted: #666666;
+    --gradient: linear-gradient(135deg, #9b59f0, #e040a0);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 48px;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav .brand {
+    font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  nav .nav-links { display: flex; gap: 32px; }
+  nav .nav-links a {
+    color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em; transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: var(--text-primary); }
+
+  /* ── SECTIONS ── */
+  section {
+    min-height: 100vh;
+    padding: 140px 48px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding-top: 0;
+  }
+  .hero-content { max-width: 820px; }
+  .hero .eyebrow {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.08;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .accent {
+    background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .subtitle {
+    font-size: 20px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 48px;
+    line-height: 1.6; font-weight: 400;
+  }
+  .hero .scroll-cue {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;
+    animation: pulse-down 2s ease-in-out infinite;
+  }
+  @keyframes pulse-down {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(6px); opacity: 1; }
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -0.015em;
+  }
+  .section-subtitle {
+    font-size: 18px; color: var(--text-secondary); max-width: 640px;
+    margin-bottom: 56px; line-height: 1.6;
+  }
+
+  /* ── OBJECTIVES GRID ── */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .obj-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 40px 32px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .obj-card:hover {
+    border-color: rgba(155, 89, 240, 0.3);
+    transform: translateY(-4px);
+  }
+  .obj-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 48px; font-weight: 700;
+    background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1; margin-bottom: 20px;
+  }
+  .obj-card h3 {
+    font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3;
+  }
+  .obj-card p {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* ── WHAT WE UNLOCK ── */
+  .unlock-section { background: var(--bg-section); }
+  .unlock-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .unlock-card {
+    background: var(--bg-dark);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 36px 32px;
+    display: flex; gap: 20px; align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .unlock-card:hover { border-color: rgba(155,89,240,0.25); }
+  .unlock-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(155,89,240,0.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 20px;
+  }
+  .unlock-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .unlock-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ── TIMELINE / PLAN ── */
+  .plan-track {
+    display: flex;
+    gap: 0;
+    position: relative;
+    margin-top: 20px;
+  }
+  .plan-track::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 0; right: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.08);
+  }
+  .plan-phase {
+    flex: 1;
+    position: relative;
+    padding: 0 16px;
+  }
+  .plan-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 2px solid var(--text-muted);
+    position: relative;
+    z-index: 2;
+    margin: 0 auto 20px;
+    transition: all 0.3s;
+  }
+  .plan-phase.active .plan-dot {
+    background: var(--purple);
+    border-color: var(--purple);
+    box-shadow: 0 0 20px rgba(155,89,240,0.5);
+  }
+  .plan-phase.future .plan-dot {
+    border-color: rgba(255,255,255,0.15);
+  }
+  .plan-label {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; text-align: center; margin-bottom: 8px;
+    color: var(--text-secondary);
+  }
+  .plan-phase.active .plan-label { color: var(--purple); }
+  .plan-desc {
+    font-size: 14px; color: var(--text-muted); text-align: center; line-height: 1.5;
+  }
+  .plan-phase.active .plan-desc { color: var(--text-secondary); }
+  .plan-half-labels {
+    display: flex; justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .plan-half-labels span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em;
+  }
+
+  /* ── BLUEPRINTED WORK ── */
+  .bp-section { background: var(--bg-section); }
+  .bp-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .bp-col-title {
+    font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .bp-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    transition: background 0.2s;
+  }
+  .bp-item:hover { background: rgba(255,255,255,0.03); }
+  .bp-badge {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+    color: white;
+  }
+  .bp-badge.repair { background: linear-gradient(135deg, #e040a0, #c030d0); }
+  .bp-badge.support { background: linear-gradient(135deg, #9b59f0, #7c3aed); }
+  .bp-badge.verizon { background: linear-gradient(135deg, #ef4444, #dc2626); }
+  .bp-badge.atc { background: linear-gradient(135deg, #f97316, #ea580c); }
+  .bp-item-text { font-size: 15px; font-weight: 500; }
+  .bp-item-date { font-size: 12px; color: var(--text-muted); margin-left: auto; font-family: 'JetBrains Mono', monospace; }
+
+  /* findings */
+  .finding-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .finding-item:last-child { border-bottom: none; }
+  .finding-item h4 {
+    font-size: 15px; font-weight: 700; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .finding-item h4::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--magenta);
+    flex-shrink: 0;
+  }
+  .finding-item p { font-size: 14px; color: var(--text-secondary); padding-left: 16px; line-height: 1.5; }
+
+  /* ── WHY YOU MATTER ── */
+  .cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .cta-content { max-width: 720px; }
+  .cta-content h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .cta-content .accent {
+    background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .cta-content p {
+    font-size: 18px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;
+  }
+  .cta-content p:last-of-type { margin-bottom: 48px; }
+  .cta-tagline {
+    font-size: 15px; font-weight: 500;
+    color: var(--text-muted);
+    font-style: italic;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── GLOW ACCENTS ── */
+  .glow-purple {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(155,89,240,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glow-magenta {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(224,64,160,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── FADE-IN ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    section { padding: 100px 24px 80px; }
+    nav { padding: 0 24px; }
+    .obj-grid { grid-template-columns: 1fr; }
+    .unlock-grid { grid-template-columns: 1fr; }
+    .bp-columns { grid-template-columns: 1fr; }
+    .plan-track { flex-direction: column; gap: 24px; }
+    .plan-track::before { display: none; }
+    .plan-dot { margin: 0 0 12px 0; }
+    .plan-label, .plan-desc { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Asurion Service Design</div>
+  <div class="nav-links">
+    <a href="#objectives">Objectives</a>
+    <a href="#unlocks">What We Unlock</a>
+    <a href="#plan">2026 Plan</a>
+    <a href="#progress">Progress</a>
+    <a href="#why">Why You</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="glow-purple" style="top: -100px; right: -150px;"></div>
+  <div class="hero-content fade-up">
+    <div class="eyebrow">2026 Service Design Workshop</div>
+    <h1>We're building the<br>map that <span class="accent">Asurion<br>has never had.</span></h1>
+    <p class="subtitle">For the first time, we'll see how our entire service actually connects — customer, expert, data, operations — in one shared view. That changes everything.</p>
+    <div class="scroll-cue">↓ &nbsp;See what this unlocks</div>
+  </div>
+</section>
+
+<!-- ═══ OBJECTIVES ═══ -->
+<section id="objectives">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-eyebrow">2026 Objectives</div>
+      <div class="section-title">Three moves that compound.</div>
+      <div class="section-subtitle">Each objective builds on the last. Together, they give Asurion the foundation to make better decisions, faster.</div>
+    </div>
+    <div class="obj-grid">
+      <div class="obj-card fade-up">
+        <div class="obj-num">01</div>
+        <h3>Understand how Asurion actually works</h3>
+        <p>Make it visible. Make it shared. End the era of tribal knowledge and competing narratives about how the service runs.</p>
+      </div>
+      <div class="obj-card fade-up">
+        <div class="obj-num">02</div>
+        <h3>Identify broken windows and prioritize</h3>
+        <p>Size the gaps by volume and impact. Give leadership clear evidence to say yes or no — fast.</p>
+      </div>
+      <div class="obj-card fade-up">
+        <div class="obj-num">03</div>
+        <h3>Define and operationalize Lifecycle Care</h3>
+        <p>Bring Product, Engineering, Marketing, Customer Solutions, and Supply Chain into one shared service definition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT WE UNLOCK ═══ -->
+<section class="unlock-section" id="unlocks">
+  <div class="section-inner">
+    <div class="glow-purple" style="top: -200px; left: -200px;"></div>
+    <div class="fade-up">
+      <div class="section-eyebrow">Why This Matters</div>
+      <div class="section-title">What service design unlocks.</div>
+      <div class="section-subtitle">This isn't a documentation exercise. It's a decision-making accelerant.</div>
+    </div>
+    <div class="unlock-grid">
+      <div class="unlock-card fade-up">
+        <div class="unlock-icon">⚡</div>
+        <div>
+          <h4>Move faster</h4>
+          <p>A shared diagnosis replaces months of alignment. Two-month debates become two-week decisions because everyone sees the same picture.</p>
+        </div>
+      </div>
+      <div class="unlock-card fade-up">
+        <div class="unlock-icon">⚖️</div>
+        <div>
+          <h4>Make better tradeoffs</h4>
+          <p>See how a claims booking change affects expert dispatch, supply chain, and customer satisfaction simultaneously. Stop optimizing one thing at the cost of another.</p>
+        </div>
+      </div>
+      <div class="unlock-card fade-up">
+        <div class="unlock-icon">🎯</div>
+        <div>
+          <h4>Prioritize with confidence</h4>
+          <p>Volume, effort, and impact become visible. Leadership can greenlight or redirect without waiting for another deck or another meeting.</p>
+        </div>
+      </div>
+      <div class="unlock-card fade-up">
+        <div class="unlock-icon">🧠</div>
+        <div>
+          <h4>Stop re-learning lessons</h4>
+          <p>Your best people carry critical knowledge in their heads. Blueprints make that expertise durable, shareable, and usable across teams.</p>
+        </div>
+      </div>
+      <div class="unlock-card fade-up">
+        <div class="unlock-icon">🏗️</div>
+        <div>
+          <h4>Build toward a vision</h4>
+          <p>Shift from reacting to problems toward designing the experience you actually want. The future state becomes something you can plan in concrete steps.</p>
+        </div>
+      </div>
+      <div class="unlock-card fade-up">
+        <div class="unlock-icon">🤝</div>
+        <div>
+          <h4>One language across teams</h4>
+          <p>Product, Engineering, Customer Solutions, and Supply Chain finally working from a single shared artifact instead of parallel interpretations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2026 PLAN ═══ -->
+<section id="plan">
+  <div class="section-inner">
+    <div class="glow-magenta" style="bottom: -100px; right: -100px;"></div>
+    <div class="fade-up">
+      <div class="section-eyebrow">2026 Service Design Plan</div>
+      <div class="section-title">Service foundation, future articulation, activation.</div>
+      <div class="section-subtitle">We're at the inflection point. Current-state blueprints are built. Now we size, prioritize, and start charting the future.</div>
+    </div>
+    <div class="fade-up">
+      <div class="plan-half-labels">
+        <span>H1 2026</span>
+        <span>H2 2026</span>
+      </div>
+      <div class="plan-track">
+        <div class="plan-phase active">
+          <div class="plan-dot"></div>
+          <div class="plan-label">Blueprint Core Services</div>
+          <div class="plan-desc">Map how Asurion actually works across Repair/Replace, Support, and Tech Care.</div>
+        </div>
+        <div class="plan-phase active">
+          <div class="plan-dot"></div>
+          <div class="plan-label">Size &amp; Prioritize</div>
+          <div class="plan-desc">Identify broken windows and broken foundations. Rank by volume × effort × impact.</div>
+        </div>
+        <div class="plan-phase future">
+          <div class="plan-dot"></div>
+          <div class="plan-label">Fix Broken Windows</div>
+          <div class="plan-desc">Ship P0/P1 fixes: authentication persistence, data availability, claims value.</div>
+        </div>
+        <div class="plan-phase future">
+          <div class="plan-dot"></div>
+          <div class="plan-label">Future Blueprint</div>
+          <div class="plan-desc">Chart the future state. Define what Lifecycle Care should feel like end to end.</div>
+        </div>
+        <div class="plan-phase future">
+          <div class="plan-dot"></div>
+          <div class="plan-label">Build &amp; Activate</div>
+          <div class="plan-desc">Cross-functional teams own pillars. Bi-annual blueprint health checks keep it alive.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROGRESS ═══ -->
+<section class="bp-section" id="progress">
+  <div class="section-inner">
+    <div class="fade-up">
+      <div class="section-eyebrow">Progress to Date</div>
+      <div class="section-title">What we've blueprinted. What we've found.</div>
+      <div class="section-subtitle">Eight production blueprints completed. Five systemic patterns surfaced.</div>
+    </div>
+    <div class="bp-columns fade-up">
+      <div>
+        <div class="bp-col-title">Blueprints Completed</div>
+
+        <div class="bp-item">
+          <div class="bp-badge repair">R</div>
+          <span class="bp-item-text">Delivery &amp; Expert Setup</span>
+          <span class="bp-item-date">02/24</span>
+        </div>
+        <div class="bp-item">
+          <div class="bp-badge verizon">V</div>
+          <span class="bp-item-text">Extended Warranty Repair</span>
+          <span class="bp-item-date">01/28</span>
+        </div>
+        <div class="bp-item">
+          <div class="bp-badge atc">A</div>
+          <span class="bp-item-text">ATC Replacement</span>
+          <span class="bp-item-date">02/03</span>
+        </div>
+        <div class="bp-item">
+          <div class="bp-badge atc">A</div>
+          <span class="bp-item-text">ATC Laptop Repair</span>
+          <span class="bp-item-date">03/27</span>
+        </div>
+        <div class="bp-item">
+          <div class="bp-badge verizon">V</div>
+          <span class="bp-item-text">Xbox Repair (Depot)</span>
+          <span class="bp-item-date">01/28</span>
+        </div>
+        <div class="bp-item">
+          <div class="bp-badge support">S</div>
+          <span class="bp-item-text">VHDP Voice Support</span>
+          <span class="bp-item-date">01/31</span>
+        </div>
+        <div class="bp-item">
+          <div class="bp-badge support">S</div>
+          <span class="bp-item-text">VHDP Messaging Support</span>
+          <span class="bp-item-date">03/02</span>
+        </div>
+      </div>
+      <div>
+        <div class="bp-col-title">Systemic Patterns Found</div>
+
+        <div class="finding-item">
+          <h4>Authentication friction</h4>
+          <p>Customers re-authenticate repeatedly. Security practices vary between teams.</p>
+        </div>
+        <div class="finding-item">
+          <h4>Data gaps</h4>
+          <p>Customers repeat themselves because data isn't shared across touchpoints.</p>
+        </div>
+        <div class="finding-item">
+          <h4>Inconsistent sales practices</h4>
+          <p>Pitches are difficult to understand and often misleading to customers.</p>
+        </div>
+        <div class="finding-item">
+          <h4>Claims value issues</h4>
+          <p>Upgrades delivered negative value. Replacements didn't match device type.</p>
+        </div>
+        <div class="finding-item">
+          <h4>Support access problems</h4>
+          <p>Partner channel customers need passcodes to transfer. Benefit usage isn't facilitated.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY YOU ═══ -->
+<section class="cta-section" id="why">
+  <div class="glow-purple" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+  <div class="cta-content fade-up">
+    <div class="section-eyebrow">Why Your Input Matters Today</div>
+    <h2>You're not reviewers.<br>You're <span class="accent">co-authors.</span></h2>
+    <p>The people in this room know where the real friction lives and what actually works. No blueprint means anything without your expertise built into it.</p>
+    <p>Your job today isn't to admire a diagram. It's to pressure-test it, fill in the gaps, and help shape what the future should look like.</p>
+    <div class="cta-tagline">A joyful home — where technology keeps up, fades back, and family shines.</div>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

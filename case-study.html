@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Case study — Carl Schulz</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/portfolio-work.css">
+</head>
+<body>
+
+<div id="portfolioGate" class="portfolio-gate">
+  <div class="portfolio-gate-card">
+    <h1>Protected work</h1>
+    <p>Enter your password to read this case study.</p>
+    <form id="gateForm" novalidate onsubmit="return false;">
+      <input type="password" id="gatePassword" name="password" autocomplete="current-password" placeholder="Password" aria-label="Password">
+      <button type="button" id="gateUnlockBtn">Continue</button>
+      <p class="portfolio-gate-error" id="gateError" role="alert">Incorrect password.</p>
+    </form>
+    <a class="back" href="index.html">← Back to site</a>
+  </div>
+</div>
+
+<div id="portfolioMain" hidden>
+  <header class="work-nav">
+    <a class="work-nav-brand" href="index.html">
+      <img src="assets/images/carl-photo.png" alt="Carl Schulz">
+      Carl Schulz
+    </a>
+    <nav aria-label="Site">
+      <a href="index.html">Home</a>
+      <span style="display:inline-block;width:16px"></span>
+      <a href="work.html">Work</a>
+      <span style="display:inline-block;width:16px"></span>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+  <div id="caseStudyRoot"></div>
+  <footer class="work-footer">&copy; 2026 Carl Schulz · Nashville, TN</footer>
+</div>
+
+<script src="js/portfolio-config.js"></script>
+<script src="js/portfolio-auth.js"></script>
+<script>
+  (function () {
+    function attemptUnlock() {
+      if (!window.__portfolioAuth || typeof window.__portfolioAuth.tryPassword !== 'function') {
+        var ge = document.getElementById('gateError');
+        if (ge) {
+          ge.textContent = 'Could not load login scripts. Check the console; js/portfolio-config.js and js/portfolio-auth.js should load from this folder.';
+          ge.classList.add('show');
+        }
+        return;
+      }
+      var input = document.getElementById('gatePassword');
+      var err = document.getElementById('gateError');
+      if (!input || !err) return;
+      if (window.__portfolioAuth.tryPassword(input.value.trim())) {
+        err.classList.remove('show');
+        err.textContent = 'Incorrect password.';
+        input.value = '';
+      } else {
+        err.textContent = 'Incorrect password.';
+        err.classList.add('show');
+        input.value = '';
+        input.focus();
+      }
+    }
+    var form = document.getElementById('gateForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+      });
+    }
+    var btn = document.getElementById('gateUnlockBtn');
+    if (btn) btn.addEventListener('click', attemptUnlock);
+    var pw = document.getElementById('gatePassword');
+    if (pw) {
+      pw.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          attemptUnlock();
+        }
+      });
+    }
+    try {
+      if (window.__portfolioAuth && typeof window.__portfolioAuth.initPage === 'function') {
+        window.__portfolioAuth.initPage();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  })();
+</script>
+<script src="js/case-study-page.js"></script>
+</body>
+</html>

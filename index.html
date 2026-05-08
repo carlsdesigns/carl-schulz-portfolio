@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carl Schulz — Product Design Leader</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/portfolio-work.css">
 <style>
   :root {
     --ink: #0F1117;
@@ -31,34 +32,16 @@
   }
 
   /* ── NAV ─────────────────────────────── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(15,17,23,0.92);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px; height: 60px;
-  }
-  .nav-brand {
-    display: flex; align-items: center; gap: 12px;
-  }
-  .nav-photo {
-    width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
-    border: 2px solid rgba(255,255,255,0.15);
-  }
-  .nav-name {
-    font-family: 'DM Sans', sans-serif; font-weight: 600;
-    font-size: 1.1rem; color: rgba(255,255,255,0.85);
-    letter-spacing: -0.01em;
-  }
-  .nav-links { display: flex; gap: 32px; }
+  /* Inherits .work-nav + .work-nav-brand from portfolio-work.css */
+  nav.work-nav { position: fixed; top: 0; left: 0; right: 0; width: 100%; }
+  .nav-links { display: flex; gap: 28px; }
   .nav-links a {
-    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
     letter-spacing: 0.08em; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); text-decoration: none;
+    color: rgba(255,255,255,0.45); text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: rgba(255,255,255,0.9); }
+  .nav-links a:hover { color: rgba(255,255,255,0.95); }
 
   /* ── HERO ─────────────────────────────── */
   .hero {
@@ -626,34 +609,29 @@
     .hero-tagline { font-size: 1.05rem; }
     .wid-grid, .beliefs-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: repeat(3, 1fr); }
-    nav { padding: 0 20px; }
+    nav.work-nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
-    .nav-photo { width: 28px; height: 28px; }
-    .nav-name { font-size: 1rem; }
     .what-i-do, .skills-section, .journey-section, .beliefs-section, .contact-section { padding: 56px 24px; }
   }
   @media (max-width: 480px) {
     .hero-title { font-size: 2.2rem; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    .nav-links a { font-size: 0.62rem; }
-    .nav-name { display: none; }
+    .nav-links a { font-size: 0.68rem; }
   }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-brand">
-    <img src="assets/images/carl-photo.png" alt="Carl Schulz" class="nav-photo">
-    <div class="nav-name">Carl Schulz</div>
-  </div>
+<nav class="work-nav" aria-label="Site">
+  <a class="work-nav-brand" href="index.html">
+    <img src="assets/images/carl-photo.png" alt="Carl Schulz">
+    Carl Schulz
+  </a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#work">Work</a>
-    <a href="#journey">Journey</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="index.html#about">About</a>
   </div>
 </nav>
 
@@ -908,10 +886,10 @@
     </div>
   </div>
   <div class="portfolio-cta">
-    <button class="portfolio-btn" onclick="openPasswordModal()">
+    <a class="portfolio-btn" href="work.html">
       View Work
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
+    </a>
   </div>
 </section>
 
@@ -985,15 +963,16 @@
       <a href="mailto:carleschulz@gmail.com" class="contact-pill">carleschulz@gmail.com</a>
       <a href="tel:7313131641" class="contact-pill">731-313-1641</a>
       <a href="https://www.linkedin.com/in/carlsdesigns/" class="contact-pill" target="_blank">LinkedIn</a>
-      <a href="#work" class="contact-pill" onclick="event.preventDefault(); openPasswordModal();">Portfolio</a>
+      <a href="work.html" class="contact-pill">Portfolio</a>
     </div>
   </div>
 </section>
 
 <footer>
-  &copy; 2025 Carl Schulz &middot; Nashville, TN
+  &copy; 2026 Carl Schulz &middot; Nashville, TN
 </footer>
 
+<script src="js/portfolio-config.js"></script>
 <script>
 // Skill detail data — personalized to Carl's experience
 const skillData = [
@@ -1301,12 +1280,13 @@ function closePasswordModal() {
 
 function submitPassword(e) {
   e.preventDefault();
-  const password = document.getElementById('portfolioPassword').value;
-  const correctPassword = 'carl2025';
-  
-  if (password === correctPassword) {
+  const password = document.getElementById('portfolioPassword').value.trim();
+  const cfg = window.__PORTFOLIO_CONFIG || { PASSWORD: 'carl2025', STORAGE_KEY: 'portfolioUnlocked' };
+
+  if (password === cfg.PASSWORD) {
+    sessionStorage.setItem(cfg.STORAGE_KEY, '1');
     closePasswordModal();
-    window.location.href = '/work.html';
+    window.location.href = new URL('work.html', window.location.href).href;
   } else {
     document.getElementById('passwordError').classList.add('show');
     document.getElementById('portfolioPassword').value = '';

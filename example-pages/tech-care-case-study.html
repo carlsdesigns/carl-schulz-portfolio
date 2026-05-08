@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asurion Tech Care — Case Study | Carl Schulz</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f12;
+    --ink-soft: #1a1a22;
+    --ink-light: #6b6b7b;
+    --white: #fafaf9;
+    --rule: #e2e2dd;
+    --accent-violet: #7c3aed;
+    --accent-violet-soft: rgba(124,58,237,0.12);
+    --accent-teal: #2dd4bf;
+    --accent-rose: #f472b6;
+    --accent-amber: #fbbf24;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.08);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', 'SF Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ──────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 48px; height: 56px;
+    background: rgba(250,250,249,0.85);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-name {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.06em; font-weight: 500; color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-name a { color: inherit; text-decoration: none; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.05em; color: var(--ink-light);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent-violet); }
+
+  /* ── HERO ──────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 85vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+    background: var(--ink);
+    color: var(--white);
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px); opacity: 0.3;
+    animation: orbFloat 18s ease-in-out infinite alternate;
+  }
+  .o1 { width: 500px; height: 500px; background: var(--accent-violet); top: -15%; left: -8%; animation-delay: 0s; }
+  .o2 { width: 400px; height: 400px; background: var(--accent-teal); bottom: -10%; right: -5%; animation-delay: -6s; }
+  .o3 { width: 300px; height: 300px; background: var(--accent-rose); top: 40%; right: 25%; animation-delay: -12s; }
+  @keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+    100% { transform: translate(10px, -10px) scale(1.02); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 820px; text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: 3.6rem;
+    line-height: 1.12; font-weight: 400;
+    margin-bottom: 24px;
+    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-subtitle {
+    font-size: 1.15rem; color: rgba(255,255,255,0.6);
+    max-width: 600px; margin: 0 auto 32px;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-meta {
+    display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .hero-meta-item {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .hero-meta-value {
+    font-family: var(--serif); font-size: 1.8rem;
+    color: var(--accent-violet);
+  }
+  .hero-meta-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-top: 4px;
+  }
+
+  /* ── SECTION SHARED ──────────────── */
+  section { padding: 96px 48px; }
+
+  .section-eyebrow {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: 2.4rem;
+    line-height: 1.2; margin-bottom: 20px;
+  }
+  .section-desc {
+    font-size: 1.05rem; color: var(--ink-light);
+    max-width: 640px; line-height: 1.7;
+    margin-bottom: 48px;
+  }
+  .section-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* ── SUMMARY / HOOK ─────────────── */
+  .summary-section { background: var(--white); }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: start;
+  }
+  .summary-text { font-size: 1.05rem; color: var(--ink); line-height: 1.75; }
+  .summary-text p + p { margin-top: 16px; }
+
+  .role-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .role-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, var(--accent-violet), var(--accent-teal));
+  }
+  .role-card-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 16px;
+  }
+  .role-card h3 {
+    font-family: var(--serif); font-size: 1.2rem;
+    margin-bottom: 8px; font-weight: 400;
+  }
+  .role-card p {
+    font-size: 0.88rem; color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+  .role-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+  }
+  .role-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    padding: 5px 12px; border-radius: 100px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── PROBLEM FRAMING ─────────────── */
+  .problem-section {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .problem-section .section-desc { color: rgba(255,255,255,0.5); }
+
+  .problem-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .problem-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .problem-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124,58,237,0.3);
+  }
+  .problem-card-icon {
+    font-size: 1.6rem; margin-bottom: 16px;
+  }
+  .problem-card h4 {
+    font-family: var(--serif); font-size: 1.1rem;
+    margin-bottom: 10px; font-weight: 400;
+    color: var(--accent-violet);
+  }
+  .problem-card p {
+    font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ── APPROACH / PROCESS ──────────── */
+  .approach-section { background: var(--white); }
+
+  .process-timeline {
+    position: relative;
+    padding-left: 48px;
+  }
+  .process-timeline::before {
+    content: ''; position: absolute;
+    left: 18px; top: 0; bottom: 0;
+    width: 2px; background: var(--rule);
+  }
+  .process-step {
+    position: relative;
+    margin-bottom: 56px;
+  }
+  .process-step:last-child { margin-bottom: 0; }
+  .process-dot {
+    position: absolute; left: -40px; top: 6px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-violet);
+    background: var(--white);
+    z-index: 2;
+  }
+  .process-step.active .process-dot {
+    background: var(--accent-violet);
+    box-shadow: 0 0 0 6px var(--accent-violet-soft);
+  }
+  .process-step-num {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent-violet); margin-bottom: 6px;
+  }
+  .process-step h4 {
+    font-family: var(--serif); font-size: 1.3rem;
+    margin-bottom: 10px; font-weight: 400;
+  }
+  .process-step p {
+    font-size: 0.95rem; color: var(--ink-light);
+    max-width: 580px; line-height: 1.7;
+  }
+
+  /* ── SLIDE GALLERY ───────────────── */
+  .slide-gallery {
+    margin-top: 32px;
+    display: flex; gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+  }
+  .slide-gallery::-webkit-scrollbar { height: 4px; }
+  .slide-gallery::-webkit-scrollbar-track { background: var(--rule); border-radius: 2px; }
+  .slide-gallery::-webkit-scrollbar-thumb { background: var(--accent-violet); border-radius: 2px; }
+
+  .slide-thumb {
+    flex-shrink: 0;
+    width: 280px; height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-snap-align: start;
+  }
+  .slide-thumb:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  /* ── RESEARCH / DATA ─────────────── */
+  .research-section {
+    background: linear-gradient(135deg, #f8f7f4 0%, #f0eee9 100%);
+  }
+  .research-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .stat-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--rule);
+    transition: transform 0.3s;
+  }
+  .stat-card:hover { transform: translateY(-4px); }
+  .stat-value {
+    font-family: var(--serif); font-size: 2.8rem;
+    color: var(--accent-violet); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .research-findings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .finding {
+    padding: 24px 28px;
+    background: var(--white);
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-violet);
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .finding strong { color: var(--accent-violet); }
+
+  /* ── RESULTS / IMPACT ────────────── */
+  .results-section { background: var(--white); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .result-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .result-card:hover { transform: translateY(-4px); }
+  .result-card::after {
+    content: ''; position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    filter: blur(80px); opacity: 0.15;
+    bottom: -60px; right: -60px;
+  }
+  .result-card:nth-child(1)::after { background: var(--accent-violet); }
+  .result-card:nth-child(2)::after { background: var(--accent-teal); }
+  .result-card:nth-child(3)::after { background: var(--accent-rose); }
+
+  .result-value {
+    font-family: var(--serif); font-size: 3rem;
+    line-height: 1; margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .result-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .result-desc {
+    font-size: 0.88rem; color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    position: relative; z-index: 1;
+  }
+
+  /* ── TRANSFORMATION TABLE ────────── */
+  .transform-section {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .transform-section .section-desc { color: rgba(255,255,255,0.5); }
+
+  .transform-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+  .transform-table th {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: left; padding: 0 24px 8px;
+  }
+  .th-before { color: rgba(255,255,255,0.3); }
+  .th-after { color: var(--accent-violet); }
+
+  .transform-table td {
+    padding: 20px 24px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    vertical-align: top;
+  }
+  .td-before {
+    color: rgba(255,255,255,0.4);
+    background: var(--glass);
+    border-radius: 12px 0 0 12px;
+    border: 1px solid var(--glass-border);
+    border-right: none;
+    width: 45%;
+  }
+  .td-after {
+    color: rgba(255,255,255,0.8);
+    background: var(--glass);
+    border-radius: 0 12px 12px 0;
+    border: 1px solid var(--glass-border);
+    border-left: none;
+    width: 55%;
+  }
+  .td-after strong { color: var(--accent-violet); }
+  .td-arrow {
+    width: 40px; text-align: center;
+    color: var(--accent-violet);
+    font-size: 1.2rem;
+    background: var(--glass);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  /* ── NEXT STEPS ──────────────────── */
+  .next-section { background: var(--white); }
+  .next-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .next-card {
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--rule);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .next-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-violet);
+  }
+  .next-card-num {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--accent-violet); margin-bottom: 12px;
+  }
+  .next-card h4 {
+    font-family: var(--serif); font-size: 1.15rem;
+    margin-bottom: 10px; font-weight: 400;
+  }
+  .next-card p {
+    font-size: 0.88rem; color: var(--ink-light); line-height: 1.6;
+  }
+
+  /* ── BACK LINK ───────────────────── */
+  .back-section {
+    padding: 48px; text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  .back-link {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-violet); text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.7; }
+
+  /* ── LIGHTBOX ────────────────────── */
+  .lightbox {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    background: rgba(15,15,18,0.92);
+    backdrop-filter: blur(12px);
+    align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    animation: lbIn 0.3s ease;
+  }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 32px;
+    font-size: 2rem; color: rgba(255,255,255,0.5);
+    cursor: pointer; z-index: 10;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: #fff; }
+  @keyframes lbIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── ANIMATIONS ──────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ──────────────────── */
+  @media (max-width: 900px) {
+    .summary-grid { grid-template-columns: 1fr; }
+    .problem-cards { grid-template-columns: 1fr; }
+    .research-stats { grid-template-columns: repeat(2, 1fr); }
+    .research-findings { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .next-cards { grid-template-columns: 1fr; }
+    .transform-table { display: block; }
+    .transform-table thead { display: none; }
+    .transform-table tbody, .transform-table tr, .transform-table td { display: block; width: 100%; }
+    .transform-table tr { margin-bottom: 16px; background: var(--glass); border-radius: 12px; border: 1px solid var(--glass-border); overflow: hidden; }
+    .td-before, .td-after { border-radius: 0; border: none; }
+    .td-before::before { content: 'Before → '; font-family: var(--mono); font-size: 0.6rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; }
+    .td-after::before { content: 'After → '; font-family: var(--mono); font-size: 0.6rem; color: var(--accent-violet); letter-spacing: 0.08em; text-transform: uppercase; }
+    .td-arrow { display: none; }
+    .td-before, .td-after { width: 100%; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    section { padding: 64px 24px; }
+    .hero { padding: 100px 24px 64px; min-height: 70vh; }
+    .hero-title { font-size: 2.4rem; }
+    .section-title { font-size: 1.8rem; }
+    .slide-thumb { width: 220px; }
+  }
+  @media (max-width: 480px) {
+    .hero-title { font-size: 1.9rem; }
+    .hero-meta { gap: 20px; }
+    .research-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name"><a href="#">carl schulz</a></div>
+  <div class="nav-links">
+    <a href="#summary">Summary</a>
+    <a href="#problem">Problem</a>
+    <a href="#approach">Approach</a>
+    <a href="#research">Research</a>
+    <a href="#results">Results</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Case Study &middot; Asurion</div>
+    <h1 class="hero-title">Reinventing the connected home experience from the ground up</h1>
+    <p class="hero-subtitle">How I led the design vision for Asurion's flagship product transformation&mdash;from a single break/fix offering to a modular, customer-centered platform serving 350M+ subscribers.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">514</div>
+        <div class="hero-meta-label">Customers researched</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">20+</div>
+        <div class="hero-meta-label">Hours of video</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">85%</div>
+        <div class="hero-meta-label">Share of preference</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-value">2x</div>
+        <div class="hero-meta-label">Interest vs. legacy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="summary-section" id="summary">
+  <div class="section-inner">
+    <div class="summary-grid">
+      <div>
+        <div class="section-eyebrow fade-in">Summary</div>
+        <h2 class="section-title fade-in">Asurion needed to move beyond break/fix. Customers needed a reason to stay.</h2>
+        <div class="summary-text fade-in">
+          <p>Asurion's connected home product had a positioning problem. Customers saw it as insurance they hoped to never use. Churn was driven by a perceived value gap&mdash;people were constantly evaluating whether they were getting $25 of value each month. The product was one-size-fits-all in a world where every home is different.</p>
+          <p>I was a founding member of the initiative to reimagine this product from scratch. What started as a multi-day workshop exploring customer pain points became a full-scale product transformation that shifted Asurion from a client-led model to a product-led model&mdash;building the platform foundation that now underpins the company's enterprise strategy.</p>
+        </div>
+      </div>
+      <div class="role-card fade-in">
+        <div class="role-card-label">My Role</div>
+        <h3>Senior Director of Product Design</h3>
+        <p>Led design vision across the full initiative as a founding team member&mdash;from early discovery workshops through in-field pilot validation. Directed a cross-functional design team through research, prototyping, concept testing, and end-to-end experience design spanning awareness through multi-year engagement.</p>
+        <div class="role-tags">
+          <span class="role-tag">Product Strategy</span>
+          <span class="role-tag">User Research</span>
+          <span class="role-tag">Workshop Facilitation</span>
+          <span class="role-tag">Concept Testing</span>
+          <span class="role-tag">Service Design</span>
+          <span class="role-tag">In-Field Validation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM FRAMING -->
+<section class="problem-section" id="problem">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Problem Framing</div>
+    <h2 class="section-title fade-in" style="color: #fff;">Three customer truths that changed our direction</h2>
+    <p class="section-desc fade-in">We started with the prompt: "How would you define a joyful home enabled by technology?" The answers reframed everything. Home isn't about devices&mdash;it's where people feel joy, raise families, build memories, and find peace. Our product needed to meet people there.</p>
+
+    <div class="problem-cards">
+      <div class="problem-card fade-in">
+        <div class="problem-card-icon">🎯</div>
+        <h4>Customers want choice</h4>
+        <p>How might we deeply understand each customer, so we can help bring to life their unique definition of home? There isn't a one-size-fits-all product.</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-icon">📈</div>
+        <h4>Customers are dynamic</h4>
+        <p>How might we grow with each customer, evolving with their changing needs? How do we let customers flex up and down, rather than cancel?</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-icon">💎</div>
+        <h4>Customers are discerning</h4>
+        <p>How might we deliver personalized and continuous value to each customer, enhancing their everyday lives? They're evaluating whether they get $25 of value every month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach-section" id="approach">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Approach</div>
+    <h2 class="section-title fade-in">From workshop whiteboard to in-store pilot</h2>
+    <p class="section-desc fade-in">We moved fast and worked iteratively&mdash;building prototypes, testing with real customers, and seeking to invalidate hypotheses so we could converge on our strongest ideas.</p>
+
+    <div class="process-timeline">
+      <div class="process-step active fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 01</div>
+        <h4>Founding workshop &amp; opportunity mapping</h4>
+        <p>As a founding member of the initiative, I led the first multi-day workshop to explore customer pain points and imagine the future of the product. We put the user at the center, surfacing insights and anecdotes that highlighted deep issues in customer value perception&mdash;rooted in real needs and ongoing technology pain points.</p>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 02</div>
+        <h4>Rapid qualitative research sprints</h4>
+        <p>From the workshop, we kicked off intensive research. My team and I conducted rounds of in-depth interviews and qualitative research in rapid sprints&mdash;talking with real customers and iterating incredibly quickly. We used co-creation sessions, UX testing, and survey instruments to identify product constructs that were brought to life in progressively higher fidelity.</p>
+        <div class="slide-gallery">
+          <img class="slide-thumb" src="Slide11.png" alt="Research methodology" onclick="openLightbox(this)" loading="lazy">
+          <img class="slide-thumb" src="Slide12.png" alt="Research highlights" onclick="openLightbox(this)" loading="lazy">
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 03</div>
+        <h4>Quantitative validation at scale</h4>
+        <p>Once we framed the primary core needs, we partnered with the market research team to run a large-scale conjoint study (N=1,750) validating the product constructs we'd developed. This confirmed that offering tiered choices generated twice the customer interest compared to the existing one-size-fits-all product.</p>
+        <div class="slide-gallery">
+          <img class="slide-thumb" src="Slide14.png" alt="Conjoint analysis results" onclick="openLightbox(this)" loading="lazy">
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 04</div>
+        <h4>End-to-end experience design</h4>
+        <p>Working as a centralized design team, we imagined the complete customer journey&mdash;from creating awareness all the way through multi-year engagement. This included onboarding, device management, tier selection, claim flows, and ongoing value delivery touchpoints. The vision was a product that earns its place in people's lives every single month.</p>
+        <div class="slide-gallery">
+          <img class="slide-thumb" src="Slide10.png" alt="Vision and onboarding" onclick="openLightbox(this)" loading="lazy">
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-dot"></div>
+        <div class="process-step-num">Phase 05</div>
+        <h4>In-field pilot validation</h4>
+        <p>Before launch, I led in-field research in pilot markets&mdash;real-world, in-store tests to get in-person feedback in the actual channel where the product would be sold. This was a large effort coordinating sales reps, design researchers, and designers to quickly iterate on positioning and further refine the product construct we took to market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH / DATA -->
+<section class="research-section" id="research">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Research &amp; Insights</div>
+    <h2 class="section-title fade-in">What 514 customers taught us</h2>
+    <p class="section-desc fade-in">Across in-depth interviews, co-creation sessions, UX testing, and quantitative surveys, clear patterns emerged that directly shaped the product.</p>
+
+    <div class="research-stats">
+      <div class="stat-card fade-in">
+        <div class="stat-value">514</div>
+        <div class="stat-label">Customers surveyed or interviewed</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-value">20+</div>
+        <div class="stat-label">Hours of research video</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Research methods</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-value">20+</div>
+        <div class="stat-label">Benefits tested</div>
+      </div>
+    </div>
+
+    <div class="research-findings">
+      <div class="finding fade-in">
+        <strong>Phone is the anchor.</strong> It's the primary device customers want protected, and it serves as the entry point for broader coverage.
+      </div>
+      <div class="finding fade-in">
+        <strong>Unlimited feels wrong.</strong> Many customers think unlimited coverage is "too good to be true" or "too much." They want to protect just the devices they deem critical.
+      </div>
+      <div class="finding fade-in">
+        <strong>Mix-and-match is highly desirable.</strong> The ability to choose product categories&mdash;rather than accept a rigid bundle&mdash;tested as a top value driver.
+      </div>
+      <div class="finding fade-in">
+        <strong>Life milestones drive tier changes.</strong> People can see themselves flexing up or down between tiers at different stages&mdash;new home, new baby, downsizing.
+      </div>
+      <div class="finding fade-in">
+        <strong>Willingness to pay more for fit.</strong> Customers will pay a premium to get features and benefits that actually match their needs.
+      </div>
+      <div class="finding fade-in">
+        <strong>Upgrades and money-back win.</strong> Of 20+ benefits tested, device upgrades and money-back-when-accident-free resonated across every customer segment.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="results">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Results &amp; Impact</div>
+    <h2 class="section-title fade-in">From one product to a platform</h2>
+    <p class="section-desc fade-in">The conjoint analysis validated the product direction decisively. By offering tiered, converged choices, we doubled customer interest and laid the foundation for a fundamentally different business model.</p>
+
+    <div class="results-grid">
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-violet);">85%</div>
+        <div class="result-label">Share of preference</div>
+        <div class="result-desc">The four-choice base case with home, mobile, and appliance coverage achieved 85% share of preference&mdash;up from 42% with the legacy single product.</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-teal);">2x</div>
+        <div class="result-label">Interest vs. legacy</div>
+        <div class="result-desc">Tiered choices and converged offerings generated twice the customer interest compared to the existing one-size-fits-all product.</div>
+      </div>
+      <div class="result-card fade-in">
+        <div class="result-value" style="color: var(--accent-rose);">15%</div>
+        <div class="result-label">Decliner rate</div>
+        <div class="result-desc">Only 15% of potential customers declined the four-choice product&mdash;down from 58% declining the legacy home-only offering.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transform-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Transformation</div>
+    <h2 class="section-title fade-in" style="color: #fff;">Shifting the Asurion customer experience</h2>
+    <p class="section-desc fade-in">This initiative didn't just create a new product. It redefined how Asurion builds, sells, and delivers value to customers.</p>
+
+    <table class="transform-table fade-in">
+      <thead>
+        <tr>
+          <th class="th-before">Current State</th>
+          <th></th>
+          <th class="th-after">Future State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-before">One-size-fits-all product offerings</td>
+          <td class="td-arrow">→</td>
+          <td class="td-after"><strong>Customers flex up or down</strong> as their protection needs change. Aim to keep customers for life.</td>
+        </tr>
+        <tr>
+          <td class="td-before">Monetization tied to a subscription product or service fee</td>
+          <td class="td-arrow">→</td>
+          <td class="td-after"><strong>Monetization tied to value delivery</strong>&mdash;subscription, contract, one-time service, or upgrade benefit.</td>
+        </tr>
+        <tr>
+          <td class="td-before">Bespoke product innovation for each partner</td>
+          <td class="td-arrow">→</td>
+          <td class="td-after">Extensible platform that flexibly supports <strong>product customizations down to the customer level.</strong></td>
+        </tr>
+        <tr>
+          <td class="td-before">Customers offered a single resolution path</td>
+          <td class="td-arrow">→</td>
+          <td class="td-after"><strong>Customer choice of resolution path</strong>&mdash;we recommend the best options and customers make the final call.</td>
+        </tr>
+        <tr>
+          <td class="td-before">Business and product-specific technical stacks</td>
+          <td class="td-arrow">→</td>
+          <td class="td-after"><strong>Streamlined technical stack</strong> supporting all products and services across every channel.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="next-section">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">What's Next</div>
+    <h2 class="section-title fade-in">Building on the foundation</h2>
+
+    <div class="next-cards">
+      <div class="next-card fade-in">
+        <div class="next-card-num">01</div>
+        <h4>Scaling to more partners</h4>
+        <p>The product platform is being extended across Asurion's partner ecosystem, with customization capabilities that allow each partner to deliver a differentiated experience on a shared foundation.</p>
+      </div>
+      <div class="next-card fade-in">
+        <div class="next-card-num">02</div>
+        <h4>Deepening personalization</h4>
+        <p>Using the research foundation we built, the team is developing more intelligent recommendation and value delivery systems that evolve with each customer's home over time.</p>
+      </div>
+      <div class="next-card fade-in">
+        <div class="next-card-num">03</div>
+        <h4>Measuring lifetime value</h4>
+        <p>Success metrics are shifting from attach rate alone to long-term customer tenure and LTV&mdash;delivering value throughout the journey, not just at the point of claim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK -->
+<div class="back-section">
+  <a href="#" class="back-link">← Back to portfolio</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">&times;</div>
+  <img id="lightbox-img" src="" alt="Slide detail">
+</div>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+      const idx = Array.from(siblings).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Lightbox
+function openLightbox(img) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = img.src;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
