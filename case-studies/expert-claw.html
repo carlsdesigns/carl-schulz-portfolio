@@ -7,6 +7,7 @@
   <title>ExpertClaw — Case Study | Carl Schulz</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/portfolio-work.css">
+  <link rel="stylesheet" href="../css/case-study-shell.css">
 <style>
   :root {
     --ink: #0a0a0f;
@@ -34,30 +35,28 @@
     line-height: 1.65; -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV ──────────────────────────── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 48px; height: 56px;
-    background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--rule);
-  }
-  .nav-name { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; font-weight: 500; }
-  .nav-name a { color: var(--white); text-decoration: none; }
-  .nav-links { display: flex; gap: 24px; }
-  .nav-links a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.05em; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent-magenta); }
-
   /* ── HERO ──────────────────────────── */
   .hero {
     position: relative; overflow: hidden; min-height: 90vh;
     display: flex; align-items: center; justify-content: center;
-    padding: 120px 48px 80px;
+    padding: 88px 48px 80px;
     background: linear-gradient(160deg, #0a0a0f 0%, #1a0a20 40%, #120a1a 100%);
+  }
+  .hero-bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url('https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/expert-claw-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+    opacity: 0.26;
   }
   .hero-glow {
     position: absolute; width: 600px; height: 600px; border-radius: 50%;
     filter: blur(140px); opacity: 0.2;
+    z-index: 1;
   }
   .g1 { background: var(--accent-magenta); top: -20%; left: -10%; }
   .g2 { background: var(--accent-violet); bottom: -15%; right: -8%; }
@@ -126,6 +125,12 @@
   .team-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
   .team-list { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
 
+  /* ── OVERVIEW VIDEO (hero → problem) ─ */
+  .overview-video-section {
+    background: var(--ink);
+    border-top: 1px solid var(--rule);
+  }
+
   /* ── DEMO VIDEO ──────────────────── */
   .demo-section { background: var(--ink); border-top: 1px solid var(--rule); }
   .video-wrapper {
@@ -133,7 +138,10 @@
     box-shadow: 0 24px 80px rgba(0,0,0,0.4); position: relative; cursor: pointer;
     border: 1px solid var(--glass-border); background: #000;
   }
-  .video-wrapper video { width: 100%; display: block; }
+  .video-wrapper video {
+    width: 100%;
+    display: block;
+  }
   .video-play-overlay {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     display: flex; align-items: center; justify-content: center;
@@ -269,8 +277,8 @@
     .transform-table { display: block; overflow-x: auto; }
   }
   @media (max-width: 768px) {
-    nav { padding: 0 20px; } section { padding: 64px 24px; }
-    .hero { padding: 100px 24px 64px; min-height: 75vh; }
+    section { padding: 64px 24px; }
+    .hero { padding: 72px 24px 64px; min-height: 75vh; }
     .hero-title { font-size: 2.2rem; } .section-title { font-size: 1.8rem; }
     .problem-blocks, .cap-grid { grid-template-columns: 1fr; }
   }
@@ -293,20 +301,33 @@
 
 <div id="portfolioMain" hidden>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-name"><a href="../index.html">carl schulz</a></div>
-  <div class="nav-links">
-    <a href="../work.html">Work</a>
+<header class="case-header-stack">
+  <nav class="work-nav" aria-label="Site">
+    <a class="work-nav-brand" href="../index.html">
+      <img src="../assets/images/carl-photo.png" alt="Carl Schulz">
+      Carl Schulz
+    </a>
+    <div>
+      <a href="../index.html">Home</a>
+      <span style="display:inline-block;width:16px"></span>
+      <a href="../work.html">Work</a>
+      <span style="display:inline-block;width:16px"></span>
+      <a href="../index.html#about">About</a>
+    </div>
+  </nav>
+  <nav class="case-inpage-nav case-inpage--dark" aria-label="On this page">
+    <a href="#overview">Overview</a>
+    <a href="#summary">Summary</a>
     <a href="#problem">Problem</a>
     <a href="#demo">Demo</a>
-    <a href="#how">How It Works</a>
+    <a href="#how">How it works</a>
     <a href="#results">Results</a>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-image" aria-hidden="true"></div>
   <div class="hero-glow g1"></div>
   <div class="hero-glow g2"></div>
   <div class="hero-glow g3"></div>
@@ -332,6 +353,26 @@
         <div class="hero-meta-label">Opportunity</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- OVERVIEW (program recording) -->
+<section class="overview-video-section" id="overview">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Overview</div>
+    <h2 class="section-title fade-in">How ExpertClaw fits the opportunity</h2>
+    <p class="section-desc fade-in">I shaped the slides, story, and customer-experience front end for this walkthrough. I worked directly with product lead Christian—who presents here—to keep strategic framing aligned with the business opportunity we were pursuing. Engineering owned backend integrations.</p>
+    <div class="video-wrapper fade-in" id="overviewVideoWrapper">
+      <video id="overviewVideo" controls preload="metadata" playsinline>
+        <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/gulchhub_T024_expertclaw-edit.mp4" type="video/mp4">
+      </video>
+      <div class="video-play-overlay" id="overviewOverlay" onclick="toggleVideo('overviewVideo','overviewOverlay')">
+        <div class="play-btn">
+          <svg width="28" height="32" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#ffffff"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="video-caption fade-in">GulchHub · T024 · program overview (Christian, product)</div>
   </div>
 </section>
 
@@ -387,7 +428,7 @@
         </div>
         <div class="team-section">
           <div class="team-label">ExpertClaw Team</div>
-          <div class="team-list">Kailey, Ashok, Mohit (Engineering) &middot; Carl (Design) &middot; Kristian (Product)</div>
+          <div class="team-list">Kailey, Ashok, Mohit (Engineering) &middot; Carl (Design) &middot; Christian (Product)</div>
         </div>
       </div>
     </div>
@@ -402,7 +443,7 @@
     <p class="section-desc fade-in">A live call scenario: Cynthia needs her printer reconnected to her MacBook Pro. Watch how ExpertClaw guides expert Paul from intent detection through resolution and earned upsell, all in a single screen.</p>
 
     <div class="video-wrapper fade-in" id="demoVideoWrapper">
-      <video id="demoVideo" preload="metadata" playsinline>
+      <video id="demoVideo" controls preload="metadata" playsinline>
         <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/expert-claw/expert-claw-experience.mp4" type="video/mp4">
       </video>
       <div class="video-play-overlay" id="demoOverlay" onclick="toggleVideo('demoVideo','demoOverlay')">
@@ -709,9 +750,18 @@ function toggleVideo(videoId, overlayId) {
   else { video.pause(); overlay.classList.remove('hidden'); }
 }
 document.querySelectorAll('.video-wrapper video').forEach(v => {
-  v.addEventListener('click', () => {
+  v.addEventListener('play', () => {
     const overlay = v.closest('.video-wrapper').querySelector('.video-play-overlay');
-    if (!v.paused) { v.pause(); overlay.classList.remove('hidden'); }
+    if (overlay) overlay.classList.add('hidden');
+  });
+  v.addEventListener('click', (e) => {
+    if (e.target !== v) return;
+    const overlay = v.closest('.video-wrapper').querySelector('.video-play-overlay');
+    if (!overlay) return;
+    if (!v.paused) {
+      v.pause();
+      overlay.classList.remove('hidden');
+    }
   });
 });
 

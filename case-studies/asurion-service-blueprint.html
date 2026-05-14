@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>AI-native service blueprint tool — Case study | Carl Schulz</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/portfolio-work.css">
+  <link rel="stylesheet" href="../css/case-study-shell.css">
+  <link rel="stylesheet" href="../css/case-studies/service-design.css">
+</head>
+<body>
+
+<div id="portfolioGate" class="portfolio-gate">
+  <div class="portfolio-gate-card">
+    <h1>Protected work</h1>
+    <p>Enter your password to read this case study.</p>
+    <form id="gateForm" novalidate onsubmit="return false;">
+      <input type="password" id="gatePassword" name="password" autocomplete="current-password" placeholder="Password" aria-label="Password">
+      <button type="button" id="gateUnlockBtn">Continue</button>
+      <p class="portfolio-gate-error" id="gateError" role="alert">Incorrect password.</p>
+    </form>
+    <a class="back" href="../index.html">← Back to site</a>
+  </div>
+</div>
+
+<div id="portfolioMain" class="cs-svc-main cs-svc-blueprint" hidden>
+  <header class="case-header-stack">
+    <nav class="work-nav" aria-label="Site">
+      <a class="work-nav-brand" href="../index.html">
+        <img src="../assets/images/carl-photo.png" alt="Carl Schulz">
+        Carl Schulz
+      </a>
+      <div>
+        <a href="../index.html">Home</a>
+        <span style="display:inline-block;width:16px"></span>
+        <a href="../work.html">Work</a>
+        <span style="display:inline-block;width:16px"></span>
+        <a href="../index.html#about">About</a>
+      </div>
+    </nav>
+    <nav class="case-inpage-nav case-inpage--dark" aria-label="On this page">
+      <a href="#summary">Summary</a>
+      <a href="#problem">Problem</a>
+      <a href="#viewer">Viewer</a>
+      <a href="#data">Who shows up</a>
+      <a href="#pain">Pain registry</a>
+      <a href="#media">Rich content</a>
+      <a href="#ai">AI assistant</a>
+      <a href="#activation">Activation</a>
+      <a href="#stack">Stack</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-bp-bg" aria-hidden="true"></div>
+    <div class="hero-bp-overlay" aria-hidden="true"></div>
+    <div class="glow-purple" style="top: -100px; right: -150px;"></div>
+    <div class="hero-content fade-up">
+      <div class="eyebrow">Internal product · Service design</div>
+      <h1>AI-native <span class="accent">service blueprint</span> tool</h1>
+      <p class="subtitle">A web application that stores, renders, and manages Asurion’s service blueprints—the operational maps from first customer click through expert intervention, fulfillment, and partner handoffs—with audience-specific views and an assistant that reads and writes inside the same structured model.</p>
+      <div class="scroll-cue">↓ &nbsp;Why we built it</div>
+    </div>
+  </section>
+
+  <section class="svc-summary-section" id="summary" aria-labelledby="svc-bp-summary-heading">
+    <div class="section-inner">
+      <div class="svc-summary-grid">
+        <div>
+          <div class="section-eyebrow fade-up">Summary</div>
+          <h2 class="section-title fade-up" id="svc-bp-summary-heading">Mapping the real service—and building the tool that scales it</h2>
+          <div class="svc-summary-text fade-up">
+            <p>I designed and built Asurion's AI-native service blueprint tool, a web application that replaced static Figma walls with structured, interactive maps featuring audience-specific views and integrated AI analysis. I authored five of the seven enterprise blueprints, auditing and mapping product experiences across the portfolio. The tool was a self-initiated response to CPO-level prompts for enterprise leverage, built end-to-end through AI-assisted development workflows to create a scalable system of record where complexity demanded systematic analysis.</p>
+          </div>
+        </div>
+        <aside class="svc-role-card fade-up" aria-labelledby="svc-bp-role-heading">
+          <div class="svc-role-card-label">My role</div>
+          <h3 id="svc-bp-role-heading">Service design lead</h3>
+          <p>I owned discovery through implementation: research, experience mapping, information architecture, and platform development. I built the tool in Cursor, owning the full stack from data modeling and relational schema design through authentication, API integrations, and front-end delivery. Self-initiated in response to CPO-level prompts for enterprise leverage.</p>
+          <div class="svc-role-tags">
+            <span class="svc-role-tag">AI-native workflows</span>
+            <span class="svc-role-tag">Service blueprinting</span>
+            <span class="svc-role-tag">Research &amp; mapping</span>
+            <span class="svc-role-tag">Tool IC ownership</span>
+            <span class="svc-role-tag">Figma → web</span>
+            <span class="svc-role-tag">Scalable system of record</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Problem</div>
+        <div class="section-title">Horizontal documents could not serve three audiences at once.</div>
+        <div class="section-subtitle">Blueprints started as single-density static maps. They worked for authors but broke down for executives scanning for decisions, for product teams who need system behavior and data-flow truth, and for enterprise partners who need orientation—not a wall of detail on day one.</div>
+      </div>
+      <div class="unlock-grid fade-up" style="margin-top:32px">
+        <div class="unlock-card">
+          <div class="unlock-icon">◉</div>
+          <div>
+            <h4>Executives</h4>
+            <p>Signal was buried; investment narratives required reading every row.</p>
+          </div>
+        </div>
+        <div class="unlock-card">
+          <div class="unlock-icon">◇</div>
+          <div>
+            <h4>Product &amp; platform</h4>
+            <p>System-level detail—data flow, handoffs, accessibility gaps—was inconsistent or missing.</p>
+          </div>
+        </div>
+        <div class="unlock-card">
+          <div class="unlock-icon">◎</div>
+          <div>
+            <h4>Enterprise &amp; partners</h4>
+            <p>No progressive disclosure, glossary, or “how to read this” layer for first contact.</p>
+          </div>
+        </div>
+        <div class="unlock-card">
+          <div class="unlock-icon">⎘</div>
+          <div>
+            <h4>Pain points elsewhere</h4>
+            <p>Annotations lived in Notion, disconnected from the map locations that produced them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="margin-top:40px">
+        <div class="section-eyebrow">Product intent</div>
+        <div class="section-title" style="font-size:clamp(26px,3.5vw,40px)">One structured source of truth per journey.</div>
+        <p class="section-subtitle" style="margin-bottom:24px">Phases and steps form the spine. Swim lanes hold customer, expert, system, partner, supply chain, and data-flow content. Typed annotations, a first-class pain registry, props and media, threaded comments, and role-based access sit on top—then <strong>two audience views—Executive and Enterprise</strong>—tune how much signal you see without forking the underlying data.</p>
+      </div>
+      <div class="fade-up svc-video-wrap">
+        <video controls playsinline preload="auto">
+          <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/digital-service-blueprint-.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="svc-caption fade-up">Walkthrough of audience views, layers, and navigation—same recording linked from the program case study.</p>
+    </div>
+  </section>
+
+  <section id="viewer">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Multi-layer viewer &amp; reading modes</div>
+        <h2 class="section-title">Everyone needs the same truth—from the CEO to the product manager.</h2>
+        <p class="section-subtitle section-subtitle--wide">We kept hearing the same frustration: almost no one knows how the service really works end to end. Ground truth on a customer or client experience still takes four or five teams before the story holds together. The viewer is for everyone who has to decide something, from leadership to platform and CX. You work with stackable lanes and overlays instead of a single frozen wall of detail. <strong>Executive view</strong> gives a quicker leadership read. <strong>Enterprise view</strong> keeps the fuller operational picture. Knowledge moves out of individual heads and into one structured surface, so aligned answers often start with a few keystrokes instead of another scavenger hunt.</p>
+      </div>
+      <figure class="svc-figure fade-up" style="margin-top:28px">
+        <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-rich-enterprise-view.png" alt="Enterprise-oriented blueprint view with rich lane content" loading="lazy">
+        <figcaption class="svc-caption">Enterprise view: operational depth—lanes and overlays you can peel back as the conversation gets more technical.</figcaption>
+      </figure>
+      <div class="svc-media-grid fade-up" style="margin-top:24px">
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-white-mode.png" alt="Blueprint tool in light mode" loading="lazy">
+          <figcaption class="svc-caption">Light mode for rooms, print, and accessibility preferences.</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-maps.png" alt="Library of blueprint maps in the tool" loading="lazy">
+          <figcaption class="svc-caption">Intro library: jump into any journey without leaving the app.</figcaption>
+        </figure>
+      </div>
+      <div class="svc-media-grid cols-3 fade-up" style="margin-top:32px">
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-executive-view1.png" alt="Executive summary view of blueprint health" loading="lazy">
+          <figcaption class="svc-caption">Executive view: scannable health and decision signals.</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-guide-1.png" alt="How to read this blueprint guide page 1" loading="lazy">
+          <figcaption class="svc-caption">In-product guide (1 of 2): orients non-technical readers to the map and how Asurion runs the service.</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-guide-2.png" alt="How to read this blueprint guide page 2" loading="lazy">
+          <figcaption class="svc-caption">Guide (2 of 2): legends, lanes, and overlays—so partners can self-serve context on the blueprint.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="bp-section svc-tight" id="data">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Who shows up</div>
+        <h2 class="section-title">We organize the blueprint around the people and partners who actually run the service.</h2>
+        <p class="section-subtitle">Asurion is not a single-channel SaaS flow. Members and direct buyers, experts in call centers and 700+ stores and in customers’ homes, logistics that stages parts and devices, the data that keeps every handoff honest, and partners like carriers and repair depots all share custody of the same journey. Because that mix is specific to us, the map starts with these five roles—then we layer in how data shows up at each step.</p>
+      </div>
+      <div class="svc-bp-players fade-up" role="list" aria-label="Five organizing roles in Asurion service blueprints">
+        <article class="svc-bp-player" role="listitem">
+          <h3 class="svc-bp-player-title">The customer</h3>
+          <p class="svc-bp-player-desc">Program members and direct consumers—the people asking for help, buying protection, or continuing a relationship with us.</p>
+        </article>
+        <article class="svc-bp-player" role="listitem">
+          <h3 class="svc-bp-player-title">The expert</h3>
+          <p class="svc-bp-player-desc">Phone agents, store employees, and remote field experts who meet customers where the work actually happens.</p>
+        </article>
+        <article class="svc-bp-player" role="listitem">
+          <h3 class="svc-bp-player-title">Supply chain</h3>
+          <p class="svc-bp-player-desc">Logistics that makes sure the right parts and devices are in motion before a job is promised.</p>
+        </article>
+        <article class="svc-bp-player" role="listitem">
+          <h3 class="svc-bp-player-title">The data</h3>
+          <p class="svc-bp-player-desc">What flows across systems so customers, experts, and operations see the same truth—or reveal where they do not.</p>
+        </article>
+        <article class="svc-bp-player" role="listitem">
+          <h3 class="svc-bp-player-title">Third parties</h3>
+          <p class="svc-bp-player-desc">UPS, repair depots, and other partners contracted deep into the experience—not a footnote lane, a real actor.</p>
+        </article>
+      </div>
+      <p class="svc-caption fade-up">Same five voices across journeys, so executives, product, and enterprise partners learn the map once—then go deep on maturity and handoffs without relearning a new taxonomy each time.</p>
+    </div>
+  </section>
+
+  <section id="pain">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Pain point registry</div>
+        <div class="section-title">First-class objects—not sticky notes in another tool.</div>
+        <div class="section-subtitle">Each pain point carries classification, impact, effort, priority, status, and owner. The registry links bidirectionally to blueprint cells: click a pin on the map to open the record, or start from the registry to jump to the exact step and lane.</div>
+      </div>
+      <figure class="svc-figure fade-up" style="margin-top:28px">
+        <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-pain-point-registration.png" alt="Pain point registration and classification UI" loading="lazy">
+        <figcaption class="svc-caption">Registration surface migrated from the prior Notion schema—now adjacent to the system of record.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="unlock-section svc-tight" id="media">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Props &amp; media</div>
+        <div class="section-title">Capture how the service actually looks and sounds.</div>
+        <div class="section-subtitle">Customer and expert props—UI screenshots, photos from the field, short clips—live in swim lane cells, inline thumbnails, and a lightbox for full resolution so workshops and reviews stay grounded in real artifacts.</div>
+      </div>
+      <div class="svc-media-grid cols-3 fade-up" style="margin-top:28px">
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-rich-content-mode-0.png" alt="Rich content in blueprint cell example 1" loading="lazy">
+          <figcaption class="svc-caption">Rich content · 1</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-rich-content-mode-1.png" alt="Rich content in blueprint cell example 2" loading="lazy">
+          <figcaption class="svc-caption">Rich content · 2</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-rich-content-mode-2.png" alt="Rich content in blueprint cell example 3" loading="lazy">
+          <figcaption class="svc-caption">Rich content · 3</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="bp-section svc-tight" id="ai">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Blueprint assistant</div>
+        <div class="section-title">AI that operates inside the data model—not beside it.</div>
+        <div class="section-subtitle section-subtitle--wide">A multi-provider LLM sidebar runs a server-side agent loop with tool access: read structure, inspect steps, create and update annotations, upsert swim lane content. Mandatory ordering keeps reads before writes; mutations refetch the UI so the map and chat never diverge. Because the model reads the same grid the team maintains, you can ask it to reason against <a href="asurion-service-design.html#standards">Asurion’s published service standards</a>—and get findings tied to steps, headline metrics, root causes, and dependencies.</div>
+      </div>
+
+      <div class="aei-demo fade-up">
+        <div class="aei-demo-inner">
+          <div class="aei-demo-kicker">Example output · prompt-driven</div>
+          <h3 class="aei-demo-title">Service Blueprint AI evaluation</h3>
+          <p class="aei-demo-lede">The assistant ingested the live journey (annotations, lanes, data-flow cells) and scored it against the <strong>Asurion Experience Index</strong>—Easy, Fast, Fair, Human—with RED / AMBER / GREEN evidence, standard verdicts, and a sequenced remediation stack. Below is a condensed version of one real run; step IDs point back to rows in the blueprint.</p>
+
+          <div class="aei-glance-head">
+            <span class="aei-glance-label">Service Standards at a glance</span>
+          </div>
+
+          <div class="aei-takeaways" aria-label="Key takeaways from this evaluation">
+            <div class="aei-tw-item aei-tw-item--risk">
+              <span class="aei-tw-value">3 of 4</span>
+              <span class="aei-tw-label">Standards failing</span>
+            </div>
+            <div class="aei-tw-item aei-tw-item--rating">
+              <span class="aei-tw-value">3<span class="aei-tw-star" aria-hidden="true">★</span></span>
+              <span class="aei-tw-label">Est. customer rating</span>
+            </div>
+            <div class="aei-tw-item aei-tw-item--risk">
+              <span class="aei-tw-value">8 days</span>
+              <span class="aei-tw-label">Actual resolution time</span>
+              <span class="aei-tw-sub">vs. 90% next-day standard</span>
+            </div>
+            <div class="aei-tw-item aei-tw-item--pos">
+              <span class="aei-tw-value">6</span>
+              <span class="aei-tw-label">Sequenced fixes identified</span>
+            </div>
+          </div>
+
+          <div class="aei-eval-ui" id="aei-eval-ui">
+            <div class="aei-std-tabs" role="tablist" aria-label="Browse by service standard">
+              <button type="button" class="aei-tab aei-tab--failing aei-tab--selected" role="tab" id="aei-tab-easy" aria-selected="true" aria-controls="aei-panel-easy" data-aei="easy" tabindex="0">
+                <span class="aei-tab-row"><span class="aei-tab-name">Easy</span><span class="aei-tab-badge">Failing</span></span>
+                <span class="aei-tab-tagline">Easy as pushing a button</span>
+                <span class="aei-tab-counts" aria-label="Red, amber, green finding counts"><span class="aei-ms-red">3 red</span><span class="aei-ms-amber">2 amber</span><span class="aei-ms-green">1 green</span></span>
+              </button>
+              <button type="button" class="aei-tab aei-tab--failing" role="tab" id="aei-tab-fast" aria-selected="false" aria-controls="aei-panel-fast" data-aei="fast" tabindex="-1">
+                <span class="aei-tab-row"><span class="aei-tab-name">Fast</span><span class="aei-tab-badge">Failing</span></span>
+                <span class="aei-tab-tagline">Solved next day or faster</span>
+                <span class="aei-tab-counts"><span class="aei-ms-red">3 red</span><span class="aei-ms-amber">1 amber</span><span class="aei-ms-green">1 green</span></span>
+              </button>
+              <button type="button" class="aei-tab aei-tab--risk" role="tab" id="aei-tab-fair" aria-selected="false" aria-controls="aei-panel-fair" data-aei="fair" tabindex="-1">
+                <span class="aei-tab-row"><span class="aei-tab-name">Fair</span><span class="aei-tab-badge aei-tab-badge--amber">At risk</span></span>
+                <span class="aei-tab-tagline">Worth every penny</span>
+                <span class="aei-tab-counts"><span class="aei-ms-red">1 red</span><span class="aei-ms-amber">2 amber</span><span class="aei-ms-green">2 green</span></span>
+              </button>
+              <button type="button" class="aei-tab aei-tab--failing" role="tab" id="aei-tab-human" aria-selected="false" aria-controls="aei-panel-human" data-aei="human" tabindex="-1">
+                <span class="aei-tab-row"><span class="aei-tab-name">Human</span><span class="aei-tab-badge">Failing</span></span>
+                <span class="aei-tab-tagline">Experts who care deeply</span>
+                <span class="aei-tab-counts"><span class="aei-ms-red">3 red</span><span class="aei-ms-amber">2 amber</span><span class="aei-ms-green">2 green</span></span>
+              </button>
+            </div>
+
+            <div class="aei-panels">
+              <div class="aei-panel" id="aei-panel-easy" role="tabpanel" aria-labelledby="aei-tab-easy">
+                <div class="aei-panel-head">
+                  <div>
+                    <h4 class="aei-panel-title">Easy</h4>
+                    <p class="aei-panel-tagline">Easy as pushing a button</p>
+                  </div>
+                  <span class="aei-metric-pill">Service metric: 90% helped in 5 inputs or less</span>
+                </div>
+                <p class="aei-verdict-strip aei-verdict-strip--fail">Fails Easy: navigation and catalog failures at claim start blow past the 5-input bar before customers reach resolution.</p>
+                <div class="aei-breakdown-grid">
+                  <div class="aei-db-col aei-db-col--red">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot" aria-hidden="true"></span>Breaks down</h5>
+                    <div class="aei-db-card">Wrong claims portal from Google search — 5-input metric at risk; integration gap.<span class="aei-find-step">14017360</span></div>
+                    <div class="aei-db-card">Laptop not in device catalog — customer cannot submit without workaround.<span class="aei-find-step">c0655dbf</span></div>
+                    <div class="aei-db-card">Find My support call — 10 minutes, no clear resolution.<span class="aei-find-step">35ae36d7</span></div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--amber">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Warning signals</h5>
+                    <div class="aei-db-card">Multiple authentications across portals — context load at risk.</div>
+                    <div class="aei-db-card">Forced web → phone for Find My — channel-switch friction.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--green">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Delivering</h5>
+                    <div class="aei-db-card">After the correct portal, details → peril → payment flow relatively smoothly.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="aei-panel" id="aei-panel-fast" role="tabpanel" aria-labelledby="aei-tab-fast" hidden>
+                <div class="aei-panel-head">
+                  <div>
+                    <h4 class="aei-panel-title">Fast</h4>
+                    <p class="aei-panel-tagline">Solved next day or faster</p>
+                  </div>
+                  <span class="aei-metric-pill">Service metric: 90% resolved by next day</span>
+                </div>
+                <p class="aei-verdict-strip aei-verdict-strip--fail">Major Fast failure: 4–5 day timelines and delayed status comms break the promise even when repair execution can be fast.</p>
+                <div class="aei-breakdown-grid">
+                  <div class="aei-db-col aei-db-col--red">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Breaks down</h5>
+                    <div class="aei-db-card">4–5 day repair window at intake vs. next-day standard.</div>
+                    <div class="aei-db-card">Device ready 3/27, customer notified 4/1 — notification gap.</div>
+                    <div class="aei-db-card">One-day lag between intake and part order.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--amber">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Warning signals</h5>
+                    <div class="aei-db-card">Store phone unanswered — no voicemail path.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--green">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Delivering</h5>
+                    <div class="aei-db-card">Same-day repair once parts were on hand — proves throughput when supply chain delivers.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="aei-panel" id="aei-panel-fair" role="tabpanel" aria-labelledby="aei-tab-fair" hidden>
+                <div class="aei-panel-head">
+                  <div>
+                    <h4 class="aei-panel-title">Fair</h4>
+                    <p class="aei-panel-tagline">Worth every penny</p>
+                  </div>
+                  <span class="aei-metric-pill">Service metric: 75% resolution of initiated services</span>
+                </div>
+                <p class="aei-verdict-strip aei-verdict-strip--risk">Moderate Fair risk: value and transparency pressure points more than fundamental delivery failure.</p>
+                <div class="aei-breakdown-grid">
+                  <div class="aei-db-col aei-db-col--red">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Breaks down</h5>
+                    <div class="aei-db-card">Customer searches Google to validate whether a $99 repair is “worth it” — accept-after-approval at risk.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--amber">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Warning signals</h5>
+                    <div class="aei-db-card">Auth failures + wrong-portal routing elevate abandonment vs. approved rate.</div>
+                    <div class="aei-db-card">No upfront repair value vs. device worth — satisfaction-with-value at risk.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--green">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Delivering</h5>
+                    <div class="aei-db-card">Service completes with device returned; no rework signals in-map.</div>
+                    <div class="aei-db-card">Repair quality holds when value story is not contested mid-flow.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="aei-panel" id="aei-panel-human" role="tabpanel" aria-labelledby="aei-tab-human" hidden>
+                <div class="aei-panel-head">
+                  <div>
+                    <h4 class="aei-panel-title">Human</h4>
+                    <p class="aei-panel-tagline">Experts who care deeply</p>
+                  </div>
+                  <span class="aei-metric-pill">Service metric: 90% rate expert 5-star</span>
+                </div>
+                <p class="aei-verdict-strip aei-verdict-strip--fail">Significant Human failure in remote support and enablement; in-store moments recover trust when experts are properly equipped.</p>
+                <div class="aei-breakdown-grid">
+                  <div class="aei-db-col aei-db-col--red">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Breaks down</h5>
+                    <div class="aei-db-card">Inaccurate Find My guidance; tools underused — expert 5-star metric at risk.<span class="aei-find-step">35ae36d7</span></div>
+                    <div class="aei-db-card">Expert could not provide basic store location — data access gap.<span class="aei-find-step">912b944c</span></div>
+                    <div class="aei-db-card">Repeated failed store reach attempts; no proactive outreach.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--amber">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Warning signals</h5>
+                    <div class="aei-db-card">Expert desktop lacks integrated customer context across channels.</div>
+                    <div class="aei-db-card">Re-authentication drag for basic facts during the session.</div>
+                  </div>
+                  <div class="aei-db-col aei-db-col--green">
+                    <h5 class="aei-db-heading"><span class="aei-db-dot"></span>Delivering</h5>
+                    <div class="aei-db-card">In-store intake: correct diagnosis and accurate alternate-repair estimate.</div>
+                    <div class="aei-db-card">Repair quality met expectations when systems supported the expert.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="aei-seq-block">
+            <h4 class="aei-seq-title">Sequencing recommendation</h4>
+            <p class="aei-seq-sub">The model ordered fixes by cascading dependency—foundational identity and routing before training-only interventions—so leadership sees a defensible investment path, not a flat backlog.</p>
+            <ol class="aei-seq-list">
+              <li><strong>Universal authentication</strong> — cuts across Easy + Human REDs at the front door.</li>
+              <li><strong>Expert system integration for claim data</strong> — unlocks accurate answers in Human and reduces Easy friction.</li>
+              <li><strong>Automated repair status notifications</strong> — high leverage on Fast with relatively contained build scope.</li>
+              <li><strong>Device catalog expansion (laptops)</strong> — removes a hard stop for an entire category.</li>
+              <li><strong>Support training + tool-usage protocols</strong> — targets high-visibility trust breaks after data is trustworthy.</li>
+              <li><strong>Value proposition in the claims flow</strong> — shores up Fair once navigation and auth stop leaking demand.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <figure class="svc-figure fade-up" style="margin-top:28px;max-width:960px">
+        <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/service-blueprint-ai-analysis-2.png" alt="AI analysis and recommendations in the blueprint sidebar" loading="lazy">
+        <figcaption class="svc-caption">Same class of analysis in-product: sidebar grounded in live blueprint structure, with room to promote findings into annotations or backlog.</figcaption>
+      </figure>
+      <div class="fade-up" style="margin-top:28px;padding:24px 28px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);background:var(--svc-bg-dark)">
+        <h3 style="font-size:17px;margin:0 0 10px">AI-native delivery, not only AI features</h3>
+        <p style="margin:0;font-size:15px;color:var(--svc-text-secondary);line-height:1.65">A vision-to-data pipeline converts whiteboard and PDF exports into structured import JSON for human review, then bulk loads through the API—compressing manual entry into a review-and-correct loop. The same discipline powers iterative builds of the app itself alongside coding assistants, with the PRD as shared context.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="unlock-section svc-tight" id="activation">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Organizational use</div>
+        <div class="section-title">Workshops and leadership readouts run on the live artifact.</div>
+        <div class="section-subtitle">Future-state concepts from cross-functional sprints were captured directly in the tool so priorities, media, and comments stay attached to the journey—not lost when the workshop Zoom ends.</div>
+      </div>
+      <figure class="svc-figure svc-figure--slide-full fade-up" style="margin-top:28px">
+        <div class="svc-video-wrap" style="margin-top:0">
+          <video controls playsinline preload="auto">
+            <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-touch-screen.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="svc-caption">Touch wall session with executives: same data, tuned for collaborative CX deep dives.</figcaption>
+      </figure>
+      <div class="svc-media-grid cols-3 fade-up" style="margin-top:32px">
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/sbp-workshop-1.png" alt="Support journey blueprint from workshop" loading="lazy">
+          <figcaption class="svc-caption">Support experience created in workshop.</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/sbp-workshop-2.png" alt="Repair replace reimburse prototype over blueprint" loading="lazy">
+          <figcaption class="svc-caption">Prototype created to support concept claim experience.</figcaption>
+        </figure>
+        <figure class="svc-figure">
+          <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/service-blueprint-screenshots/sbp-workshop-3.png" alt="Purchase and onboarding blueprint from workshop" loading="lazy">
+          <figcaption class="svc-caption">Purchase and onboarding experience created in workshop.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-inner fade-up">
+      <div class="section-eyebrow">Implementation</div>
+      <div class="section-title">Stack at a glance.</div>
+      <p class="section-subtitle">Next.js (App Router), TypeScript, Supabase Postgres with row-level security, Supabase Auth and Storage, Zustand, Tailwind CSS, multi-provider LLM integration (Gemini, OpenAI, Anthropic) with keys server-side only, Resend for mail, deployed on Vercel.</p>
+      <a class="svc-related" href="asurion-service-design.html" style="margin-top:32px">
+        <div class="svc-related-label">Program context</div>
+        <div class="svc-related-title">Asurion service design</div>
+        <div class="svc-related-desc">Objectives, 2026 plan, service standards, workshop outcomes, and how blueprints tie to metrics and lifecycle care.</div>
+        <div class="svc-related-arrow">Open the program case study →</div>
+      </a>
+      <p class="svc-back-row" style="border-top:none;padding-top:40px;margin:0"><a href="../work.html">← All work</a></p>
+    </div>
+  </section>
+</div>
+
+<script src="../js/portfolio-config.js"></script>
+<script src="../js/portfolio-auth.js"></script>
+<script>
+  (function () {
+    function attemptUnlock() {
+      if (!window.__portfolioAuth || typeof window.__portfolioAuth.tryPassword !== 'function') {
+        var ge = document.getElementById('gateError');
+        if (ge) {
+          ge.textContent = 'Could not load login scripts. Confirm ../js/portfolio-config.js and ../js/portfolio-auth.js load correctly.';
+          ge.classList.add('show');
+        }
+        return;
+      }
+      var input = document.getElementById('gatePassword');
+      var err = document.getElementById('gateError');
+      if (!input || !err) return;
+      if (window.__portfolioAuth.tryPassword(input.value.trim())) {
+        err.classList.remove('show');
+        err.textContent = 'Incorrect password.';
+        input.value = '';
+      } else {
+        err.textContent = 'Incorrect password.';
+        err.classList.add('show');
+        input.value = '';
+        input.focus();
+      }
+    }
+    var form = document.getElementById('gateForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+      });
+    }
+    var btn = document.getElementById('gateUnlockBtn');
+    if (btn) btn.addEventListener('click', attemptUnlock);
+    var pw = document.getElementById('gatePassword');
+    if (pw) {
+      pw.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          attemptUnlock();
+        }
+      });
+    }
+    try {
+      if (window.__portfolioAuth && typeof window.__portfolioAuth.initPage === 'function') {
+        window.__portfolioAuth.initPage();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  })();
+</script>
+<script src="../js/case-study-inpage-nav.js"></script>
+<script src="../js/case-study-svc-video-overlay.js"></script>
+<script src="../js/case-study-svc-lightbox.js"></script>
+<script src="../js/case-study-aei-tabs.js"></script>
+<script>
+  var svcObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function () {
+          entry.target.classList.add('visible');
+        }, i * 100);
+        svcObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.cs-svc-main .fade-up').forEach(function (el) {
+    svcObserver.observe(el);
+  });
+</script>
+</body>
+</html>

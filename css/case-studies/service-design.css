@@ -115,6 +115,7 @@
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   line-height: 1.12;
+  margin-top: 0;
   margin-bottom: 20px;
   letter-spacing: -0.015em;
 }
@@ -125,6 +126,242 @@
   max-width: 640px;
   margin-bottom: 56px;
   line-height: 1.6;
+}
+
+/* Activation / blueprint tool lede: 20% wider than default subtitle measure */
+.cs-svc-main #blueprint-tool .section-subtitle {
+  max-width: min(768px, 100%);
+}
+
+.cs-svc-main .section-subtitle a {
+  color: var(--svc-purple);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(155, 89, 240, 0.35);
+}
+
+.cs-svc-main .section-subtitle a:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.cs-svc-main .section-subtitle--wide {
+  max-width: 900px;
+}
+
+/* Summary + My role (Asurion program & blueprint case studies) */
+.cs-svc-main section.svc-summary-section {
+  min-height: 0;
+  padding: 88px 48px 72px;
+  background: var(--svc-bg-section);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-svc-main .svc-summary-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(32px, 5vw, 48px);
+  align-items: start;
+}
+
+.cs-svc-main .svc-summary-text {
+  font-size: 1.05rem;
+  color: var(--svc-text-secondary);
+  line-height: 1.75;
+  max-width: 52em;
+}
+
+.cs-svc-main .svc-summary-text p + p {
+  margin-top: 16px;
+}
+
+.cs-svc-main .svc-role-card {
+  background: var(--svc-bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-svc-main .svc-role-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--svc-gradient);
+}
+
+.cs-svc-main .svc-role-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--svc-green);
+  margin-bottom: 14px;
+}
+
+.cs-svc-main .svc-role-card h3 {
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.25;
+  color: var(--svc-text-primary);
+}
+
+.cs-svc-main .svc-role-card > p {
+  font-size: 0.9rem;
+  color: rgba(245, 245, 245, 0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.cs-svc-main .svc-role-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.cs-svc-main .svc-role-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(245, 245, 245, 0.48);
+}
+
+@media (max-width: 900px) {
+  .cs-svc-main .svc-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Blueprint hero: tool screenshot + 85% black scrim + muted gradient (light purple / yellow touches) */
+.cs-svc-main.cs-svc-blueprint .hero {
+  background: var(--svc-bg-dark);
+}
+
+.cs-svc-main.cs-svc-blueprint .hero-bp-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/service-design/bg-sbp-1.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.cs-svc-main.cs-svc-blueprint .hero-bp-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 95% 60% at 8% 12%, rgba(155, 89, 240, 0.07) 0%, transparent 52%),
+    radial-gradient(ellipse 75% 55% at 92% 88%, rgba(251, 191, 36, 0.065) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 45% at 78% 18%, rgba(253, 224, 71, 0.045) 0%, transparent 48%),
+    linear-gradient(
+      122deg,
+      rgba(155, 89, 240, 0.06) 0%,
+      rgba(196, 181, 253, 0.035) 18%,
+      rgba(33, 150, 243, 0.038) 34%,
+      rgba(52, 211, 153, 0.032) 52%,
+      rgba(251, 191, 36, 0.048) 70%,
+      rgba(253, 230, 138, 0.04) 82%,
+      rgba(167, 139, 250, 0.045) 92%,
+      rgba(224, 64, 160, 0.045) 100%
+    ),
+    rgba(0, 0, 0, 0.85);
+}
+
+.cs-svc-main.cs-svc-blueprint .hero > .glow-purple {
+  z-index: 2;
+}
+
+.cs-svc-main.cs-svc-blueprint .hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.cs-svc-main.cs-svc-blueprint .hero h1 {
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* Blueprint case study only: wider body copy under section titles (matches heading span); 30% tighter than prior pass */
+.cs-svc-main.cs-svc-blueprint .section-subtitle,
+.cs-svc-main.cs-svc-blueprint p.section-subtitle {
+  max-width: min(728px, 100%);
+}
+
+.cs-svc-main.cs-svc-blueprint .section-subtitle--wide {
+  max-width: min(826px, 100%);
+}
+
+.cs-svc-main.cs-svc-blueprint .hero .subtitle {
+  max-width: min(644px, 100%);
+  color: rgba(245, 245, 245, 0.9);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.55);
+}
+
+.cs-svc-main.cs-svc-blueprint .aei-demo-lede {
+  max-width: min(728px, 100%);
+}
+
+/* Blueprint case study: five organizing roles (in-page component; replaces static org graphic) */
+.cs-svc-main.cs-svc-blueprint .svc-bp-players {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.cs-svc-main.cs-svc-blueprint .svc-bp-player {
+  background: var(--svc-bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 100%;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.cs-svc-main.cs-svc-blueprint .svc-bp-player:hover {
+  border-color: rgba(155, 89, 240, 0.28);
+  box-shadow: 0 0 0 1px rgba(155, 89, 240, 0.08);
+}
+
+.cs-svc-main.cs-svc-blueprint .svc-bp-player-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--svc-text-primary);
+}
+
+.cs-svc-main.cs-svc-blueprint .svc-bp-player-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--svc-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 1040px) {
+  .cs-svc-main.cs-svc-blueprint .svc-bp-players {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .cs-svc-main.cs-svc-blueprint .svc-bp-players {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cs-svc-main .obj-grid {
@@ -262,6 +499,12 @@
   box-shadow: 0 0 20px rgba(155, 89, 240, 0.5);
 }
 
+.cs-svc-main .plan-phase.in-progress .plan-dot {
+  background: rgba(155, 89, 240, 0.38);
+  border-color: rgba(196, 165, 245, 0.95);
+  box-shadow: 0 0 16px rgba(155, 89, 240, 0.35);
+}
+
 .cs-svc-main .plan-phase.future .plan-dot {
   border-color: rgba(255, 255, 255, 0.15);
 }
@@ -278,6 +521,14 @@
 
 .cs-svc-main .plan-phase.active .plan-label {
   color: var(--svc-purple);
+}
+
+.cs-svc-main .plan-phase.in-progress .plan-label {
+  color: #c9b0f5;
+}
+
+.cs-svc-main .plan-phase.in-progress .plan-desc {
+  color: rgba(210, 195, 250, 0.58);
 }
 
 .cs-svc-main .plan-desc {
@@ -312,6 +563,45 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
+}
+
+/* Progress: original Figma artifacts (225×130 crop, leads into blueprint tool) */
+.cs-svc-main .svc-progress-figma-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 225px));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 48px;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-svc-main .svc-progress-figma-cell {
+  width: 100%;
+  max-width: 225px;
+  aspect-ratio: 225 / 130;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--svc-bg-card);
+}
+
+.cs-svc-main .svc-progress-figma-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.cs-svc-main .svc-progress-figma-byline {
+  max-width: min(720px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .cs-svc-main .bp-col-title {
@@ -366,6 +656,10 @@
 
 .cs-svc-main .bp-badge.atc {
   background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.cs-svc-main .bp-badge.att {
+  background: linear-gradient(135deg, #009fdb, #0073b5);
 }
 
 .cs-svc-main .bp-item-text {
@@ -541,6 +835,32 @@
   color: #fff;
 }
 
+/* 5-star survey (#survey): single centered video, ~20% wider than prior half-column player */
+.cs-svc-main .svc-survey-video-block {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.cs-svc-main .svc-figure--survey-video {
+  margin: 0;
+  width: 100%;
+  max-width: min(720px, 92vw);
+}
+
+.cs-svc-main .svc-figure--survey-video .svc-caption {
+  text-align: center;
+}
+
+.cs-svc-main .svc-video-wrap--survey {
+  margin-top: 0;
+}
+
+.cs-svc-main .svc-video-wrap--survey video {
+  max-height: min(80vh, 720px);
+}
+
 @media (max-width: 900px) {
   .cs-svc-main section {
     padding: 88px 24px 72px;
@@ -574,5 +894,1061 @@
   .cs-svc-main .plan-label,
   .cs-svc-main .plan-desc {
     text-align: left;
+  }
+}
+
+/* Extended narrative: media, workshops, related case study links */
+.cs-svc-main .svc-standards-callout {
+  margin-top: 40px;
+  padding: 28px 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(155, 89, 240, 0.35);
+  background: rgba(155, 89, 240, 0.08);
+}
+
+.cs-svc-main .svc-standards-callout h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: var(--svc-text-primary);
+}
+
+.cs-svc-main .svc-standards-callout p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--svc-text-secondary);
+  line-height: 1.65;
+}
+
+.cs-svc-main .svc-related {
+  display: block;
+  margin-top: 28px;
+  padding: 24px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--svc-bg-dark);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.cs-svc-main .svc-related:hover {
+  border-color: rgba(155, 89, 240, 0.45);
+  transform: translateY(-2px);
+}
+
+.cs-svc-main .svc-related-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--svc-purple);
+  margin-bottom: 8px;
+}
+
+.cs-svc-main .svc-related-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.cs-svc-main .svc-related-desc {
+  font-size: 14px;
+  color: var(--svc-text-secondary);
+  line-height: 1.55;
+}
+
+.cs-svc-main .svc-related-arrow {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--svc-purple);
+}
+
+.cs-svc-main .svc-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.cs-svc-main .svc-media-grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cs-svc-main .svc-figure--slide-full {
+  width: 100%;
+  max-width: none;
+  margin-top: 32px;
+}
+
+.cs-svc-main .svc-figure--slide-full img {
+  width: 100%;
+}
+
+.cs-svc-main .svc-figure--slide-full .svc-video-wrap {
+  margin-top: 0;
+}
+
+.cs-svc-main .svc-figure--slide-full .svc-video-wrap video {
+  width: 100%;
+}
+
+.cs-svc-main .svc-figure {
+  margin: 0;
+}
+
+.cs-svc-main .svc-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cs-svc-main .svc-caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--svc-text-muted);
+  line-height: 1.45;
+}
+
+.cs-svc-main .svc-video-wrap {
+  margin-top: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
+  position: relative;
+}
+
+.cs-svc-main .svc-video-wrap video {
+  width: 100%;
+  max-height: min(72vh, 640px);
+  display: block;
+}
+
+/* Prominent play affordance until first playback (injected by case-study-svc-video-overlay.js) */
+.cs-svc-main .svc-video-play-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.2) 55%, transparent 75%);
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.cs-svc-main .svc-video-play-overlay:focus {
+  outline: none;
+}
+
+.cs-svc-main .svc-video-play-overlay:focus-visible {
+  outline: 2px solid var(--svc-purple);
+  outline-offset: 4px;
+}
+
+.cs-svc-main .svc-video-wrap--playing .svc-video-play-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cs-svc-main .svc-video-play-circle {
+  position: relative;
+  z-index: 2;
+  width: clamp(72px, 14vw, 100px);
+  height: clamp(72px, 14vw, 100px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(155, 89, 240, 0.95), rgba(224, 64, 160, 0.9));
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.12),
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(155, 89, 240, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-svc-main .svc-video-play-overlay:hover .svc-video-play-circle,
+.cs-svc-main .svc-video-play-overlay:focus-visible .svc-video-play-circle {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.18),
+    0 16px 48px rgba(0, 0, 0, 0.6),
+    0 0 72px rgba(155, 89, 240, 0.45);
+}
+
+.cs-svc-main .svc-video-play-circle svg {
+  width: 36%;
+  height: 36%;
+  margin-left: 6%;
+  fill: #fff;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.cs-svc-main .svc-video-play-pulse {
+  position: absolute;
+  z-index: 1;
+  width: clamp(100px, 20vw, 140px);
+  height: clamp(100px, 20vw, 140px);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  animation: svc-play-pulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes svc-play-pulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.cs-svc-main .svc-quote-block {
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.cs-svc-main .svc-quote-block li {
+  padding: 20px 0 20px 20px;
+  border-left: 3px solid rgba(155, 89, 240, 0.5);
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: var(--svc-text-secondary);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.cs-svc-main .svc-next-list {
+  margin: 24px 0 0;
+  padding-left: 22px;
+  color: var(--svc-text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.cs-svc-main .svc-next-list li {
+  margin-bottom: 8px;
+}
+
+.cs-svc-main section.svc-tight {
+  min-height: auto;
+  padding-bottom: 100px;
+}
+
+/* AEI evaluation demo — blueprint assistant (real prompt output, condensed) */
+.cs-svc-main .aei-demo {
+  margin-top: 36px;
+}
+
+.cs-svc-main .aei-demo-inner {
+  border-radius: 18px;
+  background: linear-gradient(180deg, #141418 0%, #0c0c0e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 28px 28px 32px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.cs-svc-main .aei-demo-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--svc-purple);
+  margin-bottom: 10px;
+}
+
+.cs-svc-main .aei-demo-title {
+  font-size: clamp(20px, 2.8vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.cs-svc-main .aei-demo-lede {
+  font-size: 14px;
+  color: var(--svc-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 22px;
+  max-width: 720px;
+}
+
+.cs-svc-main .aei-demo-lede a {
+  color: var(--svc-purple);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(155, 89, 240, 0.35);
+}
+
+.cs-svc-main .aei-demo-lede a:hover {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+
+.cs-svc-main .aei-signal-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-svc-main .aei-signal-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--svc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cs-svc-main .aei-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cs-svc-main .aei-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.cs-svc-main .aei-pill--red {
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.cs-svc-main .aei-pill--amber {
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.cs-svc-main .aei-pill--green {
+  color: #a7f3d0;
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+/* AEI v2: glance label, takeaways strip, tabbed standards, 3-column breakdown */
+.cs-svc-main .aei-glance-head {
+  margin-bottom: 14px;
+}
+
+.cs-svc-main .aei-glance-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--svc-purple);
+}
+
+.cs-svc-main .aei-takeaways {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 22px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.cs-svc-main .aei-tw-item {
+  padding: 16px 14px 18px;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cs-svc-main .aei-tw-item:last-child {
+  border-right: none;
+}
+
+.cs-svc-main .aei-tw-value {
+  display: block;
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.cs-svc-main .aei-tw-item--risk .aei-tw-value {
+  color: #fca5a5;
+}
+
+.cs-svc-main .aei-tw-item--rating .aei-tw-value {
+  color: #fbbf24;
+}
+
+.cs-svc-main .aei-tw-item--pos .aei-tw-value {
+  color: #6ee7b7;
+}
+
+.cs-svc-main .aei-tw-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.35;
+}
+
+.cs-svc-main .aei-tw-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--svc-text-muted);
+  line-height: 1.35;
+}
+
+.cs-svc-main .aei-tw-star {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.cs-svc-main .aei-eval-ui {
+  margin-top: 4px;
+}
+
+.cs-svc-main .aei-std-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.cs-svc-main .aei-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 14px 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 24, 0.9);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.cs-svc-main .aei-tab:hover {
+  border-color: rgba(155, 89, 240, 0.35);
+}
+
+.cs-svc-main .aei-tab--selected {
+  border-color: rgba(155, 89, 240, 0.65);
+  box-shadow: 0 0 0 1px rgba(155, 89, 240, 0.25);
+  background: rgba(155, 89, 240, 0.1);
+}
+
+.cs-svc-main .aei-tab:focus-visible {
+  outline: 2px solid var(--svc-purple);
+  outline-offset: 2px;
+}
+
+.cs-svc-main .aei-tab-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cs-svc-main .aei-tab-name {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cs-svc-main .aei-tab-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.25);
+  color: #fecaca;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  white-space: nowrap;
+}
+
+.cs-svc-main .aei-tab-badge--amber {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fde68a;
+  border-color: rgba(245, 158, 11, 0.45);
+}
+
+.cs-svc-main .aei-tab-tagline {
+  font-size: 11px;
+  color: var(--svc-text-muted);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.cs-svc-main .aei-tab-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cs-svc-main .aei-tab-counts .aei-ms-red,
+.cs-svc-main .aei-tab-counts .aei-ms-amber,
+.cs-svc-main .aei-tab-counts .aei-ms-green {
+  font-size: 9px;
+  padding: 3px 6px;
+}
+
+.cs-svc-main .aei-panels {
+  position: relative;
+}
+
+.cs-svc-main .aei-panel {
+  padding-top: 4px;
+}
+
+.cs-svc-main .aei-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.cs-svc-main .aei-panel-title {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cs-svc-main .aei-panel-tagline {
+  margin: 0;
+  font-size: 13px;
+  color: var(--svc-text-muted);
+  font-style: italic;
+}
+
+.cs-svc-main .aei-metric-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(155, 89, 240, 0.2);
+  border: 1px solid rgba(155, 89, 240, 0.35);
+  color: var(--svc-text-secondary);
+  max-width: 280px;
+}
+
+.cs-svc-main .aei-verdict-strip {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+  border-left: 4px solid transparent;
+}
+
+.cs-svc-main .aei-verdict-strip--fail {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+  color: #fecaca;
+}
+
+.cs-svc-main .aei-verdict-strip--risk {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #f59e0b;
+  color: #fde68a;
+}
+
+.cs-svc-main .aei-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.cs-svc-main .aei-db-col {
+  border-radius: 12px;
+  padding: 12px 12px 14px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-svc-main .aei-db-heading {
+  margin: 0 0 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cs-svc-main .aei-db-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cs-svc-main .aei-db-col--red .aei-db-dot {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.45);
+}
+
+.cs-svc-main .aei-db-col--amber .aei-db-dot {
+  background: #f59e0b;
+}
+
+.cs-svc-main .aei-db-col--green .aei-db-dot {
+  background: #34d399;
+}
+
+.cs-svc-main .aei-db-card {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--svc-text-secondary);
+  padding: 10px 10px 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: rgba(26, 26, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid rgba(255, 255, 255, 0.12);
+}
+
+.cs-svc-main .aei-db-col--red .aei-db-card {
+  border-left-color: rgba(239, 68, 68, 0.55);
+}
+
+.cs-svc-main .aei-db-col--amber .aei-db-card {
+  border-left-color: rgba(245, 158, 11, 0.5);
+}
+
+.cs-svc-main .aei-db-col--green .aei-db-card {
+  border-left-color: rgba(52, 211, 153, 0.45);
+}
+
+.cs-svc-main .aei-db-card:last-child {
+  margin-bottom: 0;
+}
+
+.cs-svc-main .aei-db-card .aei-find-step {
+  margin-top: 6px;
+}
+
+.cs-svc-main .aei-std-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.cs-svc-main .aei-std-card {
+  border-radius: 14px;
+  padding: 20px 20px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(26, 26, 26, 0.85);
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-svc-main .aei-std-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.cs-svc-main .aei-std-card--easy::before {
+  background: linear-gradient(180deg, #38bdf8, #6366f1);
+}
+
+.cs-svc-main .aei-std-card--fast::before {
+  background: linear-gradient(180deg, #fbbf24, #f97316);
+}
+
+.cs-svc-main .aei-std-card--fair::before {
+  background: linear-gradient(180deg, #34d399, #14b8a6);
+}
+
+.cs-svc-main .aei-std-card--human::before {
+  background: linear-gradient(180deg, #f472b6, #a855f7);
+}
+
+.cs-svc-main .aei-std-head {
+  padding-left: 12px;
+  margin-bottom: 14px;
+}
+
+.cs-svc-main .aei-std-name {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+}
+
+.cs-svc-main .aei-std-tagline {
+  font-size: 12px;
+  color: var(--svc-text-muted);
+  margin: 0 0 6px;
+  font-style: italic;
+}
+
+.cs-svc-main .aei-std-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--svc-text-secondary);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.cs-svc-main .aei-std-metric strong {
+  color: var(--svc-amber);
+  font-weight: 600;
+}
+
+.cs-svc-main .aei-mini-sev {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+
+.cs-svc-main .aei-mini-sev span {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.cs-svc-main .aei-ms-red {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+.cs-svc-main .aei-ms-amber {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fcd34d;
+}
+
+.cs-svc-main .aei-ms-green {
+  background: rgba(52, 211, 153, 0.15);
+  color: #6ee7b7;
+}
+
+.cs-svc-main .aei-find-list {
+  margin: 0;
+  padding: 0 0 0 12px;
+  list-style: none;
+}
+
+.cs-svc-main .aei-find-list li {
+  position: relative;
+  font-size: 13px;
+  color: var(--svc-text-secondary);
+  line-height: 1.5;
+  padding: 8px 0 8px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cs-svc-main .aei-find-list li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.cs-svc-main .aei-find-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.cs-svc-main .aei-find-list--red li::before {
+  background: #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.cs-svc-main .aei-find-list--amber li::before {
+  background: #f59e0b;
+}
+
+.cs-svc-main .aei-find-list--green li::before {
+  background: #34d399;
+}
+
+.cs-svc-main .aei-find-step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--svc-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.cs-svc-main .aei-verdict {
+  margin-top: 14px;
+  margin-left: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(155, 89, 240, 0.08);
+  border-left: 3px solid var(--svc-purple);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--svc-text-primary);
+  line-height: 1.5;
+}
+
+.cs-svc-main .aei-seq-block {
+  margin-top: 28px;
+  padding: 22px 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.cs-svc-main .aei-seq-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--svc-magenta);
+  margin: 0 0 6px;
+}
+
+.cs-svc-main .aei-seq-sub {
+  font-size: 13px;
+  color: var(--svc-text-muted);
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+
+.cs-svc-main .aei-seq-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: aei-seq;
+}
+
+.cs-svc-main .aei-seq-list li {
+  counter-increment: aei-seq;
+  position: relative;
+  padding: 14px 14px 14px 52px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  color: var(--svc-text-secondary);
+  line-height: 1.5;
+}
+
+.cs-svc-main .aei-seq-list li:last-child {
+  margin-bottom: 0;
+}
+
+.cs-svc-main .aei-seq-list li::before {
+  content: counter(aei-seq);
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--svc-gradient);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cs-svc-main .aei-seq-list strong {
+  color: var(--svc-text-primary);
+  font-weight: 700;
+}
+
+/* Click-to-zoom: case study imagery (https only; nav excluded in JS) */
+.cs-svc-main section img[src^="https://"] {
+  cursor: zoom-in;
+}
+
+/* Fullscreen image lightbox (case-study-svc-lightbox.js) */
+body.svc-lightbox-open {
+  overflow: hidden;
+}
+
+.svc-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.svc-lightbox[hidden] {
+  display: none;
+}
+
+.svc-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: zoom-out;
+  background: rgba(5, 5, 8, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.svc-lightbox-panel {
+  position: relative;
+  z-index: 1;
+  max-width: min(96vw, 1400px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.svc-lightbox-img {
+  max-width: 100%;
+  max-height: min(85vh, 1200px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.svc-lightbox-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(30, 30, 34, 0.95);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.svc-lightbox-close:hover {
+  background: rgba(155, 89, 240, 0.35);
+  border-color: rgba(155, 89, 240, 0.5);
+}
+
+.svc-lightbox-caption {
+  margin: 0;
+  max-width: 720px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 900px) {
+  .cs-svc-main .svc-media-grid,
+  .cs-svc-main .svc-media-grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-svc-main .aei-std-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-svc-main .aei-takeaways {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-svc-main .aei-tw-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .cs-svc-main .aei-tw-item:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cs-svc-main .aei-std-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-svc-main .aei-breakdown-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .cs-svc-main .aei-takeaways {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-svc-main .aei-tw-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cs-svc-main .aei-tw-item:last-child {
+    border-bottom: none;
   }
 }
