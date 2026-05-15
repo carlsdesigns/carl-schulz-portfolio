@@ -562,6 +562,16 @@
       showAt(gallery, current);
     }
 
+    lbVideo.addEventListener(
+      'click',
+      function (e) {
+        if (lbVideo.paused) return;
+        e.preventDefault();
+        lbVideo.pause();
+      },
+      true
+    );
+
     // Attach click to all gallery items via event delegation
     document.querySelectorAll('.cs-tech-main .slide-thumb, .cs-tech-main .video-thumb').forEach(function (el) {
       el.addEventListener('click', function (e) {

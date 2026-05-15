@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Partnership — Case Study | Carl Schulz</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/portfolio-work.css">
+<link rel="stylesheet" href="../css/case-study-shell.css">
+<style>
+:root{
+  --ink:#232F3E;--ink-soft:#37475A;--ink-light:#6b7b8d;--white:#ffffff;--off-white:#f7f7f7;--warm-gray:#f3f2ef;
+  --rule:#e0ddd8;--amazon-orange:#FF9900;--amazon-orange-soft:rgba(255,153,0,.1);--amazon-dark:#232F3E;--amazon-teal:#00A8E1;
+  --accent-green:#067D62;--glass:rgba(35,47,62,.04);--glass-border:rgba(35,47,62,.08);
+  --serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono','SF Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body.amazon-case-page{font-family:var(--sans);background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+.amazon-case-page section[id]{scroll-margin-top:112px}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;justify-content:center;padding:120px 48px 80px;background:var(--amazon-dark);color:var(--white)}
+.hero-lifecycle-bg{position:absolute;inset:0;z-index:0;background-color:var(--amazon-dark);background-image:url("https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/story-slides/lifecycle-bg-graphic.png");background-repeat:no-repeat;background-position:center;background-size:min(110vmin,920px);pointer-events:none}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:rgba(35,47,62,.8);pointer-events:none}
+.hero-accent{position:absolute;width:500px;height:500px;border-radius:50%;filter:blur(120px);opacity:.15;z-index:3}
+.ha1{background:var(--amazon-orange);top:-15%;right:-8%}
+.ha2{background:var(--amazon-teal);bottom:-10%;left:-5%}
+.hero-content{position:relative;z-index:5;max-width:880px;text-align:center}
+.hero-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amazon-orange);margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:var(--serif);font-size:3.4rem;line-height:1.1;font-weight:400;margin-bottom:24px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title em{font-style:normal;color:var(--amazon-orange)}
+.hero-subtitle{font-size:1.12rem;color:rgba(255,255,255,.55);max-width:640px;margin:0 auto 36px;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-meta{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-meta-item{display:flex;flex-direction:column;align-items:center}
+.hero-meta-value{font-family:var(--serif);font-size:1.8rem;color:var(--amazon-orange)}
+.hero-meta-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+
+/* SECTIONS */
+section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amazon-orange);margin-bottom:12px}
+.section-title{font-family:var(--serif);font-size:2.4rem;line-height:1.2;margin-bottom:20px}
+.section-desc{font-size:1.05rem;color:var(--ink-light);max-width:640px;line-height:1.7;margin-bottom:48px}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.summary-text{font-size:1.05rem;color:var(--ink-soft);line-height:1.75}.summary-text p+p{margin-top:16px}
+.role-card{background:var(--amazon-dark);color:var(--white);border-radius:16px;padding:36px;position:relative;overflow:hidden}
+.role-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amazon-orange),var(--amazon-teal))}
+.role-card-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amazon-orange);margin-bottom:16px}
+.role-card h3{font-family:var(--serif);font-size:1.2rem;margin-bottom:8px;font-weight:400}
+.role-card p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.6}
+.role-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.role-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.45)}
+
+/* VIDEO */
+.video-wrapper{max-width:960px;margin:0 auto;border-radius:16px;overflow:visible;box-shadow:0 16px 64px rgba(35,47,62,.15);position:relative;cursor:pointer;background:#000;border:1px solid var(--rule)}
+.video-wrapper video{width:100%;display:block;border-radius:12px;vertical-align:middle}
+.video-wrapper video:focus{outline:2px solid var(--amazon-orange);outline-offset:2px}
+.video-play-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(35,47,62,.35);transition:opacity .3s;border-radius:12px;pointer-events:auto}
+.video-play-overlay.hidden{opacity:0;pointer-events:none}
+.play-btn{width:80px;height:80px;border-radius:50%;background:var(--amazon-orange);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:transform .2s}
+.play-btn:hover{transform:scale(1.08)}
+.play-btn svg{margin-left:4px}
+.video-caption{text-align:center;margin-top:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--ink-light)}
+
+/* STAT BLOCKS */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat-block{padding:28px;border-radius:16px;border:1px solid var(--rule);text-align:center;transition:transform .3s;background:var(--white)}
+.stat-block:hover{transform:translateY(-4px)}
+.stat-value{font-family:var(--serif);font-size:2.4rem;color:var(--amazon-orange);line-height:1;margin-bottom:6px}
+.stat-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-light);margin-bottom:10px}
+.stat-desc{font-size:.8rem;color:var(--ink-light);line-height:1.4}
+
+/* INSIGHT CARDS */
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.insight{padding:20px 24px;background:var(--white);border-radius:12px;border-left:3px solid var(--amazon-orange);font-size:.9rem;color:var(--ink-soft);line-height:1.6}
+.insight strong{color:var(--amazon-dark)}
+
+/* CAROUSEL */
+.carousel-outer{position:relative;margin-top:32px}
+.carousel-track{display:flex;overflow:hidden;border-radius:12px;border:1px solid var(--rule);background:var(--white)}
+.carousel-slide{min-width:100%;transition:transform .45s cubic-bezier(.4,0,.2,1);position:relative}
+.carousel-slide img{width:100%;display:block;cursor:pointer}
+.carousel-caption{padding:16px 20px;font-size:.88rem;color:var(--ink-soft);line-height:1.5;min-height:48px;background:var(--off-white)}
+.carousel-caption strong{color:var(--amazon-dark)}
+.carousel-nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.carousel-arrows{display:flex;gap:8px}
+.carousel-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:var(--white);color:var(--ink-light);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.carousel-arrow:hover{background:var(--amazon-orange);border-color:var(--amazon-orange);color:#fff}
+.carousel-arrow:disabled{opacity:.25;cursor:default;background:var(--white);border-color:var(--rule);color:var(--ink-light)}
+.carousel-counter{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--ink-light)}
+.carousel-thumbs{display:flex;gap:8px;justify-content:center;flex-wrap:nowrap;margin-top:12px;padding:6px 2px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.carousel-thumbs::-webkit-scrollbar{height:4px}
+.carousel-thumbs::-webkit-scrollbar-thumb{background:var(--amazon-orange);border-radius:2px}
+.carousel-thumbs::-webkit-scrollbar-track{background:var(--rule);border-radius:2px}
+.carousel-thumb{flex:0 0 auto;width:72px;height:50px;padding:0;border:2px solid var(--rule);border-radius:8px;overflow:hidden;cursor:pointer;background:var(--off-white);transition:border-color .2s,box-shadow .2s,opacity .2s}
+.carousel-thumb img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.carousel-thumb:hover{border-color:rgba(255,153,0,.45)}
+.carousel-thumb.active{border-color:var(--amazon-orange);box-shadow:0 0 0 1px rgba(255,153,0,.28)}
+.carousel-thumb:focus-visible{outline:2px solid var(--amazon-orange);outline-offset:2px}
+
+/* Horizontal gallery strip + scroll arrows */
+.gallery-strip-wrap{position:relative;padding:0 44px}
+.gallery-scroll-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:40px;height:40px;border-radius:50%;border:1px solid var(--rule);background:var(--white);color:var(--ink-soft);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(35,47,62,.1);transition:background .2s,border-color .2s,color .2s}
+.gallery-scroll-nav:hover{background:var(--amazon-orange-soft);border-color:var(--amazon-orange);color:var(--amazon-dark)}
+.gallery-scroll-nav--prev{left:0}
+.gallery-scroll-nav--next{right:0}
+.dark-section .gallery-strip-wrap{padding:0 48px}
+.dark-section .gallery-scroll-nav{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.9)}
+.dark-section .gallery-scroll-nav:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);color:#fff}
+
+.research-clips-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:8px}
+.gallery-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.gallery-scroll::-webkit-scrollbar{height:4px}.gallery-scroll::-webkit-scrollbar-track{background:var(--rule);border-radius:2px}.gallery-scroll::-webkit-scrollbar-thumb{background:var(--amazon-orange);border-radius:2px}
+.gallery-card{flex-shrink:0;border-radius:12px;overflow:hidden;border:1px solid var(--rule);cursor:pointer;transition:transform .3s;scroll-snap-align:start;background:var(--white)}
+.gallery-card:hover{transform:scale(1.02)}
+.gallery-card img{display:block}
+.gallery-card.wide{width:480px}.gallery-card.wide img{width:100%}
+.gallery-card.short{height:200px}.gallery-card.short img{height:100%;width:auto}
+.gallery-hint{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:var(--ink-light);margin-top:12px;text-align:right}
+
+/* DARK SECTIONS */
+.dark-section{background:var(--amazon-dark);color:var(--white)}
+.dark-section .section-desc{color:rgba(255,255,255,.5)}
+.dark-section .section-eyebrow{color:var(--amazon-orange)}
+.pilot-leader-callout{margin-top:40px;padding:28px 32px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);border-left:4px solid var(--amazon-orange)}
+.pilot-leader-callout-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amazon-orange);margin-bottom:14px}
+.pilot-leader-callout p{font-size:.95rem;line-height:1.72;color:rgba(255,255,255,.72);margin:0 0 14px}
+.pilot-leader-callout p:last-of-type{margin-bottom:0}
+.pilot-leader-callout strong{color:rgba(255,255,255,.92);font-weight:600}
+
+/* DEMO GRID */
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.demo-block{}
+.demo-block-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amazon-orange);margin-bottom:10px}
+.demo-block-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:8px}
+.demo-block p{font-size:.88rem;color:var(--ink-light);line-height:1.6;margin-bottom:16px}
+
+/* THE OPPORTUNITY — full-width eyebrow + headline; lede + metrics + points left; bg image right (decorative only) */
+.opportunity-head{max-width:none;margin-bottom:clamp(24px,4vw,40px)}
+.opportunity-split{display:grid;grid-template-columns:1fr minmax(260px,40%);gap:0;column-gap:0;align-items:stretch;margin-top:0}
+.opportunity-main-col{grid-column:1;min-width:0;padding-right:clamp(20px,3vw,40px);display:flex;flex-direction:column}
+.opportunity-main-col .opportunity-lede{max-width:none;margin-bottom:clamp(20px,3vw,32px)}
+.opportunity-main-col .stat-grid{margin-top:0}
+.opportunity-visual{grid-column:2;grid-row:1;min-height:0;align-self:stretch;background-color:transparent;background-image:url("https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/story-slides/customer-need-v2.png");background-size:contain;background-position:center;background-repeat:no-repeat;border:none;border-radius:0;box-shadow:none;pointer-events:none}
+.opportunity-points{margin:0;padding:clamp(24px,3vw,36px) 0 0;display:flex;flex-direction:column;gap:clamp(22px,3vw,32px)}
+.opportunity-point{display:flex;gap:16px;align-items:flex-start}
+.opportunity-point-icon{font-size:1.75rem;line-height:1.2;flex-shrink:0;margin-top:2px}
+.opportunity-point-body{min-width:0}
+.opportunity-point-title{font-family:var(--serif);font-size:clamp(1.05rem,1.8vw,1.15rem);font-weight:400;margin:0 0 8px;line-height:1.25}
+.opportunity-point-body p{margin:0;font-size:.95rem;color:var(--ink-light);line-height:1.65}
+.opportunity-main-col .stat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* NEXT */
+.next-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.next-card{padding:32px;border-radius:16px;border:1px solid var(--rule);background:var(--white);transition:transform .3s,border-color .3s}
+.next-card:hover{transform:translateY(-4px);border-color:var(--amazon-orange)}
+.next-card-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--amazon-orange);margin-bottom:12px}
+.next-card h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:10px;font-weight:400}
+.next-card p{font-size:.85rem;color:var(--ink-light);line-height:1.6}
+
+/* NEXT — headline + left column cards + right lifecycle art (decorative) */
+.next-section-head{max-width:none;margin-bottom:clamp(8px,2vw,16px)}
+.next-split{display:grid;grid-template-columns:minmax(260px,0.72fr) minmax(300px,1.28fr);gap:clamp(20px,3vw,32px);align-items:stretch;margin-top:12px}
+.next-split .next-cards{display:flex;flex-direction:column;gap:16px}
+.next-split .next-card{padding:20px 22px}
+.next-split-visual{align-self:stretch;min-height:min(480px,62vh);background-color:transparent;background-image:url("https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/story-slides/expert-lifecycle-journey.png");background-repeat:no-repeat;background-position:center;background-size:contain;border:none;box-shadow:none;pointer-events:none}
+
+/* PILOT OUTCOMES */
+.pilot-outcomes-section-head{max-width:none;margin-bottom:28px;line-height:1.15}
+.pilot-outcomes-split{display:grid;grid-template-columns:1fr minmax(240px,46%);gap:clamp(24px,4vw,48px);align-items:start;margin-top:0}
+.pilot-outcomes-col--copy{min-width:0}
+.pilot-outcomes-col--copy .section-desc{margin-bottom:0;max-width:none}
+.pilot-outcomes-col--copy .section-desc+.section-desc{margin-top:16px}
+.pilot-outcomes-journey{margin:0;padding:0}
+.pilot-outcomes-journey img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--rule);box-shadow:0 12px 40px rgba(35,47,62,.08);cursor:pointer;vertical-align:middle}
+.pilot-outcome-stats{display:grid;gap:10px;margin:0}
+.pilot-outcome-stats--row{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:40px}
+.pilot-outcome-stats--row .pilot-outcome-stat{scroll-snap-align:start}
+.pilot-outcome-stat{background:var(--white);border:1px solid var(--rule);border-radius:14px;padding:18px 10px;text-align:center}
+.pilot-outcome-stats--row .pilot-outcome-stat-val{font-size:clamp(1.15rem,2.2vw,1.65rem)}
+.pilot-outcome-stats--row .pilot-outcome-stat-lbl{font-size:.5rem;letter-spacing:.05em;line-height:1.3}
+.pilot-outcome-stat-val{font-family:var(--serif);font-size:clamp(1.45rem,2.8vw,1.95rem);color:var(--amazon-orange);line-height:1.1;display:block}
+.pilot-outcome-stat-lbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-light);margin-top:8px;display:block;line-height:1.35}
+.pilot-outcomes-readout{margin:48px auto 0;max-width:min(820px,100%);padding:28px 32px;background:var(--white);border-radius:16px;border:1px solid var(--rule);border-left:4px solid var(--amazon-orange);box-shadow:0 16px 48px rgba(35,47,62,.08)}
+.pilot-outcomes-readout-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amazon-orange);margin-bottom:16px}
+.pilot-outcomes-readout ul{margin:0 0 0 1.15em;padding:0}
+.pilot-outcomes-readout li{font-size:.95rem;color:var(--ink-soft);line-height:1.72;margin-bottom:12px}
+.pilot-outcomes-readout li:last-child{margin-bottom:0}
+.pilot-outcomes-readout strong{color:var(--amazon-dark)}
+
+.lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:rgba(35,47,62,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;cursor:pointer}
+.lightbox.open{display:flex}.lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.4);animation:lbIn .3s ease;position:relative;z-index:1}
+.lightbox-close{position:absolute;top:24px;right:32px;font-size:2rem;color:rgba(255,255,255,.5);cursor:pointer;z-index:10;transition:color .2s}.lightbox-close:hover{color:#fff}
+.lightbox-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:11;width:48px;height:48px;border-radius:50%;border:1px solid rgba(35,47,62,.12);background:rgba(255,255,255,.96);color:var(--ink);font-size:1.15rem;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(0,0,0,.15);transition:background .2s,border-color .2s}
+.lightbox-arrow:hover{background:#fff;border-color:var(--amazon-orange);color:var(--amazon-dark)}
+.lightbox-arrow.is-active{display:flex}
+.lightbox-arrow--prev{left:20px}
+.lightbox-arrow--next{right:20px}
+@keyframes lbIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.summary-grid,.demo-grid,.insight-grid{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,1fr)}.next-cards{grid-template-columns:1fr}.next-split{grid-template-columns:1fr}.next-split-visual{min-height:min(64vw,380px);margin-top:20px}.research-clips-grid{grid-template-columns:1fr}.opportunity-split{grid-template-columns:1fr}.opportunity-main-col{grid-column:1;padding-right:0}.opportunity-main-col .stat-grid{grid-template-columns:repeat(3,minmax(88px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}.opportunity-visual{grid-column:1;grid-row:2;min-height:min(52vw,280px);margin-top:24px;border:none;border-radius:0;box-shadow:none}.opportunity-points{padding:24px 0 0}.pilot-outcomes-split{grid-template-columns:1fr}.pilot-outcomes-split .pilot-outcomes-journey{margin-top:24px}.pilot-outcome-stats--row{grid-template-columns:repeat(5,minmax(88px,1fr));overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}}
+@media(max-width:768px){section{padding:64px 24px}.hero{padding:100px 24px 64px;min-height:75vh}.hero-title{font-size:2.2rem}.section-title{font-size:1.8rem}.gallery-card.wide{width:320px}}
+</style>
+</head>
+<body class="amazon-case-page">
+
+<header class="case-header-stack">
+  <nav class="work-nav" aria-label="Site">
+    <a class="work-nav-brand" href="../index.html">
+      <img src="../assets/images/carl-photo.png" alt="Carl Schulz">
+      Carl Schulz
+    </a>
+    <div>
+      <a href="../index.html">Home</a>
+      <span style="display:inline-block;width:16px"></span>
+      <a href="../work.html">Work</a>
+      <span style="display:inline-block;width:16px"></span>
+      <a href="../index.html#about">About</a>
+    </div>
+  </nav>
+  <nav class="case-inpage-nav case-inpage--tech" aria-label="On this page">
+    <a href="#summary">Summary</a>
+    <a href="#opportunity">Opportunity</a>
+    <a href="#vision">Vision</a>
+    <a href="#research">Research</a>
+    <a href="#competitive">Competitive</a>
+    <a href="#pilot">Pilot</a>
+    <a href="#pilot-outcomes">Outcomes</a>
+    <a href="#concepts">Concepts</a>
+    <a href="#next">Next</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lifecycle-bg" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-accent ha1"></div>
+  <div class="hero-accent ha2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Case Study &middot; Enterprise Partnership</div>
+    <h1 class="hero-title">Creating the most <em>trusted tech retailer</em></h1>
+    <p class="hero-subtitle">I led the design strategy to help Amazon transform from a returns-first support model to a human-centered tech support experience, driving $5B+ in potential annual value creation.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-value">$5B+</div><div class="hero-meta-label">Annual value opportunity</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section style="background:var(--white);" id="summary">
+  <div class="section-inner">
+    <div class="summary-grid">
+      <div>
+        <div class="section-eyebrow fade-in">Summary</div>
+        <h2 class="section-title fade-in">Amazon mastered speed and price. Customers still go elsewhere for tech they care about.</h2>
+        <div class="summary-text fade-in">
+          <p>Amazon dominates convenience, selection, and price, yet customers choose Best Buy and Apple for high-priced, high-consideration tech purchases. The differentiator is trust: those retailers have cornered the market on white-glove support. When something goes wrong, customers know they'll get real help.</p>
+          <p>I led the design strategy to bring Asurion's human touch to critical moments across the Amazon tech ownership experience. From a CES vision demo that set the strategic direction through competitive analysis, customer research, and a live OEM pilot, this work is shaping a five-year partnership roadmap to make Amazon the most trusted place to buy technology.</p>
+        </div>
+      </div>
+      <div class="role-card fade-in">
+        <div class="role-card-label">My Role</div>
+        <h3>Senior Director of Product Design</h3>
+        <p>Led end-to-end design strategy for the Amazon partnership: vision prototyping and CES demo production, competitive experience audits (Apple Store, Best Buy), qualitative customer research, concept design for embedded support experiences, and OEM pilot creative direction.</p>
+        <div class="role-tags">
+          <span class="role-tag">Partnership Strategy</span>
+          <span class="role-tag">Vision Prototyping</span>
+          <span class="role-tag">Competitive Analysis</span>
+          <span class="role-tag">Customer Research</span>
+          <span class="role-tag">Concept Design</span>
+          <span class="role-tag">OEM Pilot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CES VISION -->
+<section style="background:var(--warm-gray);" id="vision">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">CES 2025 Vision</div>
+    <h2 class="section-title fade-in">The demo that set the five-year strategy</h2>
+    <p class="section-desc fade-in">This vision demo, presented at CES 2025, established the strategic direction for a deeper Asurion-Amazon relationship: one where Asurion helps Amazon reduce returns by increasing the quality of support, creating $5B+ in annual value at no additional cost to Amazon.</p>
+
+    <div class="video-wrapper fade-in" id="cesVideoWrap">
+      <video id="cesVideo" controls playsinline preload="metadata">
+        <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/Amazon-Expert-CES-2025.mp4" type="video/mp4">
+      </video>
+      <div class="video-play-overlay" id="cesOverlay" onclick="toggleVideo('cesVideo','cesOverlay')">
+        <div class="play-btn"><svg width="28" height="32" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+      </div>
+    </div>
+    <div class="video-caption fade-in">CES 2025 vision demo: lifecycle tech support for Amazon customers</div>
+
+  </div>
+</section>
+
+<!-- PROBLEM FRAMING -->
+<section style="background:var(--white);" id="opportunity">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">The Opportunity</div>
+    <h2 class="section-title opportunity-head fade-in">Customers buy outcomes, not technology</h2>
+
+    <div class="opportunity-split fade-in">
+      <div class="opportunity-main-col">
+        <p class="section-desc opportunity-lede fade-in">Consumer trends favor Amazon, but trust in support is the gap. Customers invest significant research into tech decisions, and the last thing they want is to return their device. They want help making it work.</p>
+        <div class="stat-grid fade-in">
+          <div class="stat-block"><div class="stat-value">95%</div><div class="stat-label">Online first</div><div class="stat-desc">Start PC purchase journeys online</div></div>
+          <div class="stat-block"><div class="stat-value">56%</div><div class="stat-label">Start on Amazon</div><div class="stat-desc">Begin product search on Amazon</div></div>
+          <div class="stat-block"><div class="stat-value">88%</div><div class="stat-label">Support = loyalty</div><div class="stat-desc">More likely to buy from Amazon with strong tech support</div></div>
+        </div>
+        <div class="opportunity-points">
+          <div class="opportunity-point fade-in">
+            <div class="opportunity-point-icon" aria-hidden="true">💻</div>
+            <div class="opportunity-point-body">
+              <h4 class="opportunity-point-title">Can I set this up in time?</h4>
+              <p>Customers need confidence that expert help is available from the moment they unbox, not just when something breaks.</p>
+            </div>
+          </div>
+          <div class="opportunity-point fade-in">
+            <div class="opportunity-point-icon" aria-hidden="true">🔧</div>
+            <div class="opportunity-point-body">
+              <h4 class="opportunity-point-title">What happens if it breaks?</h4>
+              <p>The promise of quality support is what makes customers willing to buy high-consideration tech online instead of in-store.</p>
+            </div>
+          </div>
+          <div class="opportunity-point fade-in">
+            <div class="opportunity-point-icon" aria-hidden="true">🔄</div>
+            <div class="opportunity-point-body">
+              <h4 class="opportunity-point-title">What if I want to trade in?</h4>
+              <p>Lifecycle support extends beyond break/fix to upgrades, trade-ins, and ongoing value that keeps customers in the Amazon ecosystem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="opportunity-visual" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section style="background:var(--warm-gray);" id="research">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Customer Research</div>
+    <h2 class="section-title fade-in">Reliable support builds loyalty and impacts purchase confidence</h2>
+    <p class="section-desc fade-in">We ran unmoderated interviews evaluating Amazon's current tech support experience and tested future concepts. The findings were consistent: customers want human help, not returns.</p>
+
+    <div class="demo-grid fade-in">
+      <div>
+        <div class="video-wrapper" style="max-width:100%;" id="researchVidWrap">
+          <video id="researchVid" controls playsinline preload="metadata">
+            <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/loom-vid/support-reputation-selects-short.mp4" type="video/mp4">
+          </video>
+          <div class="video-play-overlay" id="researchVidOverlay" onclick="toggleVideo('researchVid','researchVidOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+          </div>
+        </div>
+        <div class="video-caption">Customer reactions to support concepts</div>
+      </div>
+      <div>
+        <div class="insight-grid">
+          <div class="insight"><strong>Price and convenience drive purchases,</strong> but tech support reputation is the differentiator for high-consideration products.</div>
+          <div class="insight"><strong>88% said a retailer's support reputation</strong> was important when purchasing consumer electronics.</div>
+          <div class="insight"><strong>Customers supplement Amazon support</strong> with external tools and forums, indicating room for improvement.</div>
+          <div class="insight"><strong>Reliable support builds long-term loyalty.</strong> Simplified troubleshooting and faster resolution build repeat purchase confidence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE ANALYSIS -->
+<section style="background:var(--white);" id="competitive">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Competitive Analysis</div>
+    <h2 class="section-title fade-in">Apple and Best Buy have cornered white-glove support</h2>
+    <p class="section-desc fade-in">I conducted in-person competitive research at Apple and Best Buy stores with a member of the product discovery team, experiencing real-world support for new device purchases. This analysis became the proof point for why early-tenure support is critical.</p>
+
+    <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/story-slides/Comparative-Summary-Slide.png" alt="Competitive analysis summary" style="width:100%;border-radius:12px;border:1px solid var(--rule);cursor:pointer;margin-bottom:32px" onclick="openLightbox(this)" loading="lazy" class="fade-in">
+
+    <div class="carousel-outer fade-in" id="compCarousel">
+      <div class="carousel-track" id="compTrack">
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-Apples-Experience-1.png" alt="Apple experience 1" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Apple Store experience.</strong> Hands-on walkthrough of the Genius Bar support flow for a new device purchase, documenting each touchpoint.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-Apples-Experience-2.png" alt="Apple experience 2" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Apple support depth.</strong> How Apple's in-store experience creates confidence through personalized setup and follow-up that drives long-term loyalty.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-bb-1-1.png" alt="Best Buy experience 1" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Best Buy Geek Squad.</strong> In-store experience audit of Geek Squad support for a new laptop purchase, including setup assistance and Totaltech enrollment.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-bb-1-2.png" alt="Best Buy experience 2" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Geek Squad depth.</strong> How Best Buy layers support into the purchase journey with setup, troubleshooting, and ongoing protection.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-bb-2.png" alt="Best Buy experience 3" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Post-purchase support model.</strong> How Best Buy maintains the customer relationship beyond the initial sale through proactive check-ins and service.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-recommendations-0.png" alt="Recommendations overview" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Recommendations overview.</strong> Synthesis of competitive learnings into actionable recommendations for Amazon's tech support experience.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-recommendations-1.png" alt="Recommendation 1" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Recommendation: proactive setup support.</strong> Embed expert help at the moment of delivery, not after the customer fails and calls for a return.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-recommendations-2.png" alt="Recommendation 2" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Recommendation: human-in-the-loop.</strong> AI triage with seamless handoff to human experts, matching the trust customers experience at Apple and Best Buy.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-recommendations-3.png" alt="Recommendation 3" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Recommendation: lifecycle value.</strong> Extend the support relationship beyond break/fix into upgrades, trade-ins, and ecosystem engagement.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-recommendations-4.png" alt="Recommendation 4" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Recommendation: embedded protection.</strong> Surface protection and support benefits within the Amazon product experience, not as an afterthought add-on.</div></div>
+        <div class="carousel-slide"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/competitor-analysis/comp-analysis-recommendations-5.png" alt="Recommendation 5" onclick="openLightbox(this)" loading="lazy"><div class="carousel-caption"><strong>Recommendation: support as trust signal.</strong> Use tech support reputation as a competitive differentiator in marketing and product pages.</div></div>
+      </div>
+      <div class="carousel-nav">
+        <div class="carousel-arrows"><button class="carousel-arrow" id="compPrev" onclick="moveCarousel('comp',-1)" disabled>←</button><button class="carousel-arrow" id="compNext" onclick="moveCarousel('comp',1)">→</button></div>
+        <div class="carousel-counter"><span id="compCurrent">1</span> / <span id="compTotal">11</span></div>
+      </div>
+      <div class="carousel-thumbs" id="compThumbs" aria-label="Slide thumbnails"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP + PILOT -->
+<section class="dark-section" id="pilot">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">From Workshop to Pilot</div>
+    <h2 class="section-title fade-in" style="color:#fff;">Five OEMs launched in three weeks</h2>
+    <p class="section-desc fade-in">Following CES, we workshopped with the Amazon team to identify paths forward. Due to long-pole planning, Amazon identified a near-term opportunity: partner with OEMs to update product pages with expert setup support. We delivered creative and media kits and launched with five OEMs in three weeks.</p>
+
+    <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/story-slides/post-CES-working-session.png" alt="Post-CES workshop" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);cursor:pointer;margin-bottom:32px" onclick="openLightbox(this)" loading="lazy" class="fade-in">
+
+    <div class="gallery-strip-wrap fade-in">
+      <button type="button" class="gallery-scroll-nav gallery-scroll-nav--prev" aria-label="Scroll pilot images left">&larr;</button>
+      <button type="button" class="gallery-scroll-nav gallery-scroll-nav--next" aria-label="Scroll pilot images right">&rarr;</button>
+      <div class="gallery-scroll" id="pilotGalleryScroll">
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/tapo-1.png" alt="Tapo product page" onclick="openLightbox(this)" loading="lazy"></div>
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/wyze-1.png" alt="Wyze product page" onclick="openLightbox(this)" loading="lazy"></div>
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/Netgear-1.png" alt="Netgear page 1" onclick="openLightbox(this)" loading="lazy"></div>
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/Netgear-2-1.png" alt="Netgear page 2" onclick="openLightbox(this)" loading="lazy"></div>
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/Netgear-2.png" alt="Netgear page 3" onclick="openLightbox(this)" loading="lazy"></div>
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/Netgear-3.png" alt="Netgear page 4" onclick="openLightbox(this)" loading="lazy"></div>
+      <div class="gallery-card short"><img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/Netgear-4-email.png" alt="Netgear email" onclick="openLightbox(this)" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="gallery-hint fade-in" style="color:rgba(255,255,255,.3);">Use the arrows or scroll to browse OEM pilot assets: Tapo, Wyze, Netgear.</div>
+
+    <aside class="pilot-leader-callout fade-in" aria-label="Pilot impact and partner recognition">
+      <div class="pilot-leader-callout-label">Partner readout</div>
+      <p>In a recent alignment with Amazon&rsquo;s team, they made clear how pleased they are with the Expert Setup pilot to date—and how much expansion potential they see this year. We&rsquo;ve already secured an early agreement to extend the pilot, which buys more runway to drive concrete outcomes and measurable value.</p>
+      <p>Leadership also called out the speed and precision of the launch—under six weeks from start to live—and the focus the team has kept in the seven weeks since go-live. That discipline is a meaningful part of what&rsquo;s fueling Amazon&rsquo;s enthusiasm and confidence in the partnership.</p>
+      <p><strong>Design, creative, and marketing</strong> were highlighted in particular: rapid creative turnarounds and messaging that lands with customers both at purchase and after they&rsquo;ve brought the product home.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- PILOT OUTCOMES -->
+<section style="background:var(--warm-gray);" id="pilot-outcomes">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Expert Setup pilot</div>
+    <h2 class="section-title pilot-outcomes-section-head fade-in">Measurable traction in post-purchase support</h2>
+    <div class="pilot-outcomes-split fade-in">
+      <div class="pilot-outcomes-col--copy">
+        <p class="section-desc">The pilot was framed around goals Amazon cared about at launch: <strong>increased purchase satisfaction</strong>—helping customers feel confident from unbox through first use—and a returns target of <strong>45%+ reduction</strong> versus baseline, alongside support economics and trust signals in high-consideration categories.</p>
+        <p class="section-desc">Amazon is not sharing the formal return-reduction readout with us, but we have strong indirect signals that performance is healthy—chiefly <strong>continued interest in extending and scaling</strong> the program.</p>
+        <p class="section-desc">These calls are also producing <strong>new sales that convert into recurring subscription revenue</strong>—moving a cost center toward a <strong>profit-contributing channel</strong>.</p>
+      </div>
+      <figure class="pilot-outcomes-journey">
+        <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/pilot-expert-setup/journey-expert-setup-original.png" alt="Expert support journey from purchase and delivery through email reminder, setup help, Complete Protect offer, and five-star experience" onclick="openLightbox(this)" loading="lazy">
+      </figure>
+    </div>
+    <div class="pilot-outcome-stats pilot-outcome-stats--row fade-in" aria-label="Headline pilot metrics">
+      <div class="pilot-outcome-stat"><span class="pilot-outcome-stat-val">93%</span><span class="pilot-outcome-stat-lbl">Resolution rate</span></div>
+      <div class="pilot-outcome-stat"><span class="pilot-outcome-stat-val">86</span><span class="pilot-outcome-stat-lbl">Weekly CX (NPS)</span></div>
+      <div class="pilot-outcome-stat"><span class="pilot-outcome-stat-val">4.7</span><span class="pilot-outcome-stat-lbl">Expert rating / 5</span></div>
+      <div class="pilot-outcome-stat"><span class="pilot-outcome-stat-val">14K+</span><span class="pilot-outcome-stat-lbl">Calls to date</span></div>
+      <div class="pilot-outcome-stat"><span class="pilot-outcome-stat-val">7%</span><span class="pilot-outcome-stat-lbl">Attach rate (post-purchase)</span></div>
+    </div>
+
+    <aside class="pilot-outcomes-readout fade-in" aria-label="What the readout emphasized">
+      <div class="pilot-outcomes-readout-label">What the readout emphasized</div>
+      <ul>
+        <li>Strong discoverability on PDP and email is what pulls post-purchase utilization forward.</li>
+        <li>High NPS and expert star scores indicate the experience is landing on the pain points customers care about.</li>
+        <li>Resolution held steady in the low 90s; mix analysis clarified how pre-purchase journeys differ from post-purchase moments on the same line.</li>
+        <li>Post-purchase attach has reached about <strong>7%</strong> on in-scope calls—enough volume that new protection and subscription pulls are materially changing the revenue story on the line.</li>
+        <li>Return-rate trends read positive; the team committed to keep evaluating as volume scales.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- VISION CONCEPTS -->
+<section style="background:var(--white);" id="concepts">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">Vision Concepts</div>
+    <h2 class="section-title fade-in">Transforming Amazon's support experience</h2>
+    <p class="section-desc fade-in">We designed three interconnected concepts showing how Asurion support could integrate natively into the Amazon ecosystem, each building on the research findings.</p>
+
+    <!-- Concept 1: Support Vision -->
+    <div class="demo-grid fade-in" style="margin-bottom:64px;">
+      <div class="demo-block">
+        <div class="demo-block-label">Concept 01</div>
+        <h3 class="demo-block-title" style="font-family:var(--serif);font-size:1.4rem;">Digital support experience</h3>
+        <p>A reimagined Amazon support flow that leads with understanding the customer's problem instead of offering a return. AI triages and connects to human experts through a multimodal experience: voice, chat, camera, and screen sharing.</p>
+        <div class="insight" style="margin-top:16px;"><strong>Key insight:</strong> When customers call Amazon support today, the first question is "Would you like to return it?" Customers want their purchase to work. Returns are the last resort.</div>
+      </div>
+      <div>
+        <div class="video-wrapper" style="max-width:100%;" id="visionVidWrap">
+          <video id="visionVid" controls playsinline preload="metadata">
+            <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/loom-vid/strategic-partnership-vision-demo%20(1).mp4" type="video/mp4">
+          </video>
+          <div class="video-play-overlay" id="visionVidOverlay" onclick="toggleVideo('visionVid','visionVidOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+          </div>
+        </div>
+        <div class="video-caption">Vision walkthrough: AI triage to human expert support</div>
+      </div>
+    </div>
+
+    <!-- Supporting research: current vs future (between Concept 01 and 02) -->
+    <div class="fade-in" style="margin-bottom:64px;">
+      <div class="section-eyebrow" style="margin-bottom:10px;">Supporting research</div>
+      <h3 class="section-title" style="font-size:clamp(1.35rem,2.5vw,1.75rem);margin-bottom:12px;">Current state vs. future state</h3>
+      <p class="section-desc" style="margin-bottom:24px;">Sessions tested Amazon&rsquo;s existing support model against a unified Asurion-led future flow. The still below frames the comparison; the clips capture participant reactions to the future direction.</p>
+      <img src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/story-slides/current-future-support.png" alt="Current fragmented support compared to unified future Asurion support" style="width:100%;max-width:920px;margin:0 auto 28px;display:block;border-radius:12px;border:1px solid var(--rule);cursor:pointer" onclick="openLightbox(this)" loading="lazy">
+      <div class="research-clips-grid">
+        <div>
+          <div class="video-wrapper" style="max-width:100%;" id="researchClip1Wrap">
+            <video id="researchClip1" controls playsinline preload="metadata">
+              <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/research-clips/highlights-future-state_1.mp4" type="video/mp4">
+            </video>
+            <div class="video-play-overlay" id="researchClip1Overlay" onclick="toggleVideo('researchClip1','researchClip1Overlay')">
+              <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+            </div>
+          </div>
+          <div class="video-caption">Research highlight: reactions to future-state support (1)</div>
+        </div>
+        <div>
+          <div class="video-wrapper" style="max-width:100%;" id="researchClip2Wrap">
+            <video id="researchClip2" controls playsinline preload="metadata">
+              <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/research-clips/highlights-future-state_3.mp4" type="video/mp4">
+            </video>
+            <div class="video-play-overlay" id="researchClip2Overlay" onclick="toggleVideo('researchClip2','researchClip2Overlay')">
+              <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+            </div>
+          </div>
+          <div class="video-caption">Research highlight: reactions to future-state support (2)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concept 2: Voice Mode -->
+    <div class="demo-grid fade-in" style="margin-bottom:64px;">
+      <div>
+        <div class="video-wrapper" style="max-width:100%;" id="voiceVidWrap">
+          <video id="voiceVid" controls playsinline preload="metadata">
+            <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/loom-vid/support-experience-expert-voice.mp4" type="video/mp4">
+          </video>
+          <div class="video-play-overlay" id="voiceVidOverlay" onclick="toggleVideo('voiceVid','voiceVidOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+          </div>
+        </div>
+        <div class="video-caption">Expert voice mode with seamless modality switching</div>
+      </div>
+      <div class="demo-block">
+        <div class="demo-block-label">Concept 02</div>
+        <h3 class="demo-block-title" style="font-family:var(--serif);font-size:1.4rem;">Expert voice support</h3>
+        <p>A dedicated voice-first experience embedded in Amazon's ecosystem. Customers connect with an expert via internet call, with the ability to switch to screen sharing, chat, or visual assistance as the session requires.</p>
+        <div class="insight" style="margin-top:16px;"><strong>Design principle:</strong> When customers reach support, they've already tried self-service. They want to talk to a human. This experience makes that connection immediate and rich.</div>
+      </div>
+    </div>
+
+    <!-- Concept 3: Complete Protect -->
+    <div class="demo-grid fade-in">
+      <div class="demo-block">
+        <div class="demo-block-label">Concept 03</div>
+        <h3 class="demo-block-title" style="font-family:var(--serif);font-size:1.4rem;">Complete Protect integration</h3>
+        <p>Deep integration of Asurion's Complete Protect product into the Amazon account experience. Device badging, benefit visibility, in-store service booking, and claim paths all live natively within Amazon's product pages and order history.</p>
+        <div class="insight" style="margin-top:16px;"><strong>Where this is headed:</strong> Asurion and Amazon have advanced many of these concepts in early 2026, expanding the partnership in significant ways. The exact details are in progress.</div>
+      </div>
+      <div>
+        <div class="video-wrapper" style="max-width:100%;" id="protectVidWrap">
+          <video id="protectVid" controls playsinline preload="metadata">
+            <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/amazon/loom-vid/complete-protect-enhancement-concepts.mp4" type="video/mp4">
+          </video>
+          <div class="video-play-overlay" id="protectVidOverlay" onclick="toggleVideo('protectVid','protectVidOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none"><polygon points="4,2 26,16 4,30" fill="#232F3E"/></svg></div>
+          </div>
+        </div>
+        <div class="video-caption">Complete Protect: native Amazon account integration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section style="background:var(--warm-gray);" id="next">
+  <div class="section-inner">
+    <div class="section-eyebrow fade-in">What's Next</div>
+    <h2 class="section-title next-section-head fade-in">Next steps towards full lifecycle care</h2>
+    <div class="next-split fade-in">
+      <div class="next-split-main">
+        <div class="next-cards">
+          <div class="next-card fade-in"><div class="next-card-num">01</div><h4>Lifecycle support integration</h4><p>Moving from reactive returns to proactive support at every ownership stage: purchase, setup, ongoing help, and upgrade paths within the Amazon experience.</p></div>
+          <div class="next-card fade-in"><div class="next-card-num">02</div><h4>OEM program expansion</h4><p>Scaling the pilot beyond routers and security cameras to laptops, tablets, and high-consideration consumer electronics across more OEM partners.</p></div>
+          <div class="next-card fade-in"><div class="next-card-num">03</div><h4>Embedded Complete Protect</h4><p>Native Amazon account integration with device badging, in-store service booking, and AI-to-human support paths as core product features.</p></div>
+        </div>
+      </div>
+      <div class="next-split-visual" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="work-footer">
+  <a href="../work.html" style="display:inline-block;margin-bottom:10px;color:var(--ink-light);text-decoration:none;font-size:0.72rem">&larr; Back to work</a><br>
+  &copy; 2026 Carl Schulz &middot; Nashville, TN
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button type="button" class="lightbox-arrow lightbox-arrow--prev" id="lbPrev" aria-label="Previous image" onclick="event.stopPropagation();lbStep(-1)">&larr;</button>
+  <button type="button" class="lightbox-arrow lightbox-arrow--next" id="lbNext" aria-label="Next image" onclick="event.stopPropagation();lbStep(1)">&rarr;</button>
+  <div class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">&times;</div>
+  <img id="lightbox-img" src="" alt="Detail view" onclick="event.stopPropagation()">
+</div>
+
+<script>
+const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target.parentElement.querySelectorAll('.fade-in'),i=Array.from(s).indexOf(e.target);setTimeout(()=>e.target.classList.add('visible'),i*100);observer.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in').forEach(e=>observer.observe(e));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+function toggleVideo(v,o){const vid=document.getElementById(v),ov=document.getElementById(o);if(!vid||!ov)return;if(vid.paused){vid.play();ov.classList.add('hidden')}else{vid.pause();ov.classList.remove('hidden')}}
+document.querySelectorAll('.video-wrapper video').forEach(function(v){
+  const wrap=v.closest('.video-wrapper');const o=wrap&&wrap.querySelector('.video-play-overlay');if(!o)return;
+  v.addEventListener('play',function(){o.classList.add('hidden')});
+  v.addEventListener('pause',function(){if(v.currentTime>0.02||v.ended)o.classList.remove('hidden')});
+  v.addEventListener('click',function(e){if(v.paused)return;e.preventDefault();e.stopPropagation();v.pause();o.classList.remove('hidden')},true);
+});
+
+let lbGallery=[],lbIndex=0;
+function updateLbNav(){const m=lbGallery.length>1;document.getElementById('lbPrev').classList.toggle('is-active',m);document.getElementById('lbNext').classList.toggle('is-active',m)}
+function openLightbox(i){
+  const scr=i.closest('.gallery-scroll');
+  if(scr){lbGallery=Array.from(scr.querySelectorAll('img'));lbIndex=Math.max(0,lbGallery.indexOf(i))}else{lbGallery=[i];lbIndex=0}
+  document.getElementById('lightbox-img').src=i.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+  updateLbNav();
+}
+function lbStep(dir){if(lbGallery.length<2)return;lbIndex=(lbIndex+dir+lbGallery.length)%lbGallery.length;document.getElementById('lightbox-img').src=lbGallery[lbIndex].src}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';lbGallery=[];updateLbNav()}
+
+let compIdx=0;
+const compSlides=document.querySelectorAll('#compTrack .carousel-slide');
+const compTotal=compSlides.length;
+const compThumbsEl=document.getElementById('compThumbs');
+document.getElementById('compTotal').textContent=compTotal;
+for(let i=0;i<compTotal;i++){
+  const srcImg=compSlides[i].querySelector('img');
+  const btn=document.createElement('button');
+  btn.type='button';
+  btn.className='carousel-thumb'+(i===0?' active':'');
+  btn.setAttribute('aria-label','Show slide '+(i+1)+' of '+compTotal);
+  btn.setAttribute('aria-current',i===0?'true':'false');
+  const thumbImg=document.createElement('img');
+  thumbImg.src=srcImg.src;thumbImg.alt='';thumbImg.width=72;thumbImg.height=50;thumbImg.loading='lazy';
+  btn.appendChild(thumbImg);
+  btn.addEventListener('click',function(){goToComp(i)});
+  compThumbsEl.appendChild(btn);
+}
+function goToComp(idx){
+  compIdx=Math.max(0,Math.min(idx,compTotal-1));
+  compSlides.forEach(function(s){s.style.transform='translateX(-'+(compIdx*100)+'%)'});
+  document.getElementById('compCurrent').textContent=compIdx+1;
+  document.getElementById('compPrev').disabled=compIdx===0;
+  document.getElementById('compNext').disabled=compIdx===compTotal-1;
+  compThumbsEl.querySelectorAll('.carousel-thumb').forEach(function(d,j){
+    d.classList.toggle('active',j===compIdx);
+    d.setAttribute('aria-current',j===compIdx?'true':'false');
+  });
+  var activeBtn=compThumbsEl.querySelectorAll('.carousel-thumb')[compIdx];
+  if(activeBtn&&activeBtn.scrollIntoView)activeBtn.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+function moveCarousel(id,dir){if(id==='comp')goToComp(compIdx+dir)}
+(function initPilotGalleryNav(){
+  var scroll=document.getElementById('pilotGalleryScroll');
+  var prev=document.querySelector('.gallery-scroll-nav--prev');
+  var next=document.querySelector('.gallery-scroll-nav--next');
+  if(!scroll||!prev||!next)return;
+  function amt(){return Math.min(scroll.clientWidth*0.85,420)}
+  prev.addEventListener('click',function(){scroll.scrollBy({left:-amt(),behavior:'smooth'})});
+  next.addEventListener('click',function(){scroll.scrollBy({left:amt(),behavior:'smooth'})});
+})();
+
+document.addEventListener('keydown',function(e){
+  var tag=(e.target&&e.target.tagName)?e.target.tagName.toLowerCase():'';
+  var lb=document.getElementById('lightbox');
+  if(lb.classList.contains('open')){
+    if(e.key==='Escape'){e.preventDefault();closeLightbox();return}
+    if(lbGallery.length>1&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){e.preventDefault();lbStep(e.key==='ArrowRight'?1:-1);return}
+  }
+  if(tag==='video'||tag==='input'||tag==='textarea'||tag==='select'||(e.target&&e.target.isContentEditable))return;
+  if(e.key==='ArrowRight')moveCarousel('comp',1);
+  else if(e.key==='ArrowLeft')moveCarousel('comp',-1);
+});
+</script>
+</body>
+</html>

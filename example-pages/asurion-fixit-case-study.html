@@ -1046,16 +1046,21 @@ function toggleVideo(videoId, overlayId) {
   }
 }
 
-// Pause video when clicking on it directly (after overlay hidden)
 document.querySelectorAll('.device-video-wrapper video, .vision-video-wrapper video').forEach(v => {
-  v.addEventListener('click', () => {
-    const wrapper = v.closest('.device-video-wrapper, .vision-video-wrapper');
-    const overlay = wrapper.querySelector('.video-play-overlay');
-    if (!v.paused) {
-      v.pause();
-      overlay.classList.remove('hidden');
-    }
+  const wrapper = v.closest('.device-video-wrapper, .vision-video-wrapper');
+  const overlay = wrapper && wrapper.querySelector('.video-play-overlay');
+  if (!overlay) return;
+  v.addEventListener('play', () => { overlay.classList.add('hidden'); });
+  v.addEventListener('pause', () => {
+    if (v.currentTime > 0.02 || v.ended) overlay.classList.remove('hidden');
   });
+  v.addEventListener('click', (e) => {
+    if (v.paused) return;
+    e.preventDefault();
+    e.stopPropagation();
+    v.pause();
+    overlay.classList.remove('hidden');
+  }, true);
 });
 
 // Lightbox

@@ -73,10 +73,17 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 .learnings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .learning{padding:20px 24px;background:var(--ink-card);border-radius:12px;border-left:3px solid var(--xbox-green);font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.6}
 
-/* VIDEO (native controls — avoid overflow:hidden clipping the control bar) */
-.video-wrapper{max-width:960px;margin:0 auto;border-radius:16px;overflow:visible;box-shadow:0 24px 80px rgba(0,0,0,.4);position:relative;border:1px solid var(--glass-border);background:#000}
-.video-wrapper video{width:100%;display:block;border-radius:12px;vertical-align:middle}
+/* VIDEO — play overlay (same behavior as Amazon case study; Xbox green play button) */
+.video-wrapper{max-width:960px;margin:0 auto;border-radius:16px;overflow:visible;box-shadow:0 24px 80px rgba(0,0,0,.4);position:relative;cursor:pointer;border:1px solid var(--glass-border);background:#000}
+.video-wrapper video{width:100%;display:block;border-radius:12px;vertical-align:middle;position:relative;z-index:0}
 .video-wrapper video:focus{outline:2px solid var(--xbox-green-bright);outline-offset:2px}
+.video-play-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);transition:opacity .3s;border-radius:12px;pointer-events:auto}
+.video-play-overlay.hidden{opacity:0;pointer-events:none}
+.xbox-case-page .play-btn{width:80px;height:80px;border-radius:50%;background:var(--xbox-green-bright);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.35);transition:transform .2s}
+.xbox-case-page .play-btn:hover{transform:scale(1.08)}
+.xbox-case-page .play-btn svg{margin-left:4px;display:block}
+.xbox-case-page .product-video-block .play-btn{width:68px;height:68px}
+.xbox-case-page .product-video-block .play-btn svg{margin-left:3px}
 .video-caption{text-align:center;margin-top:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--ink-light)}
 
 /* RESEARCH */
@@ -148,8 +155,8 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 .product-acx-scroll::-webkit-scrollbar-track{background:var(--rule);border-radius:2px}
 .product-acx-scroll::-webkit-scrollbar-thumb{background:var(--xbox-green);border-radius:2px}
 .product-acx-scroll .gallery-card{flex:0 0 auto;width:min(420px,calc(100vw - 120px));max-width:520px;scroll-snap-align:start}
-.product-video-block{border-radius:16px;overflow:visible;border:1px solid var(--glass-border);background:#000}
-.product-video-block video{width:100%;display:block;border-radius:12px;vertical-align:middle}
+.product-video-block{position:relative;cursor:pointer;border-radius:16px;overflow:visible;border:1px solid var(--glass-border);background:#000}
+.product-video-block video{width:100%;display:block;border-radius:12px;vertical-align:middle;position:relative;z-index:0}
 .product-video-block video:focus{outline:2px solid var(--xbox-green-bright);outline-offset:2px}
 .product-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--xbox-green-bright);margin-bottom:8px}
 
@@ -442,6 +449,9 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
         <video id="researchVideo" controls playsinline preload="metadata">
           <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/research/xbox-research-CES-1-5-26-v2-720.mp4" type="video/mp4">
         </video>
+        <div class="video-play-overlay" id="researchVideoOverlay" onclick="toggleVideo('researchVideo','researchVideoOverlay')">
+          <div class="play-btn"><svg width="28" height="32" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+        </div>
       </div>
       <div class="video-caption">Customer research highlight reel</div>
     </div>
@@ -469,6 +479,9 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
       <video id="visionVideo" controls playsinline preload="metadata">
         <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/xbox_lifecycle_pitch.mp4" type="video/mp4">
       </video>
+      <div class="video-play-overlay" id="visionVideoOverlay" onclick="toggleVideo('visionVideo','visionVideoOverlay')">
+        <div class="play-btn"><svg width="28" height="32" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+      </div>
     </div>
     <div class="video-caption fade-in">Xbox lifecycle partnership vision demo</div>
 
@@ -513,6 +526,9 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
           <video id="salesVideo" controls playsinline preload="metadata">
             <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/concept/xbox-game-pass-support-flow-demo.mp4" type="video/mp4">
           </video>
+          <div class="video-play-overlay" id="salesVideoOverlay" onclick="toggleVideo('salesVideo','salesVideoOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+          </div>
         </div>
       </div>
       <div class="demo-proto-phone">
@@ -521,6 +537,9 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
           <video id="appVideo" controls playsinline preload="metadata">
             <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/concept/controller-support-game-pass-ultimate-demo.mp4" type="video/mp4">
           </video>
+          <div class="video-play-overlay" id="appVideoOverlay" onclick="toggleVideo('appVideo','appVideoOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+          </div>
         </div>
       </div>
     </div>
@@ -543,17 +562,23 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
       <div class="product-acx-phone">
         <div class="product-label">Mobile home</div>
         <div class="product-video-block">
-          <video controls playsinline preload="metadata">
+          <video id="acxHomeVideo" controls playsinline preload="metadata">
             <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/home-screen-tech-care-mobile.mp4" type="video/mp4">
           </video>
+          <div class="video-play-overlay" id="acxHomeOverlay" onclick="toggleVideo('acxHomeVideo','acxHomeOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+          </div>
         </div>
       </div>
       <div class="product-acx-phone">
         <div class="product-label">Mobile enrollment</div>
         <div class="product-video-block">
-          <video controls playsinline preload="metadata">
+          <video id="acxEnrollVideo" controls playsinline preload="metadata">
             <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/enrollment-demo-compressed.mp4" type="video/mp4">
           </video>
+          <div class="video-play-overlay" id="acxEnrollOverlay" onclick="toggleVideo('acxEnrollVideo','acxEnrollOverlay')">
+            <div class="play-btn"><svg width="22" height="26" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+          </div>
         </div>
       </div>
     </div>
@@ -561,9 +586,12 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
     <div class="product-acx-desktop-video fade-in">
       <div class="product-label">Desktop homepage</div>
       <div class="product-video-block">
-        <video controls playsinline preload="metadata">
+        <video id="acxDesktopVideo" controls playsinline preload="metadata">
           <source src="https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/xbox/home-screen-tech-care.mp4" type="video/mp4">
         </video>
+        <div class="video-play-overlay" id="acxDesktopOverlay" onclick="toggleVideo('acxDesktopVideo','acxDesktopOverlay')">
+          <div class="play-btn"><svg width="28" height="32" viewBox="0 0 28 32" fill="none" aria-hidden="true"><polygon points="4,2 26,16 4,30" fill="#0a0a0a"/></svg></div>
+        </div>
       </div>
     </div>
 
@@ -669,6 +697,15 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target.parentElement.querySelectorAll('.fade-in'),i=Array.from(s).indexOf(e.target);setTimeout(()=>e.target.classList.add('visible'),i*100);observer.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.fade-in').forEach(e=>observer.observe(e));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+function toggleVideo(v,o){const vid=document.getElementById(v),ov=document.getElementById(o);if(!vid||!ov)return;if(vid.paused){vid.play();ov.classList.add('hidden')}else{vid.pause();ov.classList.remove('hidden')}}
+document.querySelectorAll('.video-wrapper video, .product-video-block video').forEach(function(v){
+  const wrap=v.closest('.video-wrapper')||v.closest('.product-video-block');
+  const o=wrap&&wrap.querySelector('.video-play-overlay');
+  if(!o)return;
+  v.addEventListener('play',function(){o.classList.add('hidden')});
+  v.addEventListener('pause',function(){if(v.currentTime>0.02||v.ended)o.classList.remove('hidden')});
+  v.addEventListener('click',function(e){if(v.paused)return;e.preventDefault();e.stopPropagation();v.pause();o.classList.remove('hidden')},true);
+});
 function openLightbox(i){document.getElementById('lightbox-img').src=i.src;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});

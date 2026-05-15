@@ -67,9 +67,24 @@
       setPlaying(true);
     });
 
+    video.addEventListener('pause', function () {
+      setPlaying(false);
+    });
+
     video.addEventListener('ended', function () {
       setPlaying(false);
     });
+
+    video.addEventListener(
+      'click',
+      function (e) {
+        if (video.paused) return;
+        e.preventDefault();
+        video.pause();
+        setPlaying(false);
+      },
+      true
+    );
   }
 
   function init(root) {

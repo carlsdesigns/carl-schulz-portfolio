@@ -688,6 +688,16 @@
       });
     });
 
+    lbVideo.addEventListener(
+      'click',
+      function (e) {
+        if (lbVideo.paused) return;
+        e.preventDefault();
+        lbVideo.pause();
+      },
+      true
+    );
+
     lbClose.addEventListener('click', function (e) { e.stopPropagation(); close(); });
     lbPrev.addEventListener('click',  function (e) { e.stopPropagation(); navigate(-1); });
     lbNext.addEventListener('click',  function (e) { e.stopPropagation(); navigate(1); });

@@ -955,10 +955,20 @@ function toggleVideo(videoId, overlayId) {
   else { video.pause(); overlay.classList.remove('hidden'); }
 }
 document.querySelectorAll('.video-wrapper video').forEach(v => {
-  v.addEventListener('click', () => {
-    const overlay = v.closest('.video-wrapper').querySelector('.video-play-overlay');
-    if (!v.paused) { v.pause(); overlay.classList.remove('hidden'); }
+  const wrap = v.closest('.video-wrapper');
+  const overlay = wrap && wrap.querySelector('.video-play-overlay');
+  if (!overlay) return;
+  v.addEventListener('play', () => { overlay.classList.add('hidden'); });
+  v.addEventListener('pause', () => {
+    if (v.currentTime > 0.02 || v.ended) overlay.classList.remove('hidden');
   });
+  v.addEventListener('click', (e) => {
+    if (v.paused) return;
+    e.preventDefault();
+    e.stopPropagation();
+    v.pause();
+    overlay.classList.remove('hidden');
+  }, true);
 });
 
 // Lightbox
