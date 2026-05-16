@@ -72,11 +72,11 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 .video-wrapper{max-width:960px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 16px 64px rgba(42,36,56,.12);position:relative;cursor:pointer;background:#000}
 .video-wrapper video{width:100%;display:block;border-radius:16px;vertical-align:middle}
 .video-wrapper video:focus{outline:2px solid var(--primary);outline-offset:2px}
-.video-play-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(42,36,56,.3);transition:opacity .3s;border-radius:16px;pointer-events:auto}
+.video-play-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(42,36,56,.15);transition:opacity .3s;border-radius:16px;pointer-events:auto}
 .video-play-overlay.hidden{opacity:0;pointer-events:none}
-.play-btn{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+.play-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .2s}
 .play-btn:hover{transform:scale(1.08)}
-.play-btn svg{margin-left:3px}
+.play-btn svg{margin-left:2px;width:14px;height:16px}
 .play-btn--pink{background:var(--primary)}
 .play-btn--sky{background:var(--sky)}
 .play-btn--sun{background:var(--sun)}
@@ -107,9 +107,7 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 .video-card{border-radius:14px;overflow:hidden;border:1px solid var(--rule);transition:transform .3s;background:var(--white);position:relative}
 .video-card:hover{transform:translateY(-4px)}
 .video-card video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
-.video-card .video-play-overlay{border-radius:14px 14px 0 0;bottom:auto;height:0;padding-bottom:56.25%;background:rgba(42,36,56,.35)}
-.video-card .play-btn{width:56px;height:56px}
-.video-card .play-btn svg{width:18px;height:20px;margin-left:2px}
+.video-card .video-play-overlay{border-radius:14px 14px 0 0;bottom:auto;top:0;left:0;right:0;height:auto;aspect-ratio:16/9;padding-bottom:0;background:rgba(42,36,56,.15)}
 .video-card-body{padding:16px 18px}
 .video-card-body h5{font-family:var(--serif);font-size:.92rem;font-weight:400;margin-bottom:4px}
 .video-card-body p{font-size:.75rem;color:var(--ink-light);line-height:1.4}
@@ -269,14 +267,14 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 <section style="background:var(--white);" id="experience">
   <div class="section-inner">
     <div class="section-eyebrow fade-in">The Child Experience</div>
-    <h2 class="section-title fade-in">Every press is a win because every press adds something to the world</h2>
+    <h2 class="section-title fade-in">Every press is a win</h2>
     <p class="section-desc fade-in">Letter Playground is a freeform canvas. Children press letters and numbers on a large, friendly keyboard. Each press triggers three things simultaneously.</p>
 
     <div class="feature-strip fade-in">
       <div class="feature-pill pink">
-        <div class="feature-pill-icon">📳</div>
-        <h5>Haptic feedback</h5>
-        <p>The device buzzes, making the press feel physical and satisfying</p>
+        <div class="feature-pill-icon">🔔</div>
+        <h5>Instant audio feedback</h5>
+        <p>Every press triggers an immediate voice response — the letter, number, or color is announced out loud</p>
       </div>
       <div class="feature-pill blue">
         <div class="feature-pill-icon">🔊</div>
