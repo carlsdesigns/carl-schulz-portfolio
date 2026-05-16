@@ -231,6 +231,35 @@
       },
       "nextSteps": "Nav-embedded booking, multi-service expansion, and behavioral routing intelligence.",
       "contentBlocks": []
+    },
+    {
+      "slug": "bing-ding-learning",
+      "published": true,
+      "detailUrl": "case-studies/bing-ding-learning.html",
+      "projectType": "Personal project · AI-native app",
+      "title": "Bing Ding Learning",
+      "year": "2025–2026",
+      "company": "Personal",
+      "teaserImage": "https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/bing-ding-learning/bdl-thumb.png",
+      "impactLine": "AI-native educational app for toddlers: free play replaces quizzes, adaptive sequencing guides learning, and parents get real signal.",
+      "headline": "A child presses a letter and a world responds.",
+      "hook": "I designed and built an AI-native toddler learning app that replaces pressure with play and gives parents meaningful progress insight.",
+      "keyVisual": "https://aqzgfbnmqsfzedscxmsj.supabase.co/storage/v1/object/public/carlschulz%20portfolio/bing-ding-learning/bdl-thumb.png",
+      "heroVideo": null,
+      "summary": "Designed and built a browser-based educational app for toddlers aged 2–4, powered by ElevenLabs TTS, AI image generation, Google Gemini progress narratives, and an adaptive learning engine that sequences quizzes and personalizes praise.",
+      "problemFraming": "Most toddler learning apps create performance anxiety with quiz-and-score mechanics. Parents get no meaningful feedback about what their child is actually learning.",
+      "roleAndTeam": "Solo designer and developer — concept, UX, React front-end, AI integration, image pipeline, TTS, and observational user testing.",
+      "approach": "Client-side-first architecture with AI at the engagement layer: image generation, adaptive quiz sequencing, personalized TTS, and Gemini-powered parent coaching.",
+      "challenges": "Designing zero-pressure interactions for toddlers, building a reliable multi-AI pipeline (TTS + image gen + LLM), and ensuring graceful degradation when any API is unavailable.",
+      "solution": "A free-play canvas where every press adds to the world, three structured game modes that invisibly collect learning data, and an AI progress report that translates data into actionable parent coaching.",
+      "resultsAndImpact": "Live at bing-ding-learning.vercel.app. Validated through observational testing with real toddlers. Demonstrates AI as engagement engine, not just production tool.",
+      "impactFallback": {
+        "expectedMetrics": "Engagement duration, letter mastery progression, parent report usage.",
+        "strategicImpact": "Proof of concept for AI-native children's education that serves both child and parent.",
+        "testResults": "Iterative observational testing with toddlers informed touch targets, voice guidance, and praise cadence."
+      },
+      "nextSteps": "Expanded character sets, multi-language support, and deeper adaptive difficulty curves.",
+      "contentBlocks": []
     }
   ]
 }
