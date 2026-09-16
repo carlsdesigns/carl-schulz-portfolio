@@ -654,45 +654,8 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 </div><!-- /portfolioMain -->
 
 <script src="../js/portfolio-config.js"></script>
+<script src="../js/portfolio-sha256.js"></script>
 <script src="../js/portfolio-auth.js"></script>
-<script>
-  (function () {
-    function attemptUnlock() {
-      if (!window.__portfolioAuth || typeof window.__portfolioAuth.tryPassword !== 'function') {
-        var ge = document.getElementById('gateError');
-        if (ge) {
-          ge.textContent = 'Could not load login scripts.';
-          ge.classList.add('show');
-        }
-        return;
-      }
-      var input = document.getElementById('gatePassword');
-      var err = document.getElementById('gateError');
-      if (!input || !err) return;
-      if (window.__portfolioAuth.tryPassword(input.value.trim())) {
-        err.classList.remove('show');
-        err.textContent = 'Incorrect password.';
-        input.value = '';
-      } else {
-        err.textContent = 'Incorrect password.';
-        err.classList.add('show');
-        input.value = '';
-        input.focus();
-      }
-    }
-    var form = document.getElementById('gateForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
-    var btn = document.getElementById('gateUnlockBtn');
-    if (btn) btn.addEventListener('click', attemptUnlock);
-    var pw = document.getElementById('gatePassword');
-    if (pw) pw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); attemptUnlock(); } });
-    try {
-      if (window.__portfolioAuth && typeof window.__portfolioAuth.initPage === 'function') {
-        window.__portfolioAuth.initPage();
-      }
-    } catch (err) { console.error(err); }
-  })();
-</script>
 <script>
 const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target.parentElement.querySelectorAll('.fade-in'),i=Array.from(s).indexOf(e.target);setTimeout(()=>e.target.classList.add('visible'),i*100);observer.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.fade-in').forEach(e=>observer.observe(e));

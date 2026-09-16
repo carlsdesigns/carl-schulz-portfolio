@@ -160,6 +160,21 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
 </head>
 <body class="bdl-case-page">
 
+<div id="portfolioGate" class="portfolio-gate">
+  <div class="portfolio-gate-card">
+    <h1>Protected work</h1>
+    <p>Enter your password to read this case study.</p>
+    <form id="gateForm" novalidate onsubmit="return false;">
+      <input type="password" id="gatePassword" name="password" autocomplete="current-password" placeholder="Password" aria-label="Password">
+      <button type="button" id="gateUnlockBtn">Continue</button>
+      <p class="portfolio-gate-error" id="gateError" role="alert">Incorrect password.</p>
+    </form>
+    <a class="back" href="../index.html">← Back to site</a>
+  </div>
+</div>
+
+<div id="portfolioMain" class="bdl-case-main" hidden>
+
 <header class="case-header-stack">
   <nav class="work-nav" aria-label="Site">
     <a class="work-nav-brand" href="../index.html">
@@ -569,6 +584,12 @@ section{padding:96px 48px}.section-inner{max-width:1100px;margin:0 auto}
   <div class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">&times;</div>
   <img id="lightbox-img" src="" alt="Detail view" onclick="event.stopPropagation()">
 </div>
+
+</div><!-- end #portfolioMain -->
+
+<script src="../js/portfolio-config.js"></script>
+<script src="../js/portfolio-sha256.js"></script>
+<script src="../js/portfolio-auth.js"></script>
 
 <script>
 const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const s=e.target.parentElement.querySelectorAll('.fade-in'),i=Array.from(s).indexOf(e.target);setTimeout(()=>e.target.classList.add('visible'),i*100);observer.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});

@@ -516,34 +516,8 @@
 </div><!-- end #portfolioMain -->
 
 <script src="../js/portfolio-config.js"></script>
+<script src="../js/portfolio-sha256.js"></script>
 <script src="../js/portfolio-auth.js"></script>
-<script>
-  (function () {
-    function attemptUnlock() {
-      var pw = document.getElementById('gatePassword').value;
-      var err = document.getElementById('gateError');
-      var ok = false;
-      try { ok = window.__portfolioAuth && window.__portfolioAuth.check(pw); } catch (e) {}
-      if (ok) {
-        document.getElementById('portfolioGate').style.display = 'none';
-        document.getElementById('portfolioMain').removeAttribute('hidden');
-      } else {
-        err.style.display = 'block';
-      }
-    }
-    var form = document.getElementById('gateForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
-    var btn = document.getElementById('gateUnlockBtn');
-    if (btn) btn.addEventListener('click', attemptUnlock);
-    var pw = document.getElementById('gatePassword');
-    if (pw) pw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); attemptUnlock(); } });
-    try {
-      if (window.__portfolioAuth && typeof window.__portfolioAuth.initPage === 'function') {
-        window.__portfolioAuth.initPage();
-      }
-    } catch (err) { console.error(err); }
-  })();
-</script>
 <script src="../js/case-study-inpage-nav.js"></script>
 <script>
   // ── Fade-in observer ──────────────────────────────────────

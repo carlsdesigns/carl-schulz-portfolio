@@ -441,45 +441,8 @@
 </div><!-- /portfolioMain -->
 
 <script src="../js/portfolio-config.js"></script>
+<script src="../js/portfolio-sha256.js"></script>
 <script src="../js/portfolio-auth.js"></script>
-<script>
-  (function () {
-    function attemptUnlock() {
-      if (!window.__portfolioAuth || typeof window.__portfolioAuth.tryPassword !== 'function') {
-        var ge = document.getElementById('gateError');
-        if (ge) {
-          ge.textContent = 'Could not load login scripts.';
-          ge.classList.add('show');
-        }
-        return;
-      }
-      var input = document.getElementById('gatePassword');
-      var err   = document.getElementById('gateError');
-      if (!input || !err) return;
-      if (window.__portfolioAuth.tryPassword(input.value.trim())) {
-        err.classList.remove('show');
-        err.textContent = 'Incorrect password.';
-        input.value = '';
-      } else {
-        err.textContent = 'Incorrect password.';
-        err.classList.add('show');
-        input.value = '';
-        input.focus();
-      }
-    }
-    var form = document.getElementById('gateForm');
-    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
-    var btn = document.getElementById('gateUnlockBtn');
-    if (btn) btn.addEventListener('click', attemptUnlock);
-    var pw = document.getElementById('gatePassword');
-    if (pw) pw.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); attemptUnlock(); } });
-    try {
-      if (window.__portfolioAuth && typeof window.__portfolioAuth.initPage === 'function') {
-        window.__portfolioAuth.initPage();
-      }
-    } catch (err) { console.error(err); }
-  })();
-</script>
 <script src="../js/case-study-inpage-nav.js"></script>
 <script>
   // ── Fade-in observer ──────────────────────────────────────

@@ -973,6 +973,8 @@
 </footer>
 
 <script src="js/portfolio-config.js"></script>
+<script src="js/portfolio-sha256.js"></script>
+<script src="js/portfolio-auth.js"></script>
 <script>
 // Skill detail data — personalized to Carl's experience
 const skillData = [
@@ -1280,11 +1282,10 @@ function closePasswordModal() {
 
 function submitPassword(e) {
   e.preventDefault();
-  const password = document.getElementById('portfolioPassword').value.trim();
-  const cfg = window.__PORTFOLIO_CONFIG || { PASSWORD: 'carl2025', STORAGE_KEY: 'portfolioUnlocked' };
+  const password = document.getElementById('portfolioPassword').value;
 
-  if (password === cfg.PASSWORD) {
-    sessionStorage.setItem(cfg.STORAGE_KEY, '1');
+  // Delegate to the shared gate so unlocking here also unlocks every case study.
+  if (window.__portfolioAuth && window.__portfolioAuth.tryPassword(password)) {
     closePasswordModal();
     window.location.href = new URL('work.html', window.location.href).href;
   } else {
